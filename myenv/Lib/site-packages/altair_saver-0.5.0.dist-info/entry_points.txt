@@ -1,0 +1,6 @@
+[altair.vega.v5.renderer]
+altair_saver = altair_saver:render
+
+[altair.vegalite.v4.renderer]
+altair_saver = altair_saver:render
+

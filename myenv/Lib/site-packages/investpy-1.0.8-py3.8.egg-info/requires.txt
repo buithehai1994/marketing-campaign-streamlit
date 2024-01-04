@@ -1,0 +1,17 @@
+Unidecode>=1.1.1
+setuptools>=41.2.0
+numpy>=1.17.2
+pandas>=0.25.1
+lxml>=4.4.1
+requests>=2.22.0
+pytz>=2019.3
+numpy>=1.21.2
+
+[docs]
+sphinx==3.4.3
+recommonmark==0.7.1
+furo==2021.4.11b34
+investpy==1.0.8
+
+[tests]
+pytest==6.2.5

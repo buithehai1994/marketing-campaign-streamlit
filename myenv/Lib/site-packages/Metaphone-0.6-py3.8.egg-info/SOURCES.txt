@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+TODO.rst
+setup.cfg
+setup.py
+Metaphone.egg-info/PKG-INFO
+Metaphone.egg-info/SOURCES.txt
+Metaphone.egg-info/dependency_links.txt
+Metaphone.egg-info/top_level.txt
+metaphone/__init__.py
+metaphone/meta.py
+metaphone/metaphone.py
+metaphone/word.py
+metaphone/tests/__init__.py
+metaphone/tests/test_metaphone.py
+metaphone/tests/test_word.py

@@ -1,0 +1,11 @@
+{
+  "data": {"sequence": {"start": 0, "stop": 50, "as": "x"}},
+  "transform": [{"calculate": "sin(datum.x)", "as": "y"}],
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "x", "type": "quantitative"},
+    "y": {"field": "y", "type": "quantitative"}
+  },
+  "width": 400,
+  "height": 200
+}
