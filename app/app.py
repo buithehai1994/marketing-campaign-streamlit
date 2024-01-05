@@ -10,7 +10,7 @@ from wordcloud import WordCloud
 import openpyxl
 import base64
 import dataprep
-from dataprep.eda import create_report,plot
+from dataprep.eda import create_report
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -29,7 +29,7 @@ from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from tab_intro.introduction import display_introduction
-
+from dataprep.eda import plot
 import pickle
 import csv
 
@@ -162,8 +162,23 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
+        # Read the pickled plot file
+        # file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
+        # with open(file, 'rb') as file:
+        #     pickled_plot = pickle.load(file)
+        # if isinstance(pickled_plot, Plot):
+        #     # Render the pickled plot in Streamlit
+        #     mpl_fig = plt.figure()
+        #     st.write("EDA Plot:")
+        #     st.pyplot(mpl_fig)
+        
+        # for column in list(data_from_tab_df.columns):
+        #     plot_column=plot(data_from_tab_df,column)
+        #     print(plot_column)
         report = create_report(data_from_tab_df)
         st.write(report)
+        
+        # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
         # eda_report(data_from_tab_df)
         # load_eda_report()

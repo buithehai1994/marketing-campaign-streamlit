@@ -1,15 +1,13 @@
 import pandas as pd
 from io import StringIO
 from tab_df.logics import Dataset
-from tabulate import tabulate
+# from tabulate import tabulate
 import streamlit as st
 import altair as alt
 import matplotlib.pyplot as plt
 import matplotlib
 import seaborn as sns
-import streamlit_pandas_profiling
-from streamlit_pandas_profiling import st_profile_report
-import pandas_profiling
+from dataprep.eda import create_report
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -229,8 +227,8 @@ class EDA:
         matplotlib.pyplot.close()
         
     def generate_visual_eda_report(self):
-        profile = pandas_profiling.ProfileReport(self.data, config_file="")
-        return profile
+        report = create_report(self.data)
+        return report
         
     def value_table(self, column):
         st.write(f"### Value Table for {column}")
