@@ -163,7 +163,7 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         # Read the pickled plot file
-        file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl")
+        file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
         with open(file, 'rb') as file:
             pickled_plot = pickle.load(file)
         
