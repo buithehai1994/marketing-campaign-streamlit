@@ -9,8 +9,6 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import openpyxl
 import base64
-import dataprep
-from dataprep.eda import create_report
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -175,8 +173,7 @@ elif selected_tab == "EDA":
         # for column in list(data_from_tab_df.columns):
         #     plot_column=plot(data_from_tab_df,column)
         #     print(plot_column)
-        report = create_report(data_from_tab_df)
-        st.write(report)
+        eda.generate_visual_eda_report()
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
