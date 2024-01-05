@@ -163,7 +163,7 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         report = create_report(data_from_tab_df)
-        return report
+        print(report)
         # eda_path = Path(__file__).resolve().parent.parent
         # eda_report(data_from_tab_df)
         # load_eda_report()
