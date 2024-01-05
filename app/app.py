@@ -163,19 +163,20 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         # Read the pickled plot file
-        file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
-        with open(file, 'rb') as file:
-            pickled_plot = pickle.load(file)
-        if isinstance(pickled_plot, Plot):
-            # Render the pickled plot in Streamlit
-            mpl_fig = plt.figure()
-            st.write("EDA Plot:")
-            st.pyplot(mpl_fig)
+        # file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
+        # with open(file, 'rb') as file:
+        #     pickled_plot = pickle.load(file)
+        # if isinstance(pickled_plot, Plot):
+        #     # Render the pickled plot in Streamlit
+        #     mpl_fig = plt.figure()
+        #     st.write("EDA Plot:")
+        #     st.pyplot(mpl_fig)
         
         # for column in list(data_from_tab_df.columns):
         #     plot_column=plot(data_from_tab_df,column)
         #     print(plot_column)
-        # report = create_report(data_from_tab_df)
+        report = create_report(data_from_tab_df)
+        st.write(report)
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
         # eda_report(data_from_tab_df)
