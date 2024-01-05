@@ -29,7 +29,7 @@ from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from tab_intro.introduction import display_introduction
-from dataprep.eda import Plot
+from dataprep.eda import plot
 import pickle
 import csv
 
