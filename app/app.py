@@ -10,7 +10,7 @@ from wordcloud import WordCloud
 import openpyxl
 import base64
 import dataprep
-from dataprep.eda import create_report,plot
+from dataprep.eda import create_report
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
