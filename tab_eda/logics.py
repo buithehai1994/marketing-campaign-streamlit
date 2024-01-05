@@ -1,7 +1,7 @@
 import pandas as pd
 from io import StringIO
 from tab_df.logics import Dataset
-from tabulate import tabulate
+# from tabulate import tabulate
 import streamlit as st
 import altair as alt
 import matplotlib.pyplot as plt
