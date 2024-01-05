@@ -175,7 +175,8 @@ elif selected_tab == "EDA":
         # for column in list(data_from_tab_df.columns):
         #     plot_column=plot(data_from_tab_df,column)
         #     print(plot_column)
-        create_report(data_from_tab_df).show()
+        report = create_report(data_from_tab_df)
+        st.write(report)
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
