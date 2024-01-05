@@ -10,8 +10,8 @@ import streamlit as st
 from tab_eda.logics import EDA
 import pandas as pd
 from dataprep.eda import create_report
-import streamlit_pandas_profiling 
-from streamlit_pandas_profiling import st_profile_report
+# import streamlit_pandas_profiling 
+# from streamlit_pandas_profiling import st_profile_report
 
 def display_summary_statistics(dataset):
     eda=EDA(dataset)
