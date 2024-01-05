@@ -163,7 +163,8 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         # Read the pickled plot file
-        with open('eda_report.pkl', 'rb') as file:
+        file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl")
+        with open(file, 'rb') as file:
             pickled_plot = pickle.load(file)
         
         # Render the pickled plot in Streamlit
