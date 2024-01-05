@@ -163,7 +163,7 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         for column in list(data_from_tab_df.columns):
-            plot(df,column)
+            plot(data_from_tab_df,column)
         # report = create_report(data_from_tab_df)
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
