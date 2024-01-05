@@ -1,0 +1,187 @@
+<!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>Tables</h1><br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="callout callout-info">
+                                <h4>Database Analysis of {{database_name}}</h4>
+                                <p>Generated on {{generation_time}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% if description %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-solid">
+                                <div class="box-body">
+                                    <p>{{ description|safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+<!--                    <a href="{{xmlName}}.xml" title="XML Representation">XML Representation</a><br />-->
+<!--                    <a href="insertionOrder.txt" title="Useful for loading data into a database">Insertion Order</a>-->
+<!--                    <a href="deletionOrder.txt" title="Useful for purging data from a database">Deletion Order</a>-->
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-table"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">TABLES</span>
+                                    <span class="info-box-number">{{ tables_amount }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-teal"><i class="fa fa-table"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">VIEWS</span>
+                                    <span class="info-box-number">{{ views_amount }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-green"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">COLUMNS</span>
+                                    <span class="info-box-number">{{ columns_amount }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-yellow"><i class="ion ion-key"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Constraints</span>
+                                    <span class="info-box-number">{{ constraints_amount }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+<!--                        <div class="col-md-2 col-sm-4 col-xs-12">-->
+<!--                            <div class="info-box">-->
+<!--                                <span class="info-box-icon bg-red-active"><i class="fa fa-question" aria-hidden="true"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">Anomalies</span>-->
+<!--                                    <span class="info-box-number">{{anomalies_amount}}</span>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; /.info-box-content &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; /.info-box &ndash;&gt;-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; /.col &ndash;&gt;-->
+<!--                        <div class="col-md-2 col-sm-4 col-xs-12">-->
+<!--                            <div class="info-box">-->
+<!--                                <span class="info-box-icon bg-navy"><i class="fa fa-file-code-o" aria-hidden="true"></i></span>-->
+<!--                                <div class="info-box-content">-->
+<!--                                    <span class="info-box-text">Routines</span>-->
+<!--                                    <span class="info-box-number">{{routines_amount}}</span>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; /.info-box-content &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; /.info-box &ndash;&gt;-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; /.col &ndash;&gt;-->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Database Properties</h3>
+                            <span class="label label-primary pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <p>Database Type: {{ database.database_product }}</p>
+                        </div><!-- /.box-body -->
+                    </div>
+                    {% if catalog %}
+                    {% if catalog.comment %}
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Catalog {{ catalog.name }}</h3>
+                            <span class="label label-primary pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <p> {{ catalog.comment|safe }} </p>
+                        </div><!-- /.box-body -->
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% if schema %}
+                    {% if schema.comment %}
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Schema {{schema.name}}</h3>
+                            <span class="label label-primary pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <p> {{ schema.comment|safe }} </p>
+                        </div><!-- /.box-body -->
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Tables</h3>
+                            <span class="label label-primary pull-right"><i class="fa fa-database fa-2x"></i></span>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <table
+                                    id="database_objects"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="{{ data_table_config.database_objects.paging }}"
+                                    data-page-length="{{ data_table_config.database_objects.pageLength }}"
+                                    data-length-change="{{ data_table_config.database_objects.lengthChange }}">
+                                <thead>
+                                    <tr>
+                                        <th valign="bottom">Table / View</th>
+                                        <th align="right" valign="bottom">Children</th>
+                                        <th align="right" valign="bottom">Parents</th>
+                                        <th align="right" valign="bottom">Columns</th>
+                                        {% if display_num_rows %}
+                                        <th align="right" valign="bottom">Rows</th>
+                                        {% endif %}
+                                        <th align="right" valign="bottom">Type</th>
+                                        <th class="toggle">Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for table in tables %}
+                                    <tr class="tbl even" valign="top">
+                                        <td class="detail"><a href="tables/{% if to_file_name %}{{ table.name }}{% endif %}.html">{{ table.name }}</a></td>
+                                        <td class="detail" align="right">{{ table.max_children }}</td>
+                                        <td class="detail" align="right">{{ table.max_parents }}</td>
+                                        <td class="detail" align="right">{{ table.num_of_cols }}</td>
+                                        {% if display_num_rows %}
+                                        <td class="detail" align="right">{{ table.num_of_rows }}</td>
+                                        {% endif %}
+                                        <td class="detail" align="right">{{ table.get_type() }}</td>
+                                        <td class="comment detail" style="display: table-cell;">{{ comments|safe }}</td>
+                                    </tr>
+                                    {% endfor %}
+                            </table>
+                        </div>
+                    </div><!-- /.box-body -->
+                </section>
+                <!-- /.content -->
+                <script>
+                    var config = {
+                        pagination: {{ pagination_enabled }}
+                    }
+                </script>

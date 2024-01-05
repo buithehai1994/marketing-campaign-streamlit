@@ -1,0 +1,181 @@
+<html>
+
+<head>
+    <title> {{ context.title }} </title>
+    {% include 'jquery.html' %}
+    {% include 'pagination.html' %}
+    {% include 'grid_scripts.html' %}
+    {% include 'grid_styles.html' %}
+</head>
+
+<body>
+    {% if context.tabledata or context.overview_insights or context.comparison_stats %}
+    <div class="top-info-{{ context.rnd }}">
+        <input type='checkbox' style='display: none' id="tb-{{ context.rnd }}">
+        <label class="toggle-label-{{ context.rnd }}" for="tb-{{ context.rnd }}">
+            {{ context.toggle_content }}
+        </label>
+        <div class="stats-{{ context.rnd }}">
+            {% if context.comparison_stats %}
+            <div class="comparison-stats-{{ context.rnd }}">
+                <div>
+                    <div class="tabledata-title-{{ context.rnd }}">Difference Overview</div>
+                    <table>
+                        <tr id="comp-label-{{ context.rnd }}">
+                            <th></th>
+                            {% for df_label in context.df_labels %}
+                            <td style="color: {{ context.legend_labels[loop.index0].color }}">{{ df_label }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% for th, td in context.comparison_stats[0].items() %}
+                        <tr>
+                            <th>{{ th }}</th>
+                            {% for df_stat in td %}
+                            <td>{{ df_stat }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                        <tr id="vtr-{{ context.rnd }}">
+                            <th style="vertical-align: top;">Variable Types</th>
+                            {% for vb_types in context.comparison_stats[1] %}
+                            <td>
+                                {% for tp, num in vb_types.items() %}
+                                <ul>
+                                    <li>{{ tp }}: {{ num }}</li>
+                                </ul>
+                                {% endfor %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            {% if context.tabledata %}
+            <div class="tabledata-{{ context.rnd }}">
+                <div>
+                    <div class="tabledata-title-{{ context.rnd }}">Dataset Statistics</div>
+                    <table>
+                        {% for th, td in context.tabledata[0].items() %}
+                        <tr>
+                            <th>{{ th }}</th>
+                            <td>{{ td }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr id="vtr-{{ context.rnd }}">
+                            <th style="vertical-align: top;">Variable Types</th>
+                            <td>
+                                <ul>
+                                    {% for tp, num in context.tabledata[1].items() %}
+                                    <li>{{ tp }}: {{ num }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            {% if context.overview_insights %}
+            <div class="insights-{{ context.rnd }}">
+                {% for page, content in context.overview_insights.items() %}
+                <div class="page-box-{{ context.rnd }}" id="page-{{ context.rnd }}-{{ loop.index }}">
+                    <div class="tabledata-title-{{ context.rnd }}">Dataset Insights</div>
+                    <table>
+                        {% for entry in content %}
+                        {% for ins_type, insight in entry.items() %}
+                        <tr>
+                            <th class="des-{{ context.rnd }}">
+                                {{ insight|escape|replace('/*start*/', '<span class="col-name-' + context.rnd|string + '">')|replace('/*end*/', '</span>') }}
+                            </th>
+                            <td><span class="ins-type-{{ context.rnd }}">{{ ins_type }}</span></td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endfor %}
+                <div class="page-switch-box-{{ context.rnd }}">
+                    <ul class="page-switch-{{ context.rnd }}">
+                        {% for _ in context.overview_insights %}
+                        {% if loop.length > 1 %}
+                        <li id="switch-{{ context.rnd }}-{{ loop.index }}" onclick="switchPage{{ context.rnd }}(this)">{{ loop.index }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% if context.legend_labels %}
+    <div class="plot-legend-{{ context.rnd }}">
+        {% for legend in context.legend_labels %}
+            <div class="legend-bar-{{ context.rnd }}">
+                <div class="legend-color-{{ context.rnd }}" style="background-color: {{ legend.color }};"></div>
+                {% if loop.index0 == context.baseline %}
+                <div class="legend-label-{{ context.rnd }}"><strong>{{ legend.label }}</strong></div>
+                {% else %}
+                <div class="legend-label-{{ context.rnd }}">{{ legend.label }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="num-of-plots-{{ context.rnd }}" id="num-of-plots-{{ context.rnd }}">
+        <p>Number of plots per page: </p>
+	    <input type="button" id="decrease-num-per-page-{{ context.rnd }}" value="-" class="num-of-plots-minus-{{ context.rnd }}" onclick="decreaseNum()">
+        <input type="number" id="num-per-page-{{ context.rnd }}" onchange="changeNum()"/>
+        <input type="button" id="increase-num-per-page-{{ context.rnd }}" value="+" class="num-of-plots-plus-{{ context.rnd }}" onclick="increaseNum()">
+    </div>
+    <div class="plot-{{ context.rnd }}">
+        {% for fig in context.components[1] %}
+        <div class="fig-{{ context.rnd }}">
+            {% if context.meta %}
+            <div class="menu-{{ context.rnd }}">
+                <div class="plot-title-{{ context.rnd }}">
+                    <div>{{ context.meta[loop.index0]|escape }}</div>
+                </div>
+                {% if context.how_to_guide[context.meta[loop.index0]] %}
+                <div class="info-container-{{ context.rnd }}">
+                    <input type='checkbox' style='display: none' id="htgbt-{{ context.rnd }}-{{ loop.index0 }}" class="insight-check-{{ context.rnd }}">
+                    <label class="htg-btn-{{ context.rnd }}" for="htgbt-{{ context.rnd }}-{{ loop.index0 }}"></label>
+                    <div class="insight-panel-{{ context.rnd }}">
+                        {% for desc in context.how_to_guide[context.meta[loop.index0]] %}
+                        <div class="htg-entry-{{ context.rnd }}">
+                            <div class="htg-entry-conf-{{ context.rnd }}">{{ desc[0] }}</div>
+                            <div class="htg-entry-desc-{{ context.rnd }}">{{ desc[1] }}</div>
+                        </div>
+                        {% endfor %}
+                        <button class="htg-copy-btn-{{ context.rnd }}" onclick="copyParam(this)">Copy All Parameters</button>
+                    </div>
+                </div>
+                {% endif %}
+                {% if context.column_insights[context.meta[loop.index0]] %}
+                <div class="info-container-{{ context.rnd }}">
+                    <input type='checkbox' style='display: none' id="ib-{{ context.rnd }}-{{ loop.index0 }}" class="insight-check-{{ context.rnd }}">
+                    <label class="insight-btn-{{ context.rnd }}" for="ib-{{ context.rnd }}-{{ loop.index0 }}"></label>
+                    <div class="insight-panel-{{ context.rnd }}">
+                        <div class="insight-panel-title-{{ context.rnd }}">Column Insights</div>
+                            <ol>
+                                {% for insight in context.column_insights[context.meta[loop.index0]] %}
+                                <li class="entry-{{ context.rnd }}">
+                                    {{ insight|escape|replace('/*start*/', '<span class="col-name-' + context.rnd|string + '">')|replace('/*end*/', '</span>') }}
+                                </li>
+                                {% endfor %}
+                            </ol>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {{ fig }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination-{{ context.rnd }}" id="pagination-{{ context.rnd }}"></div>
+</body>
+
+</html>

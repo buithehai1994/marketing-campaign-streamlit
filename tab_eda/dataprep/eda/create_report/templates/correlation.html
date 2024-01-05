@@ -1,0 +1,27 @@
+<div class="correlation-container">
+  <div class="corr-plot">
+    <div class="vp-switch">
+      {% for corr_name in context.components.correlation_names %}
+      {% if loop.index == 1 %}
+      <input type="radio" name="correlation-names" id="corr-name-{{ corr_name }}" checked />
+      <label for="corr-name-{{ corr_name }}" onclick="openTab(this)" >{{ corr_name }}</label>
+      {% else %}
+      <input type="radio" name="correlation-names" id="corr-name-{{ corr_name }}" />
+      <label for="corr-name-{{ corr_name }}" onclick="openTab(this)" >{{ corr_name }}</label>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    {% for plot in context.components.correlations[1] %}
+    {% if loop.index == 1 %}
+    <div class="corr-tabcontent" style="display: block;">
+      {{ plot }}
+    </div>
+    {% else %}
+    <div class="corr-tabcontent">
+      {{ plot }}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
