@@ -4,7 +4,7 @@ dtale==1.47.0
 matplotlib==3.4.3
 aiohttp>=3.6.4
 ipywidgets==7.5.1
-jinja2==2.9
+jinja2==2.12
 jsonpath-ng==1.5.2
 tqdm==4.48.2
 ipython_genutils==0.2.0
