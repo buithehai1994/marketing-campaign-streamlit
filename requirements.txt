@@ -1,4 +1,5 @@
 Flask-Compress==1.14
+bokeh==2.4.3
 ansi2html==1.9.1
 brotli==1.1.0
 dash==2.14.2
