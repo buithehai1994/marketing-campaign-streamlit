@@ -29,7 +29,7 @@ from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from tab_intro.introduction import display_introduction
-
+from dataprep.eda import Plot
 import pickle
 import csv
 
@@ -166,10 +166,11 @@ elif selected_tab == "EDA":
         file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
         with open(file, 'rb') as file:
             pickled_plot = pickle.load(file)
-        
-        # Render the pickled plot in Streamlit
-        st.write("EDA Plot:")
-        pickled_plot.show()
+        if isinstance(pickled_plot, Plot):
+            # Render the pickled plot in Streamlit
+            mpl_fig = plt.figure()
+            st.write("EDA Plot:")
+            st.pyplot(mpl_fig)
         
         # for column in list(data_from_tab_df.columns):
         #     plot_column=plot(data_from_tab_df,column)
