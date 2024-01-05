@@ -169,7 +169,7 @@ elif selected_tab == "EDA":
         
         # Render the pickled plot in Streamlit
         st.write("EDA Plot:")
-        st.pyplot(pickled_plot)
+        pickled_plot.show()
         
         # for column in list(data_from_tab_df.columns):
         #     plot_column=plot(data_from_tab_df,column)
