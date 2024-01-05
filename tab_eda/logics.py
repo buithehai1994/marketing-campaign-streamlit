@@ -228,7 +228,7 @@ class EDA:
         
     def generate_visual_eda_report(self):
         report = create_report(self.data)
-        return report
+        report.show()
         
     def value_table(self, column):
         st.write(f"### Value Table for {column}")
