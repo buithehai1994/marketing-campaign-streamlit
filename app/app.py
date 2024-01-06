@@ -173,8 +173,8 @@ elif selected_tab == "EDA":
         pr = data_from_tab_df.profile_report()
         st_profile_report(pr)
 
-        st.header('**DataPrep Report**')
-        create_report(data_from_tab_df).show()
+        report = create_report(data_from_tab_df)
+        st.components.v1.html(report)
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
