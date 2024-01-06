@@ -165,8 +165,13 @@ elif selected_tab == "EDA":
     if selected_sub_tab == tab_titles[1]:
         file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
         with open(file, 'rb') as file:
-            eda_report= pickle.load(file)
-        st.write(dir(eda_report))
+            loaded_report= pickle.load(file)
+        # st.write(dir(eda_report))
+        if hasattr(loaded_report, 'show'):
+            loaded_report.show()
+        else:
+            st.write("Unable to display the report.")
+        
 
         # st.header('**Pandas Profiling Report**')
         # pr = data_from_tab_df.profile_report()
