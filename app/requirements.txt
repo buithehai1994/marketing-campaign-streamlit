@@ -55,7 +55,6 @@ conda-package-handling==2.2.0
 conda_package_streaming==0.9.0
 constantly==15.1.0
 contourpy==1.0.5
-cookiecutter==1.6.0
 cryptography==41.0.3
 cssselect==1.1.0
 cycler==0.11.0
@@ -79,7 +78,6 @@ defusedxml==0.7.1
 diff-match-patch==20200713
 dill==0.3.6
 distlib==0.3.7
-distributed==2023.6.0
 docstring-to-markdown==0.11
 docutils==0.18.1
 dtale==3.8.1
