@@ -10,8 +10,8 @@ from wordcloud import WordCloud
 import openpyxl
 import base64
 import imblearn
-import dataprep
-from dataprep.eda import create_report,plot
+# from pandas_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -168,8 +168,12 @@ elif selected_tab == "EDA":
         #     pickled_plot = pickle.load(file)
         #     st.write(pickled_plot)
         
-        report = create_report(data_from_tab_df)
-        report
+        pr = ProfileReport(df, explorative=True)
+        st.header('**Input DataFrame**')
+        st.write(data_from_tab_df)
+        st.write('---')
+        st.header('**Pandas Profiling Report**')
+        st_profile_report(pr)
         # eda.generate_visual_eda_report()
         
         # print(report)
