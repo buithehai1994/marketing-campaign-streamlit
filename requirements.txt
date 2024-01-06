@@ -2,7 +2,7 @@ dataprep==0.4.1
 markupsafe==2.0.1
 jinja2
 matplotlib==3.7.2
-numpy>=1.21.0,<=1.25.0
+numpy
 pandas==1.5.3
 pydantic<2.0
 pydantic_core==2.14.5
