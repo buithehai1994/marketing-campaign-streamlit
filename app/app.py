@@ -31,7 +31,7 @@ from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from tab_intro.introduction import display_introduction
-from dataprep.eda import plot
+from dataprep.eda import plot,create_report
 import pickle
 import csv
 
@@ -172,6 +172,9 @@ elif selected_tab == "EDA":
         st.header('**Pandas Profiling Report**')
         pr = data_from_tab_df.profile_report()
         st_profile_report(pr)
+
+        st.header('**DataPrep Report**')
+        create_report(data_from_tab_df).show()
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
