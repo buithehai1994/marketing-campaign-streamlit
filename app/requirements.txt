@@ -50,7 +50,6 @@ click==7.1.2
 cloudpickle==2.2.1
 colorama==0.4.6
 colorcet==3.0.1
-conda-libmamba-solver==23.7.0
 conda-pack==0.6.0
 conda-package-handling==2.2.0
 conda_package_streaming==0.9.0
