@@ -291,7 +291,6 @@ pytz==2023.3.post1
 pyviz-comms==2.3.0
 PyWavelets==1.4.1
 pywin32-ctypes==0.2.0
-pywinpty==2.0.10
 PyYAML==6
 pyzmq==23.2.0
 QDarkStyle==3.0.2
