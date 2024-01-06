@@ -169,9 +169,6 @@ elif selected_tab == "EDA":
         #     st.write(pickled_plot)
         
         pr = ProfileReport(data_from_tab_df, explorative=True)
-        st.header('**Input DataFrame**')
-        st.write(data_from_tab_df)
-        st.write('---')
         st.header('**Pandas Profiling Report**')
         st_profile_report(pr)
         # eda.generate_visual_eda_report()
