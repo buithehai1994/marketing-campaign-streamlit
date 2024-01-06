@@ -1,5 +1,5 @@
 dataprep==0.4.1
-MarkupSafe
+markupsafe==2.0.1
 jinja2
 matplotlib==3.7.2
 numpy>=1.21.0,<=1.25.0
