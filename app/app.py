@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import openpyxl
 import base64
+import imblearn
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
