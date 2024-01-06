@@ -245,7 +245,7 @@ pyasn1-modules==0.2.8
 pycodestyle==2.10.0
 pycparser==2.21
 pyct==0.5.0
-pydantic==1.10.13
+pydantic<2.0
 pydantic_core==2.14.5
 pydantic-settings==2.1.0
 pydeck==0.8.1b0
