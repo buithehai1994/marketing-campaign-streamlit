@@ -160,20 +160,20 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        # Read the pickled plot file
-        # file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
-        # with open(file, 'rb') as file:
-        #     pickled_plot = pickle.load(file)
-        # if isinstance(pickled_plot, Plot):
-        #     # Render the pickled plot in Streamlit
-        #     mpl_fig = plt.figure()
-        #     st.write("EDA Plot:")
-        #     st.pyplot(mpl_fig)
+        Read the pickled plot file
+        file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
+        with open(file, 'rb') as file:
+            pickled_plot = pickle.load(file)
+        if isinstance(pickled_plot, Plot):
+            # Render the pickled plot in Streamlit
+            mpl_fig = plt.figure()
+            st.write("EDA Plot:")
+            st.pyplot(mpl_fig)
         
-        # for column in list(data_from_tab_df.columns):
-        #     plot_column=plot(data_from_tab_df,column)
-        #     print(plot_column)
-        eda.generate_visual_eda_report()
+        for column in list(data_from_tab_df.columns):
+            plot_column=plot(data_from_tab_df,column)
+            print(plot_column)
+        # eda.generate_visual_eda_report()
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
