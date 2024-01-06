@@ -10,7 +10,7 @@ from wordcloud import WordCloud
 import openpyxl
 import base64
 import imblearn
-# from pandas_profiling import ProfileReport
+from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
 # Set Python path
