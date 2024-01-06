@@ -68,13 +68,6 @@ def display_word_cloud(text):
     plt.axis('off')
     st.pyplot()
 
-@st.cache_data
-def load_eda_report():
-    eda_report_path = "eda_report.pkl"
-    file = open(eda_report_path, 'rb')
-    loaded_report = pickle.load(file)
-    file.close()
-    return loaded_report
 
 # set dataset
 # @st.cache_data
@@ -163,7 +156,7 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        eda_report_path="report.html"
+        eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
         with open(eda_report_path, 'r') as file:
             eda_report_html = file.read()
             st.markdown(eda_report_html, unsafe_allow_html=True)
