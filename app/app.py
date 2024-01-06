@@ -77,7 +77,7 @@ def display_word_cloud(text):
 #     return loaded_report
 
 # set dataset
-@st.cache_data
+# @st.cache_data
 def fetch_data():
     # Specify the path to the CSV file relative to the app directory
     dataset_path = Path(__file__).resolve().parent.parent / "csv" / "TeleCom_Data.csv"
