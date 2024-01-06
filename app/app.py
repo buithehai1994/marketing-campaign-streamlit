@@ -168,7 +168,8 @@ elif selected_tab == "EDA":
         #     pickled_plot = pickle.load(file)
         #     st.write(pickled_plot)
         
-        create_report(data_from_tab_df).show()
+        report = create_report(data_from_tab_df)
+        report
         # eda.generate_visual_eda_report()
         
         # print(report)
