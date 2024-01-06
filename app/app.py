@@ -174,7 +174,7 @@ elif selected_tab == "EDA":
         # st_profile_report(pr)
 
         report = create_report(data_from_tab_df)
-        st.text(report)
+        st.markdown(report)
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
