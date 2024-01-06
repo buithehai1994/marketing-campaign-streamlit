@@ -204,7 +204,6 @@ numpydoc==1.5.0
 openpyxl==3.0.10
 packaging==23.1
 pandas==1.5.3
-pandas-profiling==3.2.0
 pandocfilters==1.5.0
 panel
 param==1.13.0
@@ -247,7 +246,6 @@ pycparser==2.21
 pyct==0.5.0
 pydantic<2.0
 pydantic_core==2.14.5
-pydantic-settings==2.1.0
 pydeck==0.8.1b0
 PyDispatcher==2.0.5
 pydocstyle==6.3.0
