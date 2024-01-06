@@ -249,7 +249,6 @@ pyarrow==11.0.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.10.0
-pycosat==0.6.4
 pycparser==2.21
 pyct==0.5.0
 pycurl==7.45.2
