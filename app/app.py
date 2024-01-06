@@ -68,13 +68,13 @@ def display_word_cloud(text):
     plt.axis('off')
     st.pyplot()
 
-# @st.cache_data
-# def load_eda_report():
-#     eda_report_path = Path(__file__).resolve().parent.parent / "eda_report.pkl"
-#     file = open(eda_report_path, 'rb')
-#     loaded_report = pickle.load(file)
-#     file.close()
-#     return loaded_report
+@st.cache_data
+def load_eda_report():
+    eda_report_path = Path(__file__).resolve().parent.parent / "eda_report.pkl"
+    file = open(eda_report_path, 'rb')
+    loaded_report = pickle.load(file)
+    file.close()
+    return loaded_report
 
 # set dataset
 # @st.cache_data
@@ -180,7 +180,7 @@ elif selected_tab == "EDA":
         # eda_path = Path(__file__).resolve().parent.parent
         # eda_report(data_from_tab_df)
         # load_eda_report()
-        dataprep.eda.plot(data_from_tab_df)
+        load_eda_report()
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
