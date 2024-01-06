@@ -157,12 +157,9 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
-        # Read the contents of the HTML file
-        with open(eda_report_path, 'r') as file:
-            html_code = file.read()
-
-        # Display the HTML content using Streamlit
-        st.markdown(html_code, unsafe_allow_html=True)
+        from IPython.display import HTML
+        html_code = open(eda_report_path, 'r').read()
+        display(HTML(html_code))
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
