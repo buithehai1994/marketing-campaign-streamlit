@@ -168,7 +168,7 @@ elif selected_tab == "EDA":
         #     pickled_plot = pickle.load(file)
         #     st.write(pickled_plot)
         
-        pr = ProfileReport(df, explorative=True)
+        pr = ProfileReport(data_from_tab_df, explorative=True)
         st.header('**Input DataFrame**')
         st.write(data_from_tab_df)
         st.write('---')
