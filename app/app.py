@@ -183,7 +183,7 @@ elif selected_tab == "EDA":
         file = open(eda_report_path, 'rb')
         loaded_report = pickle.load(file)
         file.close()
-        return loaded_report
+        loaded_report
     
         
     if selected_sub_tab == tab_titles[2]:
