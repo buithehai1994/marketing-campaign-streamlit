@@ -169,9 +169,9 @@ elif selected_tab == "EDA":
         #     pickled_plot = pickle.load(file)
         #     st.write(pickled_plot)
 
-        st.header('**Pandas Profiling Report**')
-        pr = data_from_tab_df.profile_report()
-        st_profile_report(pr)
+        # st.header('**Pandas Profiling Report**')
+        # pr = data_from_tab_df.profile_report()
+        # st_profile_report(pr)
 
         report = create_report(data_from_tab_df)
         st.text(report)
