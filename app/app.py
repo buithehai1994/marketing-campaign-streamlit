@@ -11,7 +11,7 @@ import openpyxl
 import base64
 import imblearn
 import dataprep
-from dataprep.eda import plot
+from dataprep.eda import create_report,plot
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -168,9 +168,7 @@ elif selected_tab == "EDA":
         #     pickled_plot = pickle.load(file)
         #     st.write(pickled_plot)
         
-        for column in list(data_from_tab_df.columns):
-            plot_column=plot(data_from_tab_df,column)
-            print(plot_column)
+        create_report(data_from_tab_df).show()
         # eda.generate_visual_eda_report()
         
         # print(report)
