@@ -10,7 +10,7 @@ from wordcloud import WordCloud
 import openpyxl
 import base64
 import imblearn
-from pandas_profiling import ProfileReport
+import ydata-profiling
 from streamlit_pandas_profiling import st_profile_report
 
 # Set Python path
@@ -167,11 +167,10 @@ elif selected_tab == "EDA":
         # with open(file, 'rb') as file:
         #     pickled_plot = pickle.load(file)
         #     st.write(pickled_plot)
-        
-        pr = ProfileReport(data_from_tab_df, explorative=True)
+
         st.header('**Pandas Profiling Report**')
+        pr = data_from_tab_df.profile_report()
         st_profile_report(pr)
-        # eda.generate_visual_eda_report()
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
