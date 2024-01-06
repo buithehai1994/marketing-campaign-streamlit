@@ -14,5 +14,6 @@ seaborn
 openpyxl
 numpy
 pydantic
+ydata-profiling
 streamlit
 streamlit-pandas-profiling
