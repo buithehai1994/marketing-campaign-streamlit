@@ -96,7 +96,6 @@ def generate_download_link(df):
     b64_csv = base64.b64encode(csv_data).decode()
     return f'<a href="data:text/csv;charset=utf-8;base64,{b64_csv}" download="TeleCom_Data.csv">Download CSV File</a>'
 
-@st.cache_data
 def perform_encoding():
     encoding = Encoding(data=data_from_tab_df)
     data_for_ml = encoding.label_encoding()
