@@ -70,7 +70,7 @@ def display_word_cloud(text):
 
 @st.cache_data
 def load_eda_report():
-    eda_report_path = Path(__file__).resolve().parent.parent / "eda_report.pkl"
+    eda_report_path = "eda_report.pkl"
     file = open(eda_report_path, 'rb')
     loaded_report = pickle.load(file)
     file.close()
