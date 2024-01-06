@@ -174,7 +174,11 @@ elif selected_tab == "EDA":
         st_profile_report(pr)
 
         report = create_report(data_from_tab_df)
-        st.components.v1.html(report)
+        # Convert the HTML object to a string
+        html_string = report.data
+        
+        # Render the HTML string using st.components.v1.html()
+        st.components.v1.html(html_string)
         
         # print(report)
         # eda_path = Path(__file__).resolve().parent.parent
