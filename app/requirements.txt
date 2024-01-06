@@ -51,7 +51,6 @@ cloudpickle==2.2.1
 colorama==0.4.6
 colorcet==3.0.1
 comm==0.2.0
-conda-build==3.26.1
 conda-content-trust==0.2.0
 conda_index==0.3.0
 conda-libmamba-solver==23.7.0
