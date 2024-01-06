@@ -8,7 +8,6 @@ class Encoding:
         # Initialize Dataset attributes
         self.data = data  # Placeholder for dataset
 
-    @st.cache
     def label_encoding(self):
         import numpy as np
         if self.data is None:
