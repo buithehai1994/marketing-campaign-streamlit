@@ -97,6 +97,12 @@ def generate_download_link(df):
     b64_csv = base64.b64encode(csv_data).decode()
     return f'<a href="data:text/csv;charset=utf-8;base64,{b64_csv}" download="TeleCom_Data.csv">Download CSV File</a>'
 
+# Define a custom hash function for Encoding.label_encoding
+def hash_label_encoding(label_encoding_func):
+    # Implement your custom hashing logic for the function here
+    return hash(label_encoding_func.__code__.co_code)  
+    
+@st.cache_data(hash_funcs={type(Encoding.label_encoding): hash_label_encoding})
 def perform_encoding():
     encoding = Encoding(data=data_from_tab_df)
     data_for_ml = encoding.label_encoding()
