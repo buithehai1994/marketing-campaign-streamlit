@@ -166,13 +166,9 @@ elif selected_tab == "EDA":
         file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
         with open(file, 'rb') as file:
             loaded_report= pickle.load(file)
-        # st.write(dir(eda_report))
-        if hasattr(loaded_report, 'show'):
-            loaded_report.show()
-        else:
-            st.write("Unable to display the report.")
+        plot(loaded_report)
+        st.pyplot()
         
-
         # st.header('**Pandas Profiling Report**')
         # pr = data_from_tab_df.profile_report()
         # st_profile_report(pr)
