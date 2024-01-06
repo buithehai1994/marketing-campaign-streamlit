@@ -163,28 +163,10 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        eda_report_path=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
-        # with open(file, 'rb') as file:
-        #     loaded_report= pickle.load(file)
-        # plot(loaded_report)
-        # st.pyplot()
-        
-        # st.header('**Pandas Profiling Report**')
-        # pr = data_from_tab_df.profile_report()
-        # st_profile_report(pr)
-
-        # report = create_report(data_from_tab_df)
-        # st.markdown(report)
-        
-        # print(report)
-        # eda_path = Path(__file__).resolve().parent.parent
-        # eda_report(data_from_tab_df)
-        # load_eda_report()
-        file = open(eda_report_path, 'rb')
-        loaded_report = pickle.load(file)
-        file.close()
-        loaded_report
-    
+        eda_report_path="report.html"
+        with open(eda_report_path, 'r') as file:
+            eda_report_html = file.read()
+            st.markdown(eda_report_html, unsafe_allow_html=True)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
