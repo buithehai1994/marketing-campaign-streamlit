@@ -69,7 +69,7 @@ dash-core-components==2.0.0
 dash-daq==0.5.0
 dash-html-components==2.0.0
 dash-table==5.0.0
-dask==2.30.0
+dask>=2.30.0
 dataprep==0.4.1
 datasets==2.12.0
 datashader==0.15.2
