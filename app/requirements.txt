@@ -180,7 +180,6 @@ matplotlib-inline==0.1.6
 mccabe==0.7.0
 mdit-py-plugins==0.3.0
 mdurl==0.1.0
-menuinst==1.4.19
 Metaphone==0.6
 miniful==0.0.6
 missingno==0.5.2
