@@ -10,6 +10,8 @@ from wordcloud import WordCloud
 import openpyxl
 import base64
 import imblearn
+import dataprep
+from dataprep.eda import plot
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
