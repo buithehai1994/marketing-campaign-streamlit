@@ -106,7 +106,7 @@ holoviews==1.17.1
 htmlmin==0.1.12
 huggingface-hub==0.15.1
 hurry.filesize==0.9
-hvplot==0.8.4
+hvplot
 hyperlink==21.0.0
 idna==3.4
 imagecodecs==2023.1.23
@@ -206,7 +206,7 @@ packaging==23.1
 pandas==1.5.3
 pandas-profiling==3.2.0
 pandocfilters==1.5.0
-panel==1.2.3
+panel
 param==1.13.0
 paramiko==2.8.1
 parsel==1.6.0
