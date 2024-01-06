@@ -166,7 +166,6 @@ lazy_loader==0.2
 lazy-object-proxy==1.6.0
 levenshtein==0.12.0
 libarchive-c==2.9
-libmambapy==1.5.1
 linkify-it-py==2.0.0
 llvmlite==0.40.0
 lmdb==1.4.1
