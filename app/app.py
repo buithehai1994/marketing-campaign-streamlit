@@ -165,12 +165,12 @@ elif selected_tab == "EDA":
     if selected_sub_tab == tab_titles[1]:
         file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
         with open(file, 'rb') as file:
-            pickled_plot = pickle.load(file)
-            st.write(pickled_plot)
+            eda_report= pickle.load(file)
+        plot(eda_report)
 
-        st.header('**Pandas Profiling Report**')
-        pr = data_from_tab_df.profile_report()
-        st_profile_report(pr)
+        # st.header('**Pandas Profiling Report**')
+        # pr = data_from_tab_df.profile_report()
+        # st_profile_report(pr)
 
         # report = create_report(data_from_tab_df)
         # st.markdown(report)
