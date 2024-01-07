@@ -102,10 +102,17 @@ data_for_ml = perform_encoding()
 @st.cache()
 def display_saved_html_with_elements(saved_html_file_path):
     html_element = HTML()
+
     with open(saved_html_file_path, 'r') as file:
         html_code = file.read()
-    # Render HTML content using streamlit_elements
-    html_element.raw(html_code)
+
+    # Check if within a Streamlit context before using streamlit_elements
+    if st._is_running_with_streamlit:
+        # Render HTML content using streamlit_elements
+        html_element.raw(html_code)
+    else:
+        # Handle the case where the script is not executed within Streamlit context
+        print("Not running within Streamlit context. Unable to render HTML.")
 
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
@@ -172,8 +179,7 @@ elif selected_tab == "EDA":
         # st.markdown(html_code, unsafe_allow_html=True)
         # Display the saved HTML file within the Streamlit app
         st.title("Streamlit EDA Report")
-        html_content = display_saved_html_with_elements(saved_html_file_path=eda_report_path)
-        st.components.v1.html(html_content, width=800, height=600)
+        display_saved_html_with_elements(eda_report_path)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
