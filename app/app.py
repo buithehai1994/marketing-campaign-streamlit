@@ -180,11 +180,9 @@ elif selected_tab == "EDA":
         # components.html(html_content_no_links, width=800, height=600)
 
         report = create_report(data_from_tab_df, title='EDA Report')
-        # Get the Container object from the report
-        container = report._get_container()
         
         # Get the HTML content from the Container object
-        eda_html = container._repr_html_()
+        eda_html = report._repr_html_()
 
         # Render the HTML content within Streamlit
         st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
