@@ -196,7 +196,7 @@ elif selected_tab == "EDA":
         #     html_content = file.read()
 
         st.write("Embedding Dataprep HTML Report:")
-        st.components.v1.html(open(eda_report_path, 'r').read(), height=600, scrolling=True, sandbox='allow-scripts')
+        components.iframe(eda_report_path, height=600)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
