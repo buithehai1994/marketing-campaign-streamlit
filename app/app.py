@@ -186,8 +186,8 @@ elif selected_tab == "EDA":
         # Get the HTML content from the Container object
         eda_html = container._repr_html_()
 
-# Render the HTML content within Streamlit
-st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
+        # Render the HTML content within Streamlit
+        st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
