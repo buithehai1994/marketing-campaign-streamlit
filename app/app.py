@@ -192,11 +192,11 @@ elif selected_tab == "EDA":
         # st.markdown(html_content, unsafe_allow_html=True)
         # Display the HTML report in Streamlit using an iframe
         # Read the HTML file content
-        with open(eda_report_path, 'r') as file:
-            html_content = file.read()
+        # with open(eda_report_path, 'r') as file:
+        #     html_content = file.read()
 
-        # Display the HTML report in Streamlit using st.components.v1.html
-        st.components.v1.html(html_content, height=600, width=900)
+        # Display a link to open the report in a new tab
+        st.markdown(f"[Open EDA Report](data:text/html;base64,{eda_report_path})", unsafe_allow_html=True)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
