@@ -113,8 +113,10 @@ def read_html_content(saved_html_file_path):
 def disable_hyperlinks(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     for a_tag in soup.find_all('a'):
-        a_tag.attrs['onclick'] = 'return false;'
-        a_tag.attrs['style'] = 'pointer-events: none; cursor: default;'
+        href = a_tag.get('href')
+        if href and not urlparse(href).netloc:
+            a_tag.attrs['onclick'] = 'return false;'
+            a_tag.attrs['style'] = 'pointer-events: none; cursor: default;'
     return str(soup)  
     
 # def eda_report(data_from_tab_df):
