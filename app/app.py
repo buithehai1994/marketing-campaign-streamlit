@@ -14,6 +14,7 @@ import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 import dataprep
 import re
+from bs4 import BeautifulSoup
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -109,6 +110,12 @@ def read_html_content(saved_html_file_path):
         html_code = file.read()
     return html_code
     
+def disable_hyperlinks(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    for a_tag in soup.find_all('a'):
+        a_tag.attrs['onclick'] = 'return false;'
+        a_tag.attrs['style'] = 'pointer-events: none; cursor: default;'
+    return str(soup)  
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
@@ -175,7 +182,7 @@ elif selected_tab == "EDA":
         with open(eda_report_path, 'r') as file:
             html_content = file.read()
         # Remove hyperlinks from the HTML content
-        html_content_no_links = remove_hyperlinks(html_content)
+        html_content_no_links = disable_hyperlinks(html_content)
         
         # # Display modified HTML content in the Streamlit app
         components.html(html_content_no_links, width=800, height=600)
