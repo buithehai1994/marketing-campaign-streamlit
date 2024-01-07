@@ -106,14 +106,8 @@ def display_saved_html_with_elements(saved_html_file_path):
     with open(saved_html_file_path, 'r') as file:
         html_code = file.read()
 
-    # Check if within a Streamlit context before using streamlit_elements
-    if st._is_running_with_streamlit:
-        # Render HTML content using streamlit_elements
-        html_element.raw(html_code)
-    else:
-        # Handle the case where the script is not executed within Streamlit context
-        print("Not running within Streamlit context. Unable to render HTML.")
-
+    html_element.raw(html_code)
+    
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
     
