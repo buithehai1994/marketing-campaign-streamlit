@@ -35,7 +35,7 @@ from tab_intro.introduction import display_introduction
 from dataprep.eda import plot,create_report
 import pickle
 import csv
-import streamlit.components.v1 as components
+from streamlit import components
 import warnings
 from sklearn.exceptions import ConvergenceWarning
 
@@ -195,8 +195,8 @@ elif selected_tab == "EDA":
         # with open(eda_report_path, 'r') as file:
         #     html_content = file.read()
 
-        # Display a link to open the report in a new tab
-        st.markdown(f"[Open EDA Report](data:text/html;base64,{eda_report_path})", unsafe_allow_html=True)
+        st.write("Embedding Dataprep HTML Report:")
+        components.iframe(eda_report_path, height=600)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
