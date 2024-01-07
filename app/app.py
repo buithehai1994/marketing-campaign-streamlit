@@ -169,12 +169,15 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
-          # Read HTML content from the file
-        with open(eda_report_path, 'r') as file:
-            html_content = file.read()
-        # Remove hyperlinks from the HTML content
-        html_content_no_links = remove_hyperlinks(html_content)
+        # eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
+        #   # Read HTML content from the file
+        # with open(eda_report_path, 'r') as file:
+        #     html_content = file.read()
+        # # Remove hyperlinks from the HTML content
+        # html_content_no_links = remove_hyperlinks(html_content)
+
+        report = create_report(data_from_tab_df, title='EDA Report')
+        return report.show_browser()
         
         # Display modified HTML content in the Streamlit app
         components.html(html_content_no_links, width=800, height=600)
