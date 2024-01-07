@@ -177,7 +177,7 @@ elif selected_tab == "EDA":
         # html_content_no_links = remove_hyperlinks(html_content)
 
         report = create_report(data_from_tab_df, title='EDA Report')
-        return report.show_browser()
+        report.show_browser()
         
         # Display modified HTML content in the Streamlit app
         components.html(html_content_no_links, width=800, height=600)
