@@ -169,7 +169,8 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        # eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
+        eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
+        
         #   # Read HTML content from the file
         # with open(eda_report_path, 'r') as file:
         #     html_content = file.read()
@@ -179,16 +180,21 @@ elif selected_tab == "EDA":
         # # Display modified HTML content in the Streamlit app
         # components.html(html_content_no_links, width=800, height=600)
 
-        report = create_report(data_from_tab_df, title='EDA Report')
+        # report = create_report(data_from_tab_df, title='EDA Report')
         
-        # Get the HTML content from the Container object
-        html_content = report.show_browser()
+        # # Get the HTML content from the Container object
+        # html_content = report.show_browser()
 
         # # Render the HTML content within Streamlit
         # st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
         # Render the HTML content within an iframe in Streamlit
         # Display the HTML report in Streamlit using st.markdown
-        st.markdown(html_content, unsafe_allow_html=True)
+        # st.markdown(html_content, unsafe_allow_html=True)
+        # Display the HTML report in Streamlit using an iframe
+        st.markdown(
+            f'<iframe src="data:text/html;base64,{eda_report_path}" width=900 height=600></iframe>',
+            unsafe_allow_html=True
+        )
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
