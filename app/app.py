@@ -182,16 +182,13 @@ elif selected_tab == "EDA":
         report = create_report(data_from_tab_df, title='EDA Report')
         
         # Get the HTML content from the Container object
-        html_content = report._repr_html_()
+        html_content = report.show_browser()
 
         # # Render the HTML content within Streamlit
         # st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
         # Render the HTML content within an iframe in Streamlit
-        # Display the HTML report in Streamlit using markdown
-        st.components.v1.html(
-            f'<iframe srcdoc="{html_content}" width=900 height=600></iframe>',
-            height=700
-        )
+        # Display the HTML report in Streamlit using st.markdown
+        st.markdown(html_content, unsafe_allow_html=True)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
