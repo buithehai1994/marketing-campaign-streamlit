@@ -166,10 +166,14 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
-        with open(eda_report_path, 'r') as f:
-            html_content = f.read()
-        st.markdown("## EDA Report")
-        st.markdown(html_content, unsafe_allow_html=True)
+          # Read HTML content from the file
+        with open(eda_report_path, 'r') as file:
+            html_content = file.read()
+    
+        st.title("Streamlit EDA Report")
+    
+        # Embed HTML content using an iframe
+        st.markdown(f'<iframe src="data:text/html;base64,{base64.b64encode(html_content.encode()).decode()}" height=800 width=1000></iframe>', unsafe_allow_html=True)
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
