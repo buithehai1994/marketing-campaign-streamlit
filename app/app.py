@@ -170,7 +170,7 @@ elif selected_tab == "EDA":
         with open(eda_report_path, 'r') as file:
             html_content = file.read()
     
-        components.html(html_report, width=800, height=600)
+        components.html(html_content, width=800, height=600)
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
