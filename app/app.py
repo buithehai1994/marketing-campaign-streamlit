@@ -172,7 +172,7 @@ elif selected_tab == "EDA":
         # Display the saved HTML file within the Streamlit app
         st.title("Streamlit EDA Report")
         html_content = read_html_content(eda_report_path)
-        st.components.v1.html(html_content, height=200)
+        st.markdown(html_content, unsafe_allow_html=True)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
