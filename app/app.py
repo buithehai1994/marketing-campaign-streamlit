@@ -177,26 +177,10 @@ elif selected_tab == "EDA":
         # Remove hyperlinks from the HTML content
         html_content_no_links = remove_hyperlinks(html_content)
         
-        # Display modified HTML content in the Streamlit app
-        components.html(html_content_no_links, width=800, height=600)
+        # # Display modified HTML content in the Streamlit app
+        # components.html(html_content_no_links, width=800, height=600)
 
-        # report = create_report(data_from_tab_df, title='EDA Report')
-        
-        # # Get the HTML content from the Container object
-        # html_content = report.show_browser()
-
-        # # Render the HTML content within Streamlit
-        # st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
-        # Render the HTML content within an iframe in Streamlit
-        # Display the HTML report in Streamlit using st.markdown
-        # st.markdown(html_content, unsafe_allow_html=True)
-        # Display the HTML report in Streamlit using an iframe
-        # Read the HTML file content
-        # with open(eda_report_path, 'r') as file:
-        #     html_content = file.read()
-
-        # st.write("Embedding Dataprep HTML Report:")
-        # components.iframe(eda_report_path, height=600)
+        components.iframe(html_content_no_links, height=600)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
