@@ -99,7 +99,7 @@ data_for_ml = perform_encoding()
 
 # Function to read and display the HTML file using streamlit_elements
 
-@st.cache
+# @st.cache
 def read_html_content(saved_html_file_path):
     with open(saved_html_file_path, 'r',encoding='utf-8') as file:
         html_code = file.read()
