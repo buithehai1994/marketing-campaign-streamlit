@@ -178,9 +178,9 @@ elif selected_tab == "EDA":
         html_content_no_links = remove_hyperlinks(html_content)
         
         # # Display modified HTML content in the Streamlit app
-        # components.html(html_content_no_links, width=800, height=600)
+        components.html(html_content_no_links, width=800, height=600)
 
-        components.iframe(html_content_no_links, height=600)
+        # components.iframe(html_content_no_links, height=600)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
