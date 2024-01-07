@@ -100,7 +100,7 @@ data_for_ml = perform_encoding()
 # Function to read and display the HTML file using streamlit_elements
 
 @st.cache()
-def display_saved_html_with_elements():
+def display_saved_html_with_elements(saved_html_file_path):
     html_element = HTML()
     with open(saved_html_file_path, 'r') as file:
         html_code = file.read()
@@ -172,7 +172,7 @@ elif selected_tab == "EDA":
         # st.markdown(html_code, unsafe_allow_html=True)
         # Display the saved HTML file within the Streamlit app
         st.title("Streamlit EDA Report")
-        html_content = display_saved_html_with_elements(eda_report_path)
+        html_content = display_saved_html_with_elements(saved_html_file_path=eda_report_path)
         st.components.v1.html(html_content, width=800, height=600)
         
     if selected_sub_tab == tab_titles[2]:
