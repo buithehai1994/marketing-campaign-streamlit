@@ -35,7 +35,7 @@ from tab_intro.introduction import display_introduction
 from dataprep.eda import plot,create_report
 import pickle
 import csv
-from streamlit import components
+import streamlit.components.v1 as components
 import warnings
 from sklearn.exceptions import ConvergenceWarning
 
