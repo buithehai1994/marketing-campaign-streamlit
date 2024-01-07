@@ -34,7 +34,7 @@ from tab_intro.introduction import display_introduction
 from dataprep.eda import plot,create_report
 import pickle
 import csv
-from streamlit_elements.modules.html import HTML
+# from streamlit_elements.modules.html import HTML
 import warnings
 from sklearn.exceptions import ConvergenceWarning
 
@@ -99,14 +99,16 @@ data_for_ml = perform_encoding()
 
 # Function to read and display the HTML file using streamlit_elements
 
-@st.cache()
-def display_saved_html_with_elements(saved_html_file_path):
-    html_element = HTML()
-
+@st.cache
+def read_html_content(saved_html_file_path):
     with open(saved_html_file_path, 'r') as file:
         html_code = file.read()
-
-    html_element.raw(html_code)
+    return html_code
+    
+def display_saved_html_with_elements(saved_html_file_path):
+    html_code = read_html_content(saved_html_file_path)
+    st.title("Streamlit EDA Report")
+    st.markdown(html_code, unsafe_allow_html=True)
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
