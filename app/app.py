@@ -103,7 +103,8 @@ data_for_ml = perform_encoding()
 def read_html_content(saved_html_file_path):
     with open(saved_html_file_path, 'r',encoding='utf-8') as file:
         html_code = file.read()
-    st.components.v1.html(html_code,height=200)
+    return html_code
+    
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
@@ -170,7 +171,8 @@ elif selected_tab == "EDA":
         # st.markdown(html_code, unsafe_allow_html=True)
         # Display the saved HTML file within the Streamlit app
         st.title("Streamlit EDA Report")
-        read_html_content(eda_report_path)
+        html_content = read_html_content(eda_report_path)
+        st.components.v1.html(html_content, height=200)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
