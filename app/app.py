@@ -167,14 +167,10 @@ elif selected_tab == "EDA":
     if selected_sub_tab == tab_titles[1]:
         eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
         # Display the saved HTML file within the Streamlit app
-        st.title("Streamlit EDA Report")
-        # Read the content of the HTML file
-        with open(eda_report_path, "r") as file:
-            html_content = file.read()
-        
-        # Display the HTML content in Streamlit
-        st.markdown(html_content, unsafe_allow_html=True)
-            
+        with open(eda_report_path, 'r') as f:
+            html_content = f.read()
+            st.components.v1.html(html_content, height=800, scrolling=True)
+
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
