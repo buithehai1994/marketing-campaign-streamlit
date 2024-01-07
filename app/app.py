@@ -34,7 +34,7 @@ from tab_intro.introduction import display_introduction
 from dataprep.eda import plot,create_report
 import pickle
 import csv
-# from streamlit_elements.modules.html import HTML
+import streamlit.components.v1 as components
 import warnings
 from sklearn.exceptions import ConvergenceWarning
 
@@ -101,14 +101,9 @@ data_for_ml = perform_encoding()
 
 @st.cache
 def read_html_content(saved_html_file_path):
-    with open(saved_html_file_path, 'r') as file:
+    with open(saved_html_file_path, 'r',encoding='utf-8') as file:
         html_code = file.read()
-    return html_code
-    
-def display_saved_html_with_elements(saved_html_file_path):
-    html_code = read_html_content(saved_html_file_path)
-    st.title("Streamlit EDA Report")
-    st.markdown(html_code, unsafe_allow_html=True)
+    st.components.v1.html(html_code,height=200)
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
@@ -175,7 +170,7 @@ elif selected_tab == "EDA":
         # st.markdown(html_code, unsafe_allow_html=True)
         # Display the saved HTML file within the Streamlit app
         st.title("Streamlit EDA Report")
-        display_saved_html_with_elements(eda_report_path)
+        read_html_content(eda_report_path)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
