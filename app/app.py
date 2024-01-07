@@ -13,6 +13,7 @@ import imblearn
 import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 import dataprep
+import re
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -67,7 +68,10 @@ def display_word_cloud(text):
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
     st.pyplot()
-
+    
+def remove_hyperlinks(html_content):
+    # Remove anchor tags (<a>) from the HTML content
+    return re.sub(r'<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>', r'<span>\1</span>', html_content)
 
 # set dataset
 # @st.cache_data
@@ -169,7 +173,10 @@ elif selected_tab == "EDA":
           # Read HTML content from the file
         with open(eda_report_path, 'r') as file:
             html_content = file.read()
-    
+        # Remove hyperlinks from the HTML content
+        html_content_no_links = remove_hyperlinks(html_content)
+        
+        # Display modified HTML content in the Streamlit app
         components.html(html_content, width=800, height=600)
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
