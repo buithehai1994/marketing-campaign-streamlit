@@ -180,7 +180,14 @@ elif selected_tab == "EDA":
         # components.html(html_content_no_links, width=800, height=600)
 
         report = create_report(data_from_tab_df, title='EDA Report')
-        report.show_browser()
+        # Get the Container object from the report
+        container = report._get_container()
+        
+        # Get the HTML content from the Container object
+        eda_html = container._repr_html_()
+
+# Render the HTML content within Streamlit
+st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
