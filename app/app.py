@@ -187,8 +187,7 @@ elif selected_tab == "EDA":
         # # Render the HTML content within Streamlit
         # st.components.v1.html(eda_html, width=800, height=600, scrolling=True)
         # Render the HTML content within an iframe in Streamlit
-        iframe_str = f'<iframe srcdoc="{eda_html}" width=800 height=600></iframe>'
-        st.markdown(iframe_str, unsafe_allow_html=True)
+        st.markdown(f'<iframe srcdoc="{eda_html}" width=800 height=600></iframe>', unsafe_allow_html=True)
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
