@@ -180,11 +180,14 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
-        with open(eda_report_path, 'r') as file:
-            html_content = file.read()
-        # Display the HTML content using components.html
-        st.components.v1.html(html_content, width=800, height=600)
+        # eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
+        # with open(eda_report_path, 'r') as file:
+        #     html_content = file.read()
+        # # Display the HTML content using components.html
+        # st.components.v1.html(html_content, width=800, height=600)
+        external_url="https://eda-marketing.static.domains/report"
+        # Render the external content in an iframe
+        st.write(f'<iframe src="{external_url}" width="900" height="600"></iframe>', unsafe_allow_html=True)
        
         # st.markdown(html_content, unsafe_allow_html=True)
         
