@@ -181,11 +181,13 @@ elif selected_tab == "EDA":
             
     if selected_sub_tab == tab_titles[1]:
         eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
-        
-        #   # Read HTML content from the file
         with open(eda_report_path, 'r') as file:
             html_content = file.read()
-        st.markdown(html_content, unsafe_allow_html=True)
+        # Display the HTML content using components.html
+        st.components.v1.html(html_content, width=800, height=600)
+       
+        # st.markdown(html_content, unsafe_allow_html=True)
+        
         # # Remove hyperlinks from the HTML content
         # html_content_no_links = disable_hyperlinks(html_content)
 
