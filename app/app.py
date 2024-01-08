@@ -599,8 +599,7 @@ elif selected_tab == "References":
     
 elif selected_tab == "GitHub":
     st.header("GitHub Repository")
-    st.write("For detailed code and project information, please refer to the GitHub repository.")
-    st.write("You can find the complete codebase, project structure, and additional details in the repository.")
+    st.write("For detailed code and project information, please refer to the GitHub repository link below.")
 
     # Provide a link to your GitHub repository with a brief description
     github_link = "[Link to GitHub Repository](https://github.com/buithehaiuts/repurchase-car)"
