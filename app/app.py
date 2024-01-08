@@ -180,26 +180,22 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        # eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
+        eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
         
-        # #   # Read HTML content from the file
-        # with open(eda_report_path, 'r') as file:
-        #     html_content = file.read()
-        # # Remove hyperlinks from the HTML content
-        # html_content_no_links = disable_hyperlinks(html_content)
+        #   # Read HTML content from the file
+        with open(eda_report_path, 'r') as file:
+            html_content = file.read()
+        # Remove hyperlinks from the HTML content
+        html_content_no_links = disable_hyperlinks(html_content)
 
-        # # # Display the modified HTML content within an iframe
-        # # st.markdown(f'<iframe srcdoc="{html_content_no_links}" width=800 height=600></iframe>', unsafe_allow_html=True)
+        # # Display the modified HTML content within an iframe
+        # st.markdown(f'<iframe srcdoc="{html_content_no_links}" width=800 height=600></iframe>', unsafe_allow_html=True)
 
-        # # Display modified HTML content in the Streamlit app
-        # components.html(html_content_no_links, width=800, height=600)
+        # Display modified HTML content in the Streamlit app
+        components.html(html_content_no_links, width=800, height=600)
 
-        # # components.iframe(html_content_no_links, height=600)
-        # # Generate the EDA report
-        report = create_report(data_from_tab_df)
-        
-        # Display the report using Streamlit
-        st.write(report)
+        # components.iframe(html_content_no_links, height=600)
+
 
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
