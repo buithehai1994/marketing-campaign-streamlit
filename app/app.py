@@ -57,7 +57,7 @@ st.title("Bank Data")
 
 # Sidebar navigation for different sections
 
-selected_tab = st.sidebar.radio("Navigation", ["Introduction", "Data", "EDA","Encoding", "Machine Learning Model","Feature Importance","Deployment","Ethical Consideration", "References"])
+selected_tab = st.sidebar.radio("Navigation", ["Introduction", "Data", "EDA","Encoding", "Machine Learning Model","Feature Importance","Deployment","Ethical Consideration", "References","GitHub"])
 
 # Load data from "Data" tab
 # Get the current directory of the script
@@ -597,3 +597,11 @@ elif selected_tab == "References":
     citation = "Sexton, R. L. (2010). *Exploring Economics* (5th ed.). Mason, OH: South Western Educational Publishing."
     st.write(citation)
     
+elif selected_tab == "GitHub":
+    st.header("GitHub Repository")
+    st.write("For detailed code and project information, please refer to the GitHub repository.")
+    st.write("You can find the complete codebase, project structure, and additional details in the repository.")
+
+    # Provide a link to your GitHub repository with a brief description
+    github_link = "[Link to GitHub Repository](https://github.com/buithehaiuts/repurchase-car)"
+    st.markdown(github_link, unsafe_allow_html=True)
