@@ -180,37 +180,9 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        # eda_report_path=Path(__file__).resolve().parent.parent / "app" / "report.html"
-        # with open(eda_report_path, 'r') as file:
-        #     html_content = file.read()
-        # # Display the HTML content using components.html
-        # st.components.v1.html(html_content, width=800, height=600)
         external_url="https://buithehaiuts.github.io/repurchase-car/report.html"
         # Render the external content in an iframe
         st.write(f'<iframe src="{external_url}" width="900" height="600"></iframe>', unsafe_allow_html=True)
-       
-        # st.markdown(html_content, unsafe_allow_html=True)
-        
-        # # Remove hyperlinks from the HTML content
-        # html_content_no_links = disable_hyperlinks(html_content)
-
-        # # # Display the modified HTML content within an iframe
-        # # st.markdown(f'<iframe srcdoc="{html_content_no_links}" width=800 height=600></iframe>', unsafe_allow_html=True)
-
-        # # Display modified HTML content in the Streamlit app
-        # components.html(html_content_no_links, width=800, height=600)
-
-        # # components.iframe(html_content_no_links, height=600)
-
-        # # Parse the HTML content using BeautifulSoup
-        # soup = BeautifulSoup(html_content, 'html.parser')
-
-        # # Find all section IDs in the HTML content
-        # section_ids = [section.get('id') for section in soup.find_all('section')]
-    
-        # # Display the found section IDs within Streamlit
-        # st.write("Found section IDs in the report:")
-        # st.write(section_ids)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
