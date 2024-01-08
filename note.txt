@@ -14,3 +14,5 @@ pipenv install -r requirements.txt
 #conda install requirements.txt
 
 streamlit run streamlit_app.py
+
+"https://bhqzm3un0kvemzjcdpju1a.on.drv.tw/hosting/www.eda-marketing-report#missing-values" eda web host (https://www.drv.tw/)
