@@ -52,8 +52,6 @@ st.set_page_config(
     layout="wide",
 )
 
-# Display Title
-st.title("Bank Data")
 
 # Sidebar navigation for different sections
 
