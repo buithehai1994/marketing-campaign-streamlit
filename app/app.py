@@ -182,7 +182,7 @@ elif selected_tab == "EDA":
     if selected_sub_tab == tab_titles[1]:
         external_url="https://buithehaiuts.github.io/repurchase-car/report.html"
         # Render the external content in an iframe
-        st.write(f'<iframe src="{external_url}" width="100%" height="1000"></iframe>', unsafe_allow_html=True)
+        st.write(f'<iframe src="{external_url}" width="100%" height="1400"></iframe>', unsafe_allow_html=True)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
