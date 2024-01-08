@@ -116,7 +116,7 @@ def disable_hyperlinks(html_content):
     for a_tag in soup.find_all('a'):
         href = a_tag.get('href')
         if href and not urlparse(href).netloc:
-            a_tag['target'] = '_blank'
+            a_tag['target'] = '_self'
     return str(soup)  
     
 # def eda_report(data_from_tab_df):
