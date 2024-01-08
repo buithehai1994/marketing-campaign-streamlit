@@ -187,9 +187,12 @@ elif selected_tab == "EDA":
             html_content = file.read()
         # Remove hyperlinks from the HTML content
         html_content_no_links = disable_hyperlinks(html_content)
-        
+
+        # Display the modified HTML content within an iframe
+        st.markdown(f'<iframe srcdoc="{html_content_no_links}" width=800 height=600></iframe>', unsafe_allow_html=True)
+
         # # Display modified HTML content in the Streamlit app
-        components.html(html_content_no_links, width=800, height=600)
+        # components.html(html_content_no_links, width=800, height=600)
 
         # components.iframe(html_content_no_links, height=600)
 
