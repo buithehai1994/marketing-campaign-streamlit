@@ -198,42 +198,14 @@ elif selected_tab == "EDA":
 
         # Parse the HTML content using BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
-    
-        # Extracting the "Overview" section
-        overview_section = soup.find("section", {"id": "Overview"})
-        if overview_section:
-            st.markdown(overview_section.prettify(), unsafe_allow_html=True)
-        else:
-            st.write("Overview section not found in the report.")
 
-        # Extracting the "Variables" section
-        variables_section = soup.find("section", {"id": "Variables"})
-        if variables_section:
-            st.markdown(variables_section.prettify(), unsafe_allow_html=True)
-        else:
-            st.write("Variables section not found in the report.")
+        # Find all section IDs in the HTML content
+        section_ids = [section.get('id') for section in soup.find_all('section')]
     
-        # Extracting the "Interaction" section
-        interaction_section = soup.find("section", {"id": "Interaction"})
-        if interaction_section:
-            st.markdown(interaction_section.prettify(), unsafe_allow_html=True)
-        else:
-            st.write("Interaction section not found in the report.")
-    
-        # Extracting the "Correlations" section
-        correlations_section = soup.find("section", {"id": "Correlations"})
-        if correlations_section:
-            st.markdown(correlations_section.prettify(), unsafe_allow_html=True)
-        else:
-            st.write("Correlations section not found in the report.")
-    
-        # Extracting the "Missing Values" section
-        missing_values_section = soup.find("section", {"id": "Missing Values"})
-        if missing_values_section:
-            st.markdown(missing_values_section.prettify(), unsafe_allow_html=True)
-        else:
-            st.write("Missing Values section not found in the report.")
-
+        # Display the found section IDs within Streamlit
+        st.write("Found section IDs in the report:")
+        st.write(section_ids)
+        
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
