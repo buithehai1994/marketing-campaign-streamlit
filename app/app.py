@@ -115,9 +115,11 @@ def disable_hyperlinks(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     for a_tag in soup.find_all('a'):
         href = a_tag.get('href')
-        if href and not urlparse(href).netloc:
-            a_tag['target'] = '_self'
-    return str(soup)  
+        if href and not urlparse(href).netloc:  # Check if it's an internal link
+            a_tag['target'] = '_self'  # Open link in the same tab within Streamlit app
+            a_tag['onclick'] = 'return false;'  # Prevent the default link behavior
+            a_tag['style'] = 'cursor: pointer;'  # Change cursor to pointer to indicate it's clickable
+    return str(soup)
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
