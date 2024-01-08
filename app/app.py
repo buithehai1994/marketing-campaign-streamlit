@@ -185,6 +185,7 @@ elif selected_tab == "EDA":
         #   # Read HTML content from the file
         with open(eda_report_path, 'r') as file:
             html_content = file.read()
+        st.markdown(html_content, unsafe_allow_html=True)
         # # Remove hyperlinks from the HTML content
         # html_content_no_links = disable_hyperlinks(html_content)
 
@@ -196,15 +197,15 @@ elif selected_tab == "EDA":
 
         # # components.iframe(html_content_no_links, height=600)
 
-        # Parse the HTML content using BeautifulSoup
-        soup = BeautifulSoup(html_content, 'html.parser')
+        # # Parse the HTML content using BeautifulSoup
+        # soup = BeautifulSoup(html_content, 'html.parser')
 
-        # Find all section IDs in the HTML content
-        section_ids = [section.get('id') for section in soup.find_all('section')]
+        # # Find all section IDs in the HTML content
+        # section_ids = [section.get('id') for section in soup.find_all('section')]
     
-        # Display the found section IDs within Streamlit
-        st.write("Found section IDs in the report:")
-        st.write(section_ids)
+        # # Display the found section IDs within Streamlit
+        # st.write("Found section IDs in the report:")
+        # st.write(section_ids)
         
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
