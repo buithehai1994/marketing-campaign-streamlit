@@ -185,7 +185,7 @@ elif selected_tab == "EDA":
         #     html_content = file.read()
         # # Display the HTML content using components.html
         # st.components.v1.html(html_content, width=800, height=600)
-        external_url="https://eda-marketing.static.domains/report"
+        external_url="https://bhqzm3un0kvemzjcdpju1a.on.drv.tw/hosting/www.eda-marketing-report"
         # Render the external content in an iframe
         st.write(f'<iframe src="{external_url}" width="900" height="600"></iframe>', unsafe_allow_html=True)
        
