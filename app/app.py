@@ -211,6 +211,7 @@ elif selected_tab == "Machine Learning Model":
         return display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test)
 
     if selected_sub_tab==tab_titles[0]:
+        st.header(f"Cross Validation Results and Baseline Model")
         display_baseline_metrics(y_train)
         cross_validation_table = pd.read_csv("csv/cross_validation_results.csv")
         st.write("Cross validation results")
@@ -222,12 +223,14 @@ elif selected_tab == "Machine Learning Model":
 
         if selected_sub_sub_tab=="Default params":
             # Load model
+            st.header("Performance)
             selected_model='app/log_reg.pkl'
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="Regularization":
             # Load model
+            st.header("Performance)
             selected_model='app/log_elastic_reg.pkl'
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
@@ -242,16 +245,19 @@ elif selected_tab == "Machine Learning Model":
                                                  ])
         if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
             selected_model='app/knn_15_euc.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
             selected_model='app/knn_55_euc.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
             selected_model='app/knn_100_euc.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
@@ -271,16 +277,19 @@ elif selected_tab == "Machine Learning Model":
                                                  ])
         if selected_sub_sub_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
             selected_model='app/rf6.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)":
             selected_model='app/rf8.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="rf11 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=2, max_features=5)":
             selected_model='app/rf11.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
@@ -308,6 +317,7 @@ elif selected_tab == "Machine Learning Model":
                 st.table(highlighted_results.hide(axis="index"))
             
             if selected_sub_sub_sub_tab=="Model Performance":
+                st.header("Performance)
                 get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                 y_train=y_train, y_val=y_val, y_test=y_test)
 
@@ -324,26 +334,31 @@ elif selected_tab == "Machine Learning Model":
                                                     ])
         if selected_sub_sub_tab=="Tree 1(random_state=42)":
             selected_model='app/tree_1.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="Tree 2(random_state=42, min_samples_split=5)":
             selected_model='app/tree_2.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="Tree 3(random_state=42, min_samples_split=20)":
             selected_model='app/tree_3.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="Tree 4(random_state=42, min_samples_split=5, max_depth=3)":
             selected_model='app/tree_4.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="Tree 5(random_state=42, min_samples_split=5, max_depth=4)":
             selected_model='app/tree_5.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
@@ -371,6 +386,7 @@ elif selected_tab == "Machine Learning Model":
                 st.table(highlighted_results.hide(axis="index"))
             
             if selected_sub_sub_sub_tab=="Model Performance":
+                st.header("Performance)
                 get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                 y_train=y_train, y_val=y_val, y_test=y_test)
                 
@@ -386,21 +402,25 @@ elif selected_tab == "Machine Learning Model":
                                                     ])
         if selected_sub_sub_tab=="SVC_1 (default parameters)":
             selected_model='app/svc_1.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="SVC_2 (C=0.5)":
             selected_model='app/svc_2.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="SVC_3 (C=1)":
             selected_model='app/svc_3.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="SVC_4 (C=1.5)":
             selected_model='app/svc_4.pkl'
+            st.header("Performance)
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
@@ -433,6 +453,7 @@ elif selected_tab == "Machine Learning Model":
                 st.table(highlighted_results.hide(axis="index"))
             
             if selected_sub_sub_sub_tab=="Model Performance":
+                st.header("Performance)
                 get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                 y_train=y_train, y_val=y_val, y_test=y_test)
 
