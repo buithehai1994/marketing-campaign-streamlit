@@ -20,4 +20,4 @@ streamlit-pandas-profiling
 IPython
 streamlit-elements
 beautifulsoup4
-sklearn
+scikit-learn
