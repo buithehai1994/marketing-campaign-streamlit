@@ -22,6 +22,14 @@ current_dir = os.path.dirname(__file__)
 parent_dir = str(Path(current_dir).resolve().parents[0])
 sys.path.append(parent_dir)
 
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+
 from tab_df.logics import Dataset
 from tab_eda.logics import EDA
 from tab_df.display import display_tab_df_content
@@ -31,8 +39,6 @@ from tab_encoding.display import display_tab_df_encoding_explain, display_correl
 from tab_encoding.logics import Encoding
 from tab_ml.display import display_baseline_metrics,display_model_metrics,display_confusion_matrix,metric, display_roc_curve, display_metrics_and_visualizations,display_model_performance_analysis,display_cross_validation_analysis, feature_importance_explanation
 from tab_ml.logics import ML
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from tab_intro.introduction import display_introduction
 from dataprep.eda import plot,create_report
 import pickle
