@@ -1,8 +1,5 @@
-# repurchase_streamlit
+# Repurchase Streamlit
 
-Please refer to the webapp link presentaion of the project as below for more information
+For more information, please refer to the web app presentation of the project using the following link:
 
-https://repurchase-cars-marketing.streamlit.app/
-
-
-   
+[Repurchase Streamlit Web App](https://repurchase-cars-marketing.streamlit.app/)
