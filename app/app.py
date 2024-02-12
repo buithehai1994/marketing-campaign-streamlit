@@ -90,7 +90,7 @@ def fetch_data():
 
 dataset = fetch_data()
 
-data_from_tab_df = pd.DataFrame(dataset.data)
+data_from_tab_df = pd.DataFrame(dataset)
 
 eda = EDA(data_from_tab_df)
 
