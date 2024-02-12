@@ -183,8 +183,7 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        # https://buithehaiuts.github.io/repurchase-car/report.html
-        external_url="https://htmlpreview.github.io/?https://github.com/buithehai1994/marketing-campaign-streamlit/blob/main/github_page/report.html"
+        external_url="https://htmlpreview.github.io/?https://github.com/buithehai1994/Regression-Model-on-Cancer-US-County-/blob/main/github_page/eda_report.html"
         # Render the external content in an iframe
         st.write(f'<iframe src="{external_url}" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>', unsafe_allow_html=True)
         
