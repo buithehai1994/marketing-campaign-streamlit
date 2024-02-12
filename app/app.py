@@ -88,9 +88,8 @@ def fetch_data():
     dataset.set_data(dataset_path)
     return dataset
 
-dataset = fetch_data()
 
-data_from_tab_df = pd.DataFrame(dataset)
+data_from_tab_df = fetch_data()
 
 eda = EDA(data_from_tab_df)
 
