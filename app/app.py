@@ -98,9 +98,22 @@ def fetch_data():
     dataset = Dataset(data)
     return dataset
 
+def data_csv():
+    # Specify the path to the CSV file relative to the app directory
+    dataset_path = Path(__file__).resolve().parent.parent / "csv" / "TeleCom_Data.csv"
 
-data_from_tab_df = fetch_data()
+    with open(dataset_path, 'r') as file:
+        lines = file.readlines()
 
+    # Remove double quotes from each line
+    lines = [line.replace('"', '') for line in lines]
+    
+    # Join the lines back into a single string
+    cleaned_data = ''.join(lines)
+    data = pd.read_csv(StringIO(cleaned_data), delimiter=';')
+    return data
+    
+data_from_tab_df = data_csv()
 
 eda = EDA(data_from_tab_df)
 
