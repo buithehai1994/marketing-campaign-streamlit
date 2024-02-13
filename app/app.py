@@ -95,9 +95,9 @@ def fetch_data():
     cleaned_data = ''.join(lines)
     data = pd.read_csv(StringIO(cleaned_data), delimiter=';')
     
-    # Initialize an instance of the Dataset class with the data
-    dataset = Dataset(data)
-    return dataset
+    # # Initialize an instance of the Dataset class with the data
+    # dataset = Dataset(data)
+    return data
 
 
 data_from_tab_df = fetch_data()
