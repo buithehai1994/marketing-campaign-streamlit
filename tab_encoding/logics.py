@@ -13,8 +13,6 @@ class Encoding:
         if self.data is None:
             raise ValueError("No data available. Use set_data() to load data first.")
         
-
-        self.data = self.data.copy()
         
         self.data.loc[:,'duration'] = np.log(self.data['duration']+0.01)
         self.data = self.data[(self.data['duration'] < 7.42) & (self.data['duration'] > 3.045)]
