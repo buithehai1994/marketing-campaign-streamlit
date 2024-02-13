@@ -16,7 +16,7 @@ class Encoding:
             raise ValueError("No data available. Use set_data() to load data first.")
 
         # Convert Dataset to DataFrame
-        df = self.data.data        
+        df = self.data        
 
         # Log transformation on 'duration' column
         df['duration'] = np.log(df['duration'] + 0.01)
