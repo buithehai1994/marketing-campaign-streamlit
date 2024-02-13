@@ -33,3 +33,8 @@ class Dataset:
             return self.data.head()
         else:
             return "No data available"
+
+    def get_column_names(self):
+        # Implement this method to return the column names of the dataset
+        # For example:
+        return list(self.data.columns)
