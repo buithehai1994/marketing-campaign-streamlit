@@ -3,9 +3,9 @@ from io import StringIO
 import streamlit as st
 
 class Dataset:
-    def __init__(self):
+    def __init__(self,data=None):
         # Initialize Dataset attributes
-        self.data = None  # Placeholder for dataset
+        self.data = data  # Placeholder for dataset
 
     def set_data(self, file_path):
         # Logic to set data from file_path using pandas
@@ -28,6 +28,9 @@ class Dataset:
             print(f"An error occurred while loading the data: {e}")
             self.data = None
 
+    def __getitem__(self, key):
+        return self.data[key]
+        
     def head_df(self):
         if self.data is not None:
             return self.data.head()
