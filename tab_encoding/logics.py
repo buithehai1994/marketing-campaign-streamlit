@@ -1,6 +1,7 @@
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import streamlit as st
+from tab_df.logics import Dataset
 
 class Encoding:
     def __init__(self, data):
