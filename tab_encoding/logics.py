@@ -62,10 +62,7 @@ class Encoding:
         # Drop columns 'pdays' and 'nr.employed'
         df = df.drop(['pdays','nr.employed'],axis=1)
 
-        # Convert DataFrame back to Dataset if needed
-        encoded_data = Dataset(df)
-
-        return encoded_data
+        return df
         
     @st.cache
     def splitting_x(self):
