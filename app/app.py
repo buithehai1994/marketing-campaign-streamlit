@@ -137,7 +137,7 @@ if selected_tab =="Introduction":
     display_introduction()
 elif selected_tab == "Data":
     st.sidebar.header("Data")
-    display_tab_df_content(dataset)
+    display_tab_df_content(data_from_tab_df)
     st.write("The dataset exhibits problems like absent data and inaccuracies. The subsequent step involves conducting EDA to scrutinize and understand the data thoroughly.")
     # Display the download link
     link=generate_download_link(data_from_tab_df)
