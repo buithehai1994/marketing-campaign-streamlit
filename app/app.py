@@ -107,6 +107,17 @@ eda = EDA(data_from_tab_df)
 
 # @st.cache_data()
 def generate_download_link(df):
+    dataset_path = Path(__file__).resolve().parent.parent / "csv" / "TeleCom_Data.csv"
+
+    with open(dataset_path, 'r') as file:
+        lines = file.readlines()
+
+    # Remove double quotes from each line
+    lines = [line.replace('"', '') for line in lines]
+    
+    # Join the lines back into a single string
+    cleaned_data = ''.join(lines)
+    df = pd.read_csv(StringIO(cleaned_data), delimiter=';')
     csv_data = df.to_csv(index=False).encode()
     b64_csv = base64.b64encode(csv_data).decode()
     return f'<a href="data:text/csv;charset=utf-8;base64,{b64_csv}" download="TeleCom_Data.csv">Download CSV File</a>'
