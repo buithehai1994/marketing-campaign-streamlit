@@ -15,7 +15,14 @@ class EDA:
     def __init__(self,data):
         # Initialize Dataset attributes
         self.data = data  # Placeholder for dataset
-        self.columns=data.columns
+        # Check if data is a pandas DataFrame
+        if isinstance(data, pd.DataFrame):
+            self.columns = data.columns.tolist()
+        # Check if data is a Dataset object
+        elif isinstance(data, Dataset):
+            self.columns = data.get_column_names()
+        else:
+            raise ValueError("Unsupported data type. Expected pandas DataFrame or Dataset object.")
 
     def format_report(self, report):
 
