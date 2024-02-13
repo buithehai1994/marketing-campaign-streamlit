@@ -10,7 +10,6 @@ class Encoding:
         if self.data is None:
             raise ValueError("No data available. Use set_data() to load data first.")
 
-    @st.cache
     def label_encoding(self):
         if self.data is None:
             raise ValueError("No data available. Use set_data() to load data first.")
