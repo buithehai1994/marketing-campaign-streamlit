@@ -84,7 +84,9 @@ def remove_hyperlinks(html_content):
 def fetch_data():
     # Specify the path to the CSV file relative to the app directory
     dataset_path = Path(__file__).resolve().parent.parent / "csv" / "TeleCom_Data.csv"
-    dataset = Dataset(pd.read_csv(dataset_path))
+    data = pd.read_csv(dataset_path)
+    # Initialize an instance of the Dataset class with the data
+    dataset = Dataset(data)
     return dataset
 
 
