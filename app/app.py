@@ -58,7 +58,6 @@ st.set_page_config(
     layout="wide",
 )
 
-
 # Sidebar navigation for different sections
 
 selected_tab = st.sidebar.radio("Navigation", ["Introduction", "Data", "EDA","Encoding", "Machine Learning Model","Feature Importance","Deployment","Ethical Consideration", "References","GitHub"])
@@ -96,8 +95,8 @@ def fetch_data():
     data = pd.read_csv(StringIO(cleaned_data), delimiter=';')
     
     # # Initialize an instance of the Dataset class with the data
-    # dataset = Dataset(data)
-    return data
+    dataset = Dataset(data)
+    return dataset
 
 
 data_from_tab_df = fetch_data()
