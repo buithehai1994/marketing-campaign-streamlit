@@ -44,12 +44,14 @@ class Encoding:
         # Shift and log transformation on 'emp.var.rate' column
         min_value_emp_var_rate = df['emp.var.rate'].min()
         shift_constant_emp_var_rate = abs(min_value_emp_var_rate) + 0.1
-        df['emp.var.rate'] = np.log(df['emp.var.rate'] + shift_constant_emp_var_rate)
+        df['emp.var.rate'] = df['emp.var.rate'] + shift_constant_emp_var_rate
+        df['emp.var.rate'] = np.log1p(df['emp.var.rate'])
 
         # Shift and log transformation on 'cons.conf.idx' column
         min_value_cons_conf_idx = df['cons.conf.idx'].min()
         shift_constant_cons_conf_idx = abs(min_value_cons_conf_idx) + 0.1
-        df['cons.conf.idx'] = np.log(df['cons.conf.idx'] + shift_constant_cons_conf_idx)
+        df['cons.conf.idx'] = df['cons.conf.idx'] + shift_constant_cons_conf_idx
+        df['cons.conf.idx'] = np.log(df['cons.conf.idx'])
         df = df[df['cons.conf.idx'] >= 1.569]
 
         # Log transformation on 'cons.price.idx', 'euribor3m', 'nr.employed', and 'campaign' columns
