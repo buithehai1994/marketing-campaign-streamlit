@@ -132,6 +132,9 @@ from sklearn.preprocessing import StandardScaler
 # Scale the training data
 X_train,X_test,X_val  = ml_instance.scale_data(X_train,X_test,X_val)
 
+# Add a title to the entire Streamlit application
+st.title("Regression Model on Cancer in US Counties")
+
   # Display content based on selected sidebar tab
 if selected_tab =="Introduction":
     display_introduction()
