@@ -24,15 +24,3 @@ def display_introduction():
     # Display a sample of the dataset
     st.write("Data Dictionary:")
     st.write(dictionary)
-
-
-def display_univariate_introduction():
-
-    explanation_text = """
-    The goal of this experiment is to examine the relationship between wealth and cancer death rate (**TARGET_deathRate**). Therefore, I will choose two variables, namely **medIncome** and **povertyPercent** as independent variables and train two univariate linear regression models. 
-    **medIncome** variable represents the median income per US county while **povertyPercent** calculates percent of the populace in poverty. As a result, these two independent variables should demonstrate the relationship between wealth and cancer rate.
-    The results of this study may indicate a potential inequality in healthcare treatment between the rich and the poor. The costs of treatment or standard of living may be the reasons for this imparity. Despite the high fee of cancer treatment, the fee for insurance is more affordable. A reasonable price insurance package with an effective mechanism for people with low incomes can be the solution to shorten the gap in cancer diagnosis and treatment. As a result, micro insurance products, which offer coverage for poor people with little savings, should be promoted.
-    """
-    
-    st.markdown(explanation_text)  # Display the explanatory text
-
