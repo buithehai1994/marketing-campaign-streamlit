@@ -99,7 +99,24 @@ class ML:
         fpr, tpr, _ = roc_curve(y, y_scores)
         roc_auc = auc(fpr, tpr)
         return fpr, tpr, roc_auc
-        
 
+    def train_logistic_regression(self, X_train, y_train, regularization=None):
+        # Check if regularization type is specified
+        if regularization is None:
+            # Initialize the logistic regression model without regularization
+            logistic_regression_model = LogisticRegression(random_state=42)
+        else:
+            # Initialize the logistic regression model with regularization
+            logistic_regression_model = LogisticRegression(random_state=42, penalty=regularization, C=C)
+        
+        # Train the model
+        logistic_regression_model.fit(X_train, y_train)
+        
+        # Save the trained model
+        self.trained_model = logistic_regression_model
+        
+        return logistic_regression_mode
+
+    
     
             
