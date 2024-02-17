@@ -7,6 +7,7 @@ import seaborn as sns
 import pandas as pd
 from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.metrics import auc
+import matplotlib.pyplot as plt
 
 def display_baseline_metrics(y_train):
     ml = ML()
@@ -106,6 +107,24 @@ def display_roc_curve(y_true, y_scores,ml_instance, figsize=(8, 6)):
     plt.legend()
     plt.grid(True)
     st.pyplot(plt)
+
+def display_correlation_matrix(self, X):
+    """
+    Plot the correlation matrix heatmap for the input features.
+
+    Parameters:
+    - X: Input features (DataFrame or array-like)
+    """
+    # Calculate correlation matrix
+    corr_matrix = self.calculate_correlation_matrix(X)
+
+    # Plot heatmap
+    fig, ax = plt.subplots(figsize=(10, 8))
+    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5, ax=ax)
+    ax.set_title("Correlation Matrix")
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
 
 # def display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test):
     
