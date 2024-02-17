@@ -13,7 +13,7 @@ def display_baseline_metrics(y_train):
     baseline_accuracy = ml.calculate_baseline_metrics(y_train)
     st.write(f"Baseline Accuracy: {baseline_accuracy}")
 
-def display_model_metrics(x,y,model):
+def display_model_metrics(x,y,model,average='weighted'):
     """
         Display the evaluation metrics.
 
@@ -27,7 +27,7 @@ def display_model_metrics(x,y,model):
     
     st.write("Evaluation Metrics:")
     st.write(f"Accuracy: {accuracy:.4f}")
-    scores = precision_recall_fscore_support(y, y_pred, average)
+    scores = precision_recall_fscore_support(y, y_pred, average=average)
 
     st.write("Scores (precision, recall, F1 score):", scores[:3])
 
