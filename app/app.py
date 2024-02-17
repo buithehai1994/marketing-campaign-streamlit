@@ -22,10 +22,10 @@ from tab_df.logics import Dataset
 from tab_eda.logics import EDA
 from tab_df.display import display_tab_df_content
 # from tab_eda.display import display_tab_eda_report
-from tab_eda.display import display_missing_values,display_plots,display_correlation_heatmap,display_analysis,display_info,display_summary_statistics,display_stack_bar_chart, display_plot_distribution, display_generate_visual_eda_report
-from tab_encoding.display import display_tab_df_encoding_explain, display_correlation_encoding_heatmap
+from tab_eda.display import display_missing_values,display_plots,display_analysis,display_info,display_summary_statistics,display_stack_bar_chart, display_plot_distribution, display_generate_visual_eda_report
+from tab_encoding.display import display_tab_df_encoding_explain
 from tab_encoding.logics import Encoding
-from tab_ml.display import display_baseline_metrics,display_model_metrics,display_confusion_matrix,metric, display_roc_curve, display_model_performance_analysis,display_cross_validation_analysis, feature_importance_explanation, plot_correlation_matrix
+from tab_ml.display import display_baseline_metrics,display_model_metrics,display_confusion_matrix,metric, display_roc_curve, display_model_performance_analysis,display_cross_validation_analysis, feature_importance_explanation, display_correlation_matrix
 from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
@@ -169,7 +169,7 @@ elif selected_tab == "EDA":
 
     if selected_sub_tab == tab_titles[0]:
         st.header(f"Summary Statistics")
-        # Create sub-sub-tabs for Correlation
+        # Create sub-sub-tabs 
         sub_tab_titles=["Summary", "Info", "Missing Values"]
         selected_sub_sub_tab = st.sidebar.radio("Dataset", sub_tab_titles)
         if selected_sub_sub_tab ==sub_tab_titles[0]:
@@ -212,7 +212,7 @@ elif selected_tab == "Machine Learning Model":
         st.write("Cross validation results")
         st.table(cross_validation_table)
         display_cross_validation_analysis()
-        plot_correlation_matrix(X=data_for_ml)
+        display_correlation_matrix(X=data_for_ml)
     if selected_sub_tab==tab_titles[1]:
         # Create sub-tabs
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
