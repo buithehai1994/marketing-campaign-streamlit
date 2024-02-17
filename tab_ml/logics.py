@@ -49,8 +49,8 @@ class ML:
         with open(model_path, 'rb') as file:
             self.trained_model = pickle.load(file)
 
-    def model(self, model):
-        self.trained_model = model
+    def train_model(self, X_train, y_train):
+        self.trained_model.fit(X_train, y_train)
         
     def calculate_model_metrics(self, X, y):
 
