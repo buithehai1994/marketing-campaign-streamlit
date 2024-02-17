@@ -163,27 +163,9 @@ elif selected_tab == "EDA":
             display_missing_values(data_from_tab_df)
             
     if selected_sub_tab == tab_titles[1]:
-        # Read the pickled plot file
-        # file=Path(__file__).resolve().parent.parent / "app" / "eda_report.pkl"
-        # with open(file, 'rb') as file:
-        #     pickled_plot = pickle.load(file)
-        # if isinstance(pickled_plot, Plot):
-        #     # Render the pickled plot in Streamlit
-        #     mpl_fig = plt.figure()
-        #     st.write("EDA Plot:")
-        #     st.pyplot(mpl_fig)
-        
-        # for column in list(data_from_tab_df.columns):
-        #     plot_column=plot(data_from_tab_df,column)
-        #     print(plot_column)
-        report = create_report(data_from_tab_df)
-        st.write(report)
-        
-        # print(report)
-        # eda_path = Path(__file__).resolve().parent.parent
-        # eda_report(data_from_tab_df)
-        # load_eda_report()
-        
+        external_url = "https://htmlpreview.github.io/?https://github.com/buithehai1994/marketing-campaign-streamlit/blob/main/github_page/report.html"
+        # Render the external content in an iframe
+        st.write(f'<iframe src="{external_url}" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>', unsafe_allow_html=True)
     if selected_sub_tab == tab_titles[2]:
         sub_tab_titles = ["Graph","Analysis"]
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",sub_tab_titles)        
