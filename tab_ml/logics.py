@@ -100,14 +100,17 @@ class ML:
         roc_auc = auc(fpr, tpr)
         return fpr, tpr, roc_auc
 
-    def train_logistic_regression(self, X_train, y_train, regularization=None):
+    def train_logistic_regression(self, X_train, y_train, regularization=None, C=1.0, l1_ratio=None, solver='saga'):
         # Check if regularization type is specified
         if regularization is None:
             # Initialize the logistic regression model without regularization
-            logistic_regression_model = LogisticRegression(random_state=42)
+            logistic_regression_model = LogisticRegression(random_state=42, solver=solver)
+        elif regularization == 'elasticnet':
+            # Initialize the logistic regression model with elastic net regularization
+            logistic_regression_model = LogisticRegression(random_state=42, penalty='elasticnet', C=C, l1_ratio=l1_ratio, solver=solver)
         else:
-            # Initialize the logistic regression model with regularization
-            logistic_regression_model = LogisticRegression(random_state=42, penalty=regularization, C=C)
+            # Initialize the logistic regression model with L1 or L2 regularization
+            logistic_regression_model = LogisticRegression(random_state=42, penalty=regularization, C=C, solver=solver)
         
         # Train the model
         logistic_regression_model.fit(X_train, y_train)
@@ -115,7 +118,7 @@ class ML:
         # Save the trained model
         self.trained_model = logistic_regression_model
         
-        return logistic_regression_mode
+        return logistic_regression_model
 
     
     
