@@ -32,20 +32,3 @@ def display_tab_df_encoding_explain(dataset):
     st.markdown(explanation_text)
     st.write(dataset.head())  # Display or return the encoded data frame
 
-def display_correlation_encoding_heatmap(dataset):
-    eda = EDA(dataset)
-    correlation_heatmap = eda.get_correlation_heatmap()
-    st.altair_chart(correlation_heatmap, use_container_width=True)
-    st.write(dataset.head())
-    comment="""
-    ### Insights:
-    Columns like 'lat', 'merch_lat', and 'merch_long' often represent latitude and longitude information.
-    'State', 'zip', and geographical coordinates can often exhibit high correlation due to the hierarchical nature of geographical information
-
-    Multicollinearity in binary classification can affect the performance and interpretability of the model 
-    So, they should be excluded from the selected variables.
-
-    X = df_cleaned.drop(['is_fraud', 'zip','state','lat','merch_lat','merch_long'], axis=1)
-    y = df_cleaned['is_fraud']
-        """
-    st.map()
