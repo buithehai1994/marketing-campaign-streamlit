@@ -76,6 +76,8 @@ class ML:
             raise AttributeError("Model does not have decision_function method.")
 
     def train_model(self, model, X_train, y_train):
+        # Train the given model on the training data
         model.fit(X_train, y_train)
+        # Set the trained model to the class attribute
         self.trained_model = model
         return model
