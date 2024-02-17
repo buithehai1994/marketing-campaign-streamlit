@@ -84,3 +84,22 @@ class ML:
         # Set the trained model to the class attribute
         self.trained_model = model
         return model
+
+    def calculate_correlation_matrix(self, X):
+        """
+        Calculate the correlation matrix for the input features.
+
+        Parameters:
+        - X: Input features (DataFrame or array-like)
+
+        Returns:
+        - corr_matrix: Correlation matrix
+        """
+        # Ensure input is a DataFrame
+        if not isinstance(X, pd.DataFrame):
+            X = pd.DataFrame(X)
+
+        # Compute correlation matrix
+        corr_matrix = X.corr()
+
+        return corr_matrix
