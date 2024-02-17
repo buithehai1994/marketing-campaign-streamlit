@@ -116,7 +116,7 @@ def display_correlation_matrix(X):
     - X: Input features (DataFrame or array-like)
     """
     # Calculate correlation matrix
-    corr_matrix = self.calculate_correlation_matrix(X)
+    corr_matrix = calculate_correlation_matrix(X)
 
     # Plot heatmap
     fig, ax = plt.subplots(figsize=(10, 8))
