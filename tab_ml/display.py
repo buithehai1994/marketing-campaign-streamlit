@@ -46,8 +46,8 @@ def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'sub
 
 def metric(model,X_train,X_test,X_val,y_train,y_test,y_val):
     # Load model
-    ml=ML(trained_model=model)
-    # ml.load_model(model)
+    # ml=ML(trained_model=model)
+    ml.load_model(model)
     metrics_train = ml.calculate_model_metrics(X_train, y_train)
     metrics_val = ml.calculate_model_metrics(X_val, y_val)
     metrics_test = ml.calculate_model_metrics(X_test, y_test)
