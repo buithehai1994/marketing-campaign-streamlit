@@ -222,8 +222,9 @@ elif selected_tab == "Machine Learning Model":
             # Train the logistic regression model
             ml=ML()
             trained_model = ml.train_model(model, X_train, y_train)
-            get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
+            metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
+            st.write(metrics)
             
 #         if selected_sub_sub_tab=="Regularization":
 #             # Load model
