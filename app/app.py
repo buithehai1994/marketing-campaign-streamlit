@@ -84,6 +84,10 @@ def fetch_data():
     dataset.set_data(dataset_path)
     return dataset
 
+@st.cache(suppress_st_warning=True)
+def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
+    return display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test)
+        
 dataset = fetch_data()
 
 data_from_tab_df = pd.DataFrame(dataset.data)
@@ -146,7 +150,7 @@ X_train,X_test,X_val  = ml_instance.scale_data(X_train,X_test,X_val)
 
 ml=ML()
 
-  # Display content based on selected sidebar tab
+# Display content based on selected sidebar tab
 if selected_tab =="Introduction":
     display_introduction()
 elif selected_tab == "Data":
@@ -201,12 +205,7 @@ elif selected_tab == "Machine Learning Model":
                   'DecisionTree','SVM','Model evaluaton']
 
     selected_sub_tab = st.sidebar.radio("Sub-navigation",tab_titles)
-
     
-    @st.cache(suppress_st_warning=True)
-    def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
-        return display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test)
-            
     if selected_sub_tab==tab_titles[0]:
         display_baseline_metrics(y_train)
         cross_validation_table = pd.read_csv("csv/cross_validation_results.csv")
