@@ -219,7 +219,7 @@ elif selected_tab == "Machine Learning Model":
 
         if selected_sub_sub_tab=="Default params":
             # Load model
-            selected_model=ml.train_logistic_regression(X_train, y_train)
+            selected_model='app/log_reg.pkl'
             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
