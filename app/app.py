@@ -112,7 +112,7 @@ def independent_var():
 @st.cache_data
 def dependent_var():
     encoding = Encoding(data=data_for_ml)
-    denpedent_var= encoding.splitting_y()
+    dependent_var= encoding.splitting_y()
     return dependent_var
     
 # def eda_report(data_from_tab_df):
