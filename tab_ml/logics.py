@@ -37,9 +37,9 @@ class ML:
         X_val_scaled = self.scaler.transform(X_val)
         return X_train_scaled, X_test_scaled, X_val_scaled
         
-    def load_model(self, model_path):
-        with open(model_path, 'rb') as file:
-            self.trained_model = pickle.load(file)
+    # def load_model(self, model_path):
+    #     with open(model_path, 'rb') as file:
+    #         self.trained_model = pickle.load(file)
         
     def calculate_model_metrics(self, X, y):
         if self.trained_model is None:
