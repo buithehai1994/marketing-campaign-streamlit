@@ -124,42 +124,6 @@ def display_roc_curve(y_true, y_scores,ml_instance, figsize=(8, 6)):
 #     y_test_scores = model.predict_proba(X_test)[:, 1]
 #     display_roc_curve(y_test, y_test_scores, ml_instance=model, figsize=(6, 4))
 
-def display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test):
-    metric(model, X_train=X_train, X_test=X_test, X_val=X_val,
-           y_train=y_train, y_test=y_test, y_val=y_val)
-
-    ml = ML()
-    ml.load_model(model)
-    model = ml.trained_model
-    
-    # Make predictions using decision function or scores
-    y_train_scores = model.decision_function(X_train) if hasattr(model, 'decision_function') else model.predict(X_train)
-    y_val_scores = model.decision_function(X_val) if hasattr(model, 'decision_function') else model.predict(X_val)
-    y_test_scores = model.decision_function(X_test) if hasattr(model, 'decision_function') else model.predict(X_test)
-    
-    # Display confusion matrix
-    st.header("Training Confusion Matrix")
-    display_confusion_matrix(y_train, y_train_scores, figsize=(6, 4))
-    
-    # Add ROC curve display for training
-    st.header("ROC Curve for Training")
-    display_roc_curve(y_train, y_train_scores, figsize=(6, 4))
-    
-    # Display confusion matrix
-    st.header("Validation Confusion Matrix")
-    display_confusion_matrix(y_val, y_val_scores, figsize=(6, 4))
-    
-    # Add ROC curve display for validation
-    st.header("ROC Curve for Validation")
-    display_roc_curve(y_val, y_val_scores, figsize=(6, 4))
-    
-    # Display confusion matrix
-    st.header("Testing Confusion Matrix")
-    display_confusion_matrix(y_test, y_test_scores, figsize=(6, 4))
-    
-    # Add ROC curve display for testing
-    st.header("ROC Curve for Testing")
-    display_roc_curve(y_test, y_test_scores, figsize=(6, 4))
 
 def display_model_performance_analysis():
     explanation_text = """
