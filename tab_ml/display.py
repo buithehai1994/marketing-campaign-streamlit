@@ -13,7 +13,7 @@ def display_baseline_metrics(y_train):
     baseline_accuracy = ml.calculate_baseline_metrics(y_train)
     st.write(f"Baseline Accuracy: {baseline_accuracy}")
 
-def display_model_metrics(x,y,model,average='weighted'):
+def display_model_metrics(x,y,model):
     """
         Display the evaluation metrics.
 
