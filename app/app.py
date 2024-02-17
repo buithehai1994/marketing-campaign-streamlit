@@ -220,7 +220,7 @@ elif selected_tab == "Machine Learning Model":
             # Train the logistic regression model
             model=LogisticRegression()
             # Train the logistic regression model
-            log_reg_model = ml.train_model(model, X_train, y_train)
+            ml.train_model(model, X_train, y_train)
             get_model_metrics(model=log_reg_model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
