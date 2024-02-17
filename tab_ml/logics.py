@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
+from dataprep.eda import create_report
+from sklearn.linear_model import LogisticRegression
 
 class ML:
     def __init__(self):
