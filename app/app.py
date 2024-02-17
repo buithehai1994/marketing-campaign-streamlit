@@ -232,7 +232,6 @@ elif selected_tab == "Machine Learning Model":
             
             test_metrics=display_model_metrics(x=X_test,y=y_test,model=model)
             y_test_pred=trained_model.predict(X_test)
-            display_confusion_matrix(y_test,y_test_pred)
             
             st.write("Training set")
             st.write(train_metrics)
