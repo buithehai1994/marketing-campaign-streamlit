@@ -12,7 +12,7 @@ from sklearn.linear_model import LogisticRegression
 
 class ML:
     def __init__(self):
-        # self.trained_model = None
+        self.trained_model = None
         self.smote = SMOTE(random_state=42)
         self.scaler = StandardScaler()
 
@@ -49,6 +49,9 @@ class ML:
         with open(model_path, 'rb') as file:
             self.trained_model = pickle.load(file)
 
+    def model(self, model):
+        self.trained_model = model
+        
     def calculate_model_metrics(self, X, y):
 
          # Ensure X is a DataFrame and y is a Series
