@@ -13,23 +13,43 @@ def display_baseline_metrics(y_train):
     baseline_accuracy = ml.calculate_baseline_metrics(y_train)
     st.write(f"Baseline Accuracy: {baseline_accuracy}")
 
-def display_model_metrics(x,y,model,average='weighted'):
+def display_model_metrics(x, y, model, average='weighted'):
     """
-        Display the evaluation metrics.
+    Display the evaluation metrics.
 
-        Parameters:
-        - y: tartet
-        - x: variable
-        - model: model name
-        """
-    y_pred=model.predict(x)
-    accuracy=accuracy_score(y,y_pred)
-    
+    Parameters:
+    - x: input variables
+    - y: target variable
+    - model: trained machine learning model
+    - average: averaging strategy for precision, recall, and F1 score
+    """
+    y_pred = model.predict(x)
+    accuracy = accuracy_score(y, y_pred)
+
     st.write("Evaluation Metrics:")
     st.write(f"Accuracy: {accuracy:.4f}")
-    scores = precision_recall_fscore_support(y, y_pred, average=average)
 
-    st.write("Scores (precision, recall, F1 score):", scores[:3])
+    # Check if the model supports the specified averaging strategy
+    supported_average = None
+    if hasattr(model, 'predict_proba') or hasattr(model, 'decision_function'):
+        supported_average = average
+
+    # Compute precision, recall, and F1 score
+    scores = precision_recall_fscore_support(y, y_pred, average=supported_average)
+
+    # Display precision, recall, and F1 score
+    if supported_average:
+        st.write(f"Precision ({average}): {scores[0]:.4f}")
+        st.write(f"Recall ({average}): {scores[1]:.4f}")
+        st.write(f"F1 Score ({average}): {scores[2]:.4f}")
+    else:
+        st.write("Precision, Recall, and F1 Score for each class:")
+        # Iterate over each class and display metrics separately
+        for idx, class_label in enumerate(model.classes_):
+            st.write(f"Class: {class_label}")
+            st.write(f"Precision: {scores[0][idx]:.4f}")
+            st.write(f"Recall: {scores[1][idx]:.4f}")
+            st.write(f"F1 Score: {scores[2][idx]:.4f}")
 
 def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6)):
     # Calculate confusion matrix
