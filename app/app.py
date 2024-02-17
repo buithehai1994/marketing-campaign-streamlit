@@ -100,9 +100,21 @@ def perform_encoding():
     encoding = Encoding(data=data_from_tab_df)
     data_for_ml = encoding.label_encoding()
     return data_for_ml
-    
+
 data_for_ml = perform_encoding()
 
+@st.cache_data
+def independent_var():
+    encoding = Encoding(data=data_for_ml)
+    independent_var= encoding.splitting_x()
+    return independent_var
+    
+@st.cache_data
+def dependent_var():
+    encoding = Encoding(data=data_for_ml)
+    denpedent_var= encoding.splitting_y()
+    return dependent_var
+    
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
     
@@ -114,9 +126,8 @@ data_for_ml = perform_encoding()
 ml_instance = ML()
 
 # Extract features and target variable
-X = data_for_ml.drop(['y','poutcome','contact','default','previous','emp.var.rate','month',
-                      'cons.price.idx','job','age','cons.conf.idx','campaign','duration','marital'], axis=1)
-y = data_for_ml['y']
+X = independent_var()
+y = dependent_var()
 
 from sklearn.model_selection import train_test_split
 
