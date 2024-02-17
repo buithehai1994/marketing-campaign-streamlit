@@ -12,7 +12,7 @@ from sklearn.linear_model import LogisticRegression
 
 class ML:
     def __init__(self):
-        self.trained_model = None
+        # self.trained_model = None
         self.smote = SMOTE(random_state=42)
         self.scaler = StandardScaler()
 
