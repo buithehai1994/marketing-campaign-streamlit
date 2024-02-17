@@ -48,9 +48,6 @@ class ML:
     def load_model(self, model_path):
         with open(model_path, 'rb') as file:
             self.trained_model = pickle.load(file)
-
-    def train_model(self, X_train, y_train):
-        self.trained_model.fit(X_train, y_train)
         
     def calculate_model_metrics(self, X, y):
 
@@ -106,7 +103,7 @@ class ML:
         return fpr, tpr, roc_auc
 
     def train_model(self, model):
-        model.fit(X_train,y_train)
+        model.fit(X_train, y_train)
         # Set the trained model to the class attribute
         self.trained_model = model
         return model
