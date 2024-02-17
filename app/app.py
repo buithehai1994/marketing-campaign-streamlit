@@ -208,7 +208,7 @@ elif selected_tab == "Machine Learning Model":
     selected_sub_tab = st.sidebar.radio("Sub-navigation",tab_titles)
 
     
-    @st.cache
+    @st.cache(suppress_st_warning=True)
     def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
         return display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test)
 
