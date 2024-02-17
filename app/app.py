@@ -217,10 +217,8 @@ elif selected_tab == "Machine Learning Model":
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
         if selected_sub_sub_tab=="Default params":
-            # Load model
-            log_reg=LogisticRegression()
-            log_reg.fit(X_train,y_train)
-            selected_model=log_reg
+            # Train the logistic regression model
+            ml.train_logistic_regression(X_train, y_train)
             get_model_metrics(model=log_reg, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
