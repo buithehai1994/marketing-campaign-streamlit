@@ -84,9 +84,9 @@ def fetch_data():
     dataset.set_data(dataset_path)
     return dataset
 
-@st.cache(suppress_st_warning=True)
-def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
-    return display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test)
+# @st.cache(suppress_st_warning=True)
+# def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
+#     return display_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test)
         
 dataset = fetch_data()
 
@@ -222,9 +222,17 @@ elif selected_tab == "Machine Learning Model":
             # Train the logistic regression model
             ml=ML()
             trained_model = ml.train_model(model, X_train, y_train)
-            metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
-                                               y_train=y_train, y_val=y_val, y_test=y_test)
-            st.write(metrics)
+            # metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
+            #                                    y_train=y_train, y_val=y_val, y_test=y_test)
+            train_metrics=display_model_metrics(x=X_train,y=y_train,model=model)
+            val_metrics=display_model_metrics(x=X_val,y=y_val,model=model)
+            test_metrics=display_model_metrics(x=X_test,y=y_test,model=model)
+            st.write("Training set")
+            st.write(train_metrics)
+            st.write("Testing set")
+            st.write(test_metrics)
+            st.write("Validation set")
+            st.write(val_metrics)
             
 #         if selected_sub_sub_tab=="Regularization":
 #             # Load model
