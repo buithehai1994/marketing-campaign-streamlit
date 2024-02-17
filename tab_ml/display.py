@@ -108,7 +108,7 @@ def display_roc_curve(y_true, y_scores,ml_instance, figsize=(8, 6)):
     plt.grid(True)
     st.pyplot(plt)
 
-def display_correlation_matrix(self, X):
+def display_correlation_matrix(X):
     """
     Plot the correlation matrix heatmap for the input features.
 
