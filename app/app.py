@@ -218,8 +218,8 @@ elif selected_tab == "Machine Learning Model":
 
         if selected_sub_sub_tab=="Default params":
             # Train the logistic regression model
-            ml.train_logistic_regression(X_train, y_train)
-            log_reg=LogisticRegression()
+            model=LogisticRegression()
+            ml.train_model(model, X_train, y_train)
             get_model_metrics(model=log_reg, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
