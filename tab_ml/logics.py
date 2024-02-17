@@ -40,6 +40,9 @@ class ML:
     # def load_model(self, model_path):
     #     with open(model_path, 'rb') as file:
     #         self.trained_model = pickle.load(file)
+
+    def load_model(self, model):
+        self.trained_model = model
         
     def calculate_model_metrics(self, X, y):
         if self.trained_model is None:
