@@ -143,6 +143,7 @@ from sklearn.preprocessing import StandardScaler
 # Scale the data
 X_train,X_test,X_val  = ml_instance.scale_data(X_train,X_test,X_val)
 
+ml=ML()
 
   # Display content based on selected sidebar tab
 if selected_tab =="Introduction":
@@ -204,7 +205,7 @@ elif selected_tab == "Machine Learning Model":
     @st.cache(suppress_st_warning=True)
     def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
         return display_metrics_and_visualizations(model, X_train, X_val, X_test, y_train, y_val, y_test)
-
+            
     if selected_sub_tab==tab_titles[0]:
         display_baseline_metrics(y_train)
         cross_validation_table = pd.read_csv("csv/cross_validation_results.csv")
