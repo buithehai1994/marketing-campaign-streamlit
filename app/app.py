@@ -220,7 +220,7 @@ elif selected_tab == "Machine Learning Model":
             # Train the logistic regression model
             model=LogisticRegression()
             model.fit(X_train,y_train)
-            get_model_metrics(model=log_reg, X_train=X_train, X_val=X_val, X_test=X_test, 
+            get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
         if selected_sub_sub_tab=="Regularization":
