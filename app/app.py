@@ -221,7 +221,7 @@ elif selected_tab == "Machine Learning Model":
             # Load model
             log_reg=LogisticRegression()
             log_reg.fit(X_train,y_train)
-            selected_model='app/log_reg.pkl'
+            selected_model=log_reg
             get_model_metrics(model=log_reg, X_train=X_train, X_val=X_val, X_test=X_test, 
                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
