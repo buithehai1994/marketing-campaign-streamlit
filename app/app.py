@@ -225,14 +225,26 @@ elif selected_tab == "Machine Learning Model":
             # metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
             #                                    y_train=y_train, y_val=y_val, y_test=y_test)
             train_metrics=display_model_metrics(x=X_train,y=y_train,model=model)
+            y_train_pred=trained_model.predict(X_train)
+            
             val_metrics=display_model_metrics(x=X_val,y=y_val,model=model)
+            y_val_pred=trained_model.predict(X_val)
+            
             test_metrics=display_model_metrics(x=X_test,y=y_test,model=model)
+            y_test_pred=trained_model.predict(X_test)
+            display_confusion_matrix(y_test,y_test_pred)
+            
             st.write("Training set")
             st.write(train_metrics)
-            st.write("Testing set")
-            st.write(test_metrics)
+            display_confusion_matrix(y_train,y_train_pred)
+        
             st.write("Validation set")
             st.write(val_metrics)
+            display_confusion_matrix(y_val,y_val_pred)
+
+            st.write("Testing set")
+            st.write(test_metrics)
+            display_confusion_matrix(y_test,y_test_pred)
             
 #         if selected_sub_sub_tab=="Regularization":
 #             # Load model
