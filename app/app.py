@@ -129,7 +129,7 @@ X_train, y_train = ml_instance.oversample_data(X_train, y_train)
 
 # scale the data
 from sklearn.preprocessing import StandardScaler
-# Scale the training data
+# Scale the data
 X_train,X_test,X_val  = ml_instance.scale_data(X_train,X_test,X_val)
 
 
