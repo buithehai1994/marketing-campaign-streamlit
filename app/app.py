@@ -30,6 +30,7 @@ from tab_ml.display import display_baseline_metrics,display_model_metrics,displa
 from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.metrics import roc_curve, roc_auc_score
 from tab_intro.introduction import display_introduction
 from dataprep.eda import plot
 import pickle
@@ -120,13 +121,19 @@ def dependent_var():
     return dependent_var
 
 def display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model):
+    y_train_pred_prob = ml_model.predict_proba(X_train)[:, 1]
+    y_test_pred_prob = ml_model.predict_proba(X_test)[:, 1]
+    y_val_pred_prob = ml_model.predict_proba(X_val)[:, 1]
     display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, ml_model, average='weighted')
+    
     display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_train, y_scores=y_train_pred, ml_instance=ml_model, title="ROC of Training set")
+    display_roc_curve(y_true=y_train, y_scores=y_train_pred_prob, ml_instance=ml_model, title="ROC of Training set")
+    
     display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_train, y_scores=y_train_pred, ml_instance=ml_model, title="ROC of Validation set")
+    display_roc_curve(y_true=y_val, y_scores=y_val_pred_prob, ml_instance=ml_model, title="ROC of Validation set")
+    
     display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_train, y_scores=y_train_pred, ml_instance=ml_model, title="ROC of Testing set")
+    display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=ml_model, title="ROC of Testing set")
     
             
 # def eda_report(data_from_tab_df):
