@@ -245,7 +245,6 @@ elif selected_tab == "Machine Learning Model":
 
         if selected_sub_sub_tab=="Default params":
             model=LogisticRegression()
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -254,7 +253,6 @@ elif selected_tab == "Machine Learning Model":
             
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -271,7 +269,6 @@ elif selected_tab == "Machine Learning Model":
                                                  ])
         if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=15, metric='euclidean')
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -281,7 +278,6 @@ elif selected_tab == "Machine Learning Model":
             
         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=55, metric='euclidean')
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -290,7 +286,6 @@ elif selected_tab == "Machine Learning Model":
             
         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=100, metric='euclidean')
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -299,7 +294,6 @@ elif selected_tab == "Machine Learning Model":
             
         if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=200, metric='euclidean')
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -317,7 +311,6 @@ elif selected_tab == "Machine Learning Model":
                                                  ])
         if selected_sub_sub_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
             model=RandomForestClassifier(random_state=8, n_estimators=50, max_depth=5)
-            ml = ML()
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
