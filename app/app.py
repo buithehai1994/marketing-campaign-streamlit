@@ -247,7 +247,7 @@ elif selected_tab == "Machine Learning Model":
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
         if selected_sub_sub_tab=="Default params":
-            model=LogisticRegression()
+            model='app/log_reg.pkl'
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
@@ -255,7 +255,7 @@ elif selected_tab == "Machine Learning Model":
             get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="Regularization":
-            model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
+            model='app/log_elastic_reg.pkl'
             ml_model = train_model(X_train, y_train,model)
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
