@@ -90,7 +90,12 @@ def fetch_data():
 import warnings
 @st.cache_data
 def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
-    display_model_metrics(model, X_train, X_test, X_val, y_train, y_test, y_val)  
+    # Load the machine learning model from the specified file path
+    with open(ml_model, 'rb') as file:
+        model = pickle.load(file)
+    
+    # Assuming display_model_metrics function takes the model as the first argument
+    return display_model_metrics(model, X_train, X_test, X_val, y_train, y_test, y_val)  
     
 dataset = fetch_data()
 
