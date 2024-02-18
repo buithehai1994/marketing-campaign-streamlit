@@ -305,19 +305,23 @@ elif selected_tab == "Machine Learning Model":
             y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
-#     if selected_sub_tab==tab_titles[4]:
-#          # Create sub-tabs
-#         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
-#                                                 [
-#                                                 "rf6 (random_state=8, n_estimators=50, max_depth=5)", 
-#                                                  "rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)",
-#                                                  "rf11 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=2, max_features=5)",
-#                                                  "Best Forest ('max_depth': 12.57, 'min_samples_leaf': 1.0, 'min_samples_split': 8.37, 'n_estimators': 144.93)"
-#                                                  ])
-#         if selected_sub_sub_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
-#             selected_model='app/rf6.pkl'
-#             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
-#                                                y_train=y_train, y_val=y_val, y_test=y_test)
+    if selected_sub_tab==tab_titles[4]:
+         # Create sub-tabs
+        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+                                                [
+                                                "rf6 (random_state=8, n_estimators=50, max_depth=5)", 
+                                                 "rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)",
+                                                 "rf11 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=2, max_features=5)",
+                                                 "Best Forest ('max_depth': 12.57, 'min_samples_leaf': 1.0, 'min_samples_split': 8.37, 'n_estimators': 144.93)"
+                                                 ])
+        if selected_sub_sub_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
+            model=RandomForestClassifier(random_state=8, n_estimators=50, max_depth=5)
+            ml = ML()
+            ml_model = train_model(X_train, y_train,model)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
+            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
 #         if selected_sub_sub_tab=="rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)":
 #             selected_model='app/rf8.pkl'
