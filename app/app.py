@@ -134,26 +134,17 @@ def train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_te
     ml = ML()
     trained_model = ml.train_model(model, X_train, y_train)
     
-    # Display metrics and confusion matrices for training set
-    st.write("Training set")
+    # Return metrics and predictions
     train_metrics = display_model_metrics(X_train, y_train, model)
     y_train_pred = trained_model.predict(X_train)
-    st.write(train_metrics)
-    display_confusion_matrix(y_train, y_train_pred)
-
-    # Display metrics and confusion matrices for validation set
-    st.write("Validation set")
+    
     val_metrics = display_model_metrics(X_val, y_val, model)
     y_val_pred = trained_model.predict(X_val)
-    st.write(val_metrics)
-    display_confusion_matrix(y_val, y_val_pred)
-
-    # Display metrics and confusion matrices for testing set
-    st.write("Testing set")
+    
     test_metrics = display_model_metrics(X_test, y_test, model)
     y_test_pred = trained_model.predict(X_test)
-    st.write(test_metrics)
-    display_confusion_matrix(y_test, y_test_pred)
+    
+    return train_metrics, y_train_pred, val_metrics, y_val_pred, test_metrics, y_test_pred
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
@@ -284,8 +275,23 @@ elif selected_tab == "Machine Learning Model":
             # st.write(test_metrics)
             # display_confusion_matrix(y_test,y_test_pred)
             model=LogisticRegression()
-            train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test)    
-                    
+            train_metrics, y_train_pred, val_metrics, y_val_pred, test_metrics, y_test_pred = train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test)
+    
+            # Display metrics and confusion matrices for training set
+            st.write("Training set")
+            st.write(train_metrics)
+            display_confusion_matrix(y_train, y_train_pred)
+        
+            # Display metrics and confusion matrices for validation set
+            st.write("Validation set")
+            st.write(val_metrics)
+            display_confusion_matrix(y_val, y_val_pred)
+        
+            # Display metrics and confusion matrices for testing set
+            st.write("Testing set")
+            st.write(test_metrics)
+            display_confusion_matrix(y_test, y_test_pred)
+                            
 #         if selected_sub_sub_tab=="Regularization":
 #             # Load model
 #             selected_model='app/log_elastic_reg.pkl'
