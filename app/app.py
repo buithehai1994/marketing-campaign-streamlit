@@ -87,7 +87,7 @@ def fetch_data():
     dataset.set_data(dataset_path)
     return dataset
 
-@st.cache(suppress_st_warning=True)
+@st.cache_data(suppress_st_warning=True)
 def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
     return display_model_metrics(model,X_train,X_test,X_val,y_train,y_test,y_val)
         
