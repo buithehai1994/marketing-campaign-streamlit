@@ -119,7 +119,7 @@ def dependent_var():
     return dependent_var
 
 @st.cache()
-def display_model_evaluation(ml_model,X_train, , X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model):
+def display_model_evaluation(ml_model,X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model):
    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
    display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
    display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
@@ -231,7 +231,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_evaluation(ml_model,X_train, , X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model)
+            display_model_evaluation(ml_model,X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model)
             
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
@@ -240,7 +240,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_evaluation(ml_model,X_train, , X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model)
+            display_model_evaluation(ml_model,X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model)
             
 #     if selected_sub_tab==tab_titles[3]:
 #          # Create sub-tabs
