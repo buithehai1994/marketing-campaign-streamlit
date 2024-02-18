@@ -120,22 +120,34 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
     
-@st.cache_resource
-def display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model):
-    y_train_pred_prob = ml_model.predict_proba(X_train)[:, 1]
-    y_test_pred_prob = ml_model.predict_proba(X_test)[:, 1]
-    y_val_pred_prob = ml_model.predict_proba(X_val)[:, 1]
-    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, ml_model, average='weighted')
+@st.cache(allow_output_mutation=True)
+def train_model(X_train, y_train, ml_model):
+    ml_model.fit(X_train, y_train)
+    return ml_model
+
+def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_val, y_val_pred, y_test, y_test_pred, ml_model_name):
+    # Train the model
+    trained_model = train_model(X_train, y_train, ml_model_name)
+
+    # Use the trained model to make predictions
+    y_train_pred_prob = trained_model.predict_proba(X_train)[:, 1]
+    y_test_pred_prob = trained_model.predict_proba(X_test)[:, 1]
+    y_val_pred_prob = trained_model.predict_proba(X_val)[:, 1]
     
+    # Display model metrics
+    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
+    
+    # Display confusion matrix and ROC curve for training set
     display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_train, y_scores=y_train_pred_prob, ml_instance=ml_model, title="ROC of Training set")
+    display_roc_curve(y_true=y_train, y_scores=y_train_pred_prob, ml_instance=trained_model, title="ROC of Training set")
     
+    # Display confusion matrix and ROC curve for validation set
     display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_val, y_scores=y_val_pred_prob, ml_instance=ml_model, title="ROC of Validation set")
+    display_roc_curve(y_true=y_val, y_scores=y_val_pred_prob, ml_instance=trained_model, title="ROC of Validation set")
     
+    # Display confusion matrix and ROC curve for testing set
     display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=ml_model, title="ROC of Testing set")
-    
+    display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=trained_model, title="ROC of Testing set")    
 # Instantiate the ML class
 ml_instance = ML()
 
