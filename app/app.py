@@ -122,9 +122,10 @@ def dependent_var():
     return dependent_var
     
 @st.cache(allow_output_mutation=True)
-def train_model(X_train, y_train, ml_model):
-    ml_model.fit(X_train, y_train)
-    return ml_model
+def train_model(X_train, y_train, model, **kwargs):
+    model.set_params(**kwargs)
+    model.fit(X_train, y_train)
+    return model
 
 @st.cache(allow_output_mutation=True)
 def predict(model, X):
