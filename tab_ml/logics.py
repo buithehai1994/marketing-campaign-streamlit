@@ -84,6 +84,18 @@ class ML:
         # Set the trained model to the class attribute
         self.trained_model = model
         return model
+    def predict(self, X):
+        if self.trained_model is None:
+            raise ValueError("Model not loaded. Please load the model first.")
+
+        # Ensure input is a DataFrame
+        if not isinstance(X, pd.DataFrame):
+            X = pd.DataFrame(X)
+
+        # Make predictions
+        y_pred = self.trained_model.predict(X)
+
+        return y_pred
 
     def calculate_correlation_matrix(self, X):
         """
