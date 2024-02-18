@@ -201,19 +201,22 @@ elif selected_tab == "Machine Learning Model":
     # Placeholder for ML content
     st.sidebar.write("This tab can contain content related to your machine learning model.")
     # Create sub-tabs for EDA section
-    tab_titles = ['Base line model and Cross Validation','LogisticRegression','KNN','RandomForest',
+    tab_titles = ['Correlation matrix','Base line model and Cross Validation','LogisticRegression','KNN','RandomForest',
                   'DecisionTree','SVM','Model evaluaton']
 
     selected_sub_tab = st.sidebar.radio("Sub-navigation",tab_titles)
-    
+
     if selected_sub_tab==tab_titles[0]:
+        display_correlation_matrix(X=data_for_ml)
+
+    if selected_sub_tab==tab_titles[1]:
         display_baseline_metrics(y_train)
         cross_validation_table = pd.read_csv("csv/cross_validation_results.csv")
         st.write("Cross validation results")
         st.table(cross_validation_table)
         display_cross_validation_analysis()
-        display_correlation_matrix(X=data_for_ml)
-    if selected_sub_tab==tab_titles[1]:
+    
+    if selected_sub_tab==tab_titles[2]:
         # Create sub-tabs
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
@@ -252,7 +255,7 @@ elif selected_tab == "Machine Learning Model":
 #             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
 #                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
-#     if selected_sub_tab==tab_titles[2]:
+#     if selected_sub_tab==tab_titles[3]:
 #          # Create sub-tabs
 #         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
 #                                                 ["KNN (n_neighbors=15 and metric: ‘Euclidean')", 
@@ -280,7 +283,7 @@ elif selected_tab == "Machine Learning Model":
 #             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
 #                                                y_train=y_train, y_val=y_val, y_test=y_test)
             
-#     if selected_sub_tab==tab_titles[3]:
+#     if selected_sub_tab==tab_titles[4]:
 #          # Create sub-tabs
 #         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
 #                                                 [
