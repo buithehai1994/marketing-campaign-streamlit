@@ -225,7 +225,15 @@ elif selected_tab == "Machine Learning Model":
             trained_model = ml.train_model(model, X_train, y_train)
             
             display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
-    
+            y_train_pred=ml.predict(X_train)
+            display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+
+            y_val_pred=ml.predict(X_val)
+            display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+            
+            y_test_pred=ml.predict(X_test)
+            display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+            
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
             ml = ML()
