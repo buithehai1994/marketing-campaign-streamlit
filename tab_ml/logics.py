@@ -31,6 +31,7 @@ class ML:
         X_train_resampled, y_train_resampled = self.smote.fit_resample(X_train, y_train)
         return X_train_resampled, y_train_resampled
     
+    @st.cache_data
     def scale_data(self, X_train, X_test, X_val):
         X_train_scaled = self.scaler.fit_transform(X_train)
         X_test_scaled = self.scaler.transform(X_test)
@@ -44,6 +45,7 @@ class ML:
     def load_model(self, model):
         self.trained_model = model
         
+    @st.cache_data
     def calculate_model_metrics(self, X, y):
         if self.trained_model is None:
             raise ValueError("Model not loaded. Please load the model first.")
@@ -54,21 +56,25 @@ class ML:
 
         return precision, recall, f1
 
+    @st.cache_data
     def calculate_baseline_metrics(self, y):
         y_mode = y.mode()[0] if not y.mode().empty else None
         y_base = pd.Series(np.full(y.shape, y_mode), index=y.index)
         baseline_accuracy = accuracy_score(y, y_base)
         return baseline_accuracy
 
+    @st.cache_data
     def calculate_confusion_matrix(self, y_true, y_pred):
         return confusion_matrix(y_true, y_pred)
 
+    @st.cache_data
     def calculate_accuracy(self, X, y_true):
         if self.trained_model is None:
             raise ValueError("Model not loaded. Please load the model first.")
         predictions = self.trained_model.predict(X)
         return accuracy_score(y_true, predictions)
 
+    @st.cache_data
     def calculate_roc_curve(self, X, y):
         if hasattr(self.trained_model, "decision_function"):
             y_scores = self.trained_model.decision_function(X)
@@ -84,6 +90,7 @@ class ML:
         # Set the trained model to the class attribute
         self.trained_model = model
         return model
+    
     def predict(self, X):
         if self.trained_model is None:
             raise ValueError("Model not loaded. Please load the model first.")
@@ -97,6 +104,7 @@ class ML:
 
         return y_pred
 
+    @st.cache_data
     def calculate_correlation_matrix(self, X):
         """
         Calculate the correlation matrix for the input features.
