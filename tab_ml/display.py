@@ -93,24 +93,24 @@ def metric(model,X_train,X_test,X_val,y_train,y_test,y_val):
     st.write("Metrics for Training, Validation, and Testing")
     st.table(pd.DataFrame(metrics_data))
 
-def display_roc_curve(y_true, y_scores,ml_instance, figsize=(8, 6)):
-   # Calculate ROC curve
+def display_roc_curve(y_true, y_scores, ml_instance, title):
+    # Calculate ROC curve
     fpr, tpr, thresholds = roc_curve(y_true, y_scores)
     
     # Calculate AUC score
     auc_score = auc(fpr, tpr)
 
     # Plot ROC curve
-    plt.figure(figsize=figsize)
+    plt.figure(figsize=(8, 6))
     plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {auc_score:.2f})')
     plt.plot([0, 1], [0, 1], 'r--', label='Random Guessing')
-    plt.title(f'ROC Curve - {ml_instance}')
+    plt.title(f'{title} - {ml_instance}')
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.legend()
     plt.grid(True)
     st.pyplot(plt)
-
+    
 def display_correlation_matrix(X):
     """
     Plot the correlation matrix heatmap for the input features.
