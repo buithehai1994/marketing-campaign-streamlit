@@ -227,7 +227,7 @@ elif selected_tab == "Machine Learning Model":
         if selected_sub_sub_tab=="Default params":
             model=LogisticRegression()
             ml = ML()
-            trained_model = ml.train_model(model, X_train, y_train)
+            ml_model = ml.train_model(model, X_train, y_train)
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
@@ -236,7 +236,7 @@ elif selected_tab == "Machine Learning Model":
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
             ml = ML()
-            trained_model = ml.train_model(model, X_train, y_train)
+            ml_model = ml.train_model(model, X_train, y_train)
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
