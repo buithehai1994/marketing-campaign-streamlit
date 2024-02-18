@@ -97,7 +97,6 @@ def metric(model,X_train,X_test,X_val,y_train,y_test,y_val):
     st.write("Metrics for Training, Validation, and Testing")
     st.table(pd.DataFrame(metrics_data))
 
-@st.cache_resource
 def display_roc_curve(y_true, y_scores, ml_instance, title):
     # Calculate ROC curve
     fpr, tpr, thresholds = roc_curve(y_true, y_scores)
