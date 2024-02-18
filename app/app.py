@@ -220,45 +220,18 @@ elif selected_tab == "Machine Learning Model":
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
         if selected_sub_sub_tab=="Default params":
-            # # Train the logistic regression model
-            # model=LogisticRegression()
-            # # Train the logistic regression model
-            # ml=ML()
-            # trained_model = ml.train_model(model, X_train, y_train)
-            # # metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
-            # #                                    y_train=y_train, y_val=y_val, y_test=y_test)
-            # train_metrics=display_model_metrics(x=X_train,y=y_train,model=model)
-            # y_train_pred=trained_model.predict(X_train)
-            
-            # val_metrics=display_model_metrics(x=X_val,y=y_val,model=model)
-            # y_val_pred=trained_model.predict(X_val)
-            
-            # test_metrics=display_model_metrics(x=X_test,y=y_test,model=model)
-            # y_test_pred=trained_model.predict(X_test)
-            
-            # st.write("Training set")
-            # st.write(train_metrics)
-            # display_confusion_matrix(y_train,y_train_pred)
-        
-            # st.write("Validation set")
-            # st.write(val_metrics)
-            # display_confusion_matrix(y_val,y_val_pred)
-
-            # st.write("Testing set")
-            # st.write(test_metrics)
-            # display_confusion_matrix(y_test,y_test_pred)
-
             model=LogisticRegression()
             ml = ML()
             trained_model = ml.train_model(model, X_train, y_train)
             
-            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted')
+            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
     
-#         if selected_sub_sub_tab=="Regularization":
-#             # Load model
-#             selected_model='app/log_elastic_reg.pkl'
-#             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
-#                                                y_train=y_train, y_val=y_val, y_test=y_test)
+        if selected_sub_sub_tab=="Regularization":
+            model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
+            ml = ML()
+            trained_model = ml.train_model(model, X_train, y_train)
+            
+            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
             
 #     if selected_sub_tab==tab_titles[3]:
 #          # Create sub-tabs
