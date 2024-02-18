@@ -28,7 +28,7 @@ def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'sub
     plt.ylabel('Actual')
     st.pyplot(plt)
 
-def metric(model,X_train,X_test,X_val,y_train,y_test,y_val):
+def display_model_metrics(model,X_train,X_test,X_val,y_train,y_test,y_val):
     # Load model
     # ml=ML(trained_model=model)
     ml = ML()
