@@ -13,6 +13,7 @@ import dataprep
 from dataprep.eda import create_report
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
