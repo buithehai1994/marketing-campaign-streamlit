@@ -118,20 +118,7 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
 
-def train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test):
-    """
-    Train and evaluate a machine learning model.
 
-    Parameters:
-    - model: Machine learning model object
-    - X_train, X_val, X_test: Input features for training, validation, and testing sets
-    - y_train, y_val, y_test: Target labels for training, validation, and testing sets
-    """
-    # Train the model
-    ml = ML()
-    trained_model = ml.train_model(model, X_train, y_train)
-    
-    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted')
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
     
@@ -260,11 +247,13 @@ elif selected_tab == "Machine Learning Model":
             # st.write("Testing set")
             # st.write(test_metrics)
             # display_confusion_matrix(y_test,y_test_pred)
+
             model=LogisticRegression()
-            train_metrics, y_train_pred, val_metrics, y_val_pred, test_metrics, y_test_pred = train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test)
-    
-            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted')
+            ml = ML()
+            trained_model = ml.train_model(model, X_train, y_train)
             
+            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted')
+    
 #         if selected_sub_sub_tab=="Regularization":
 #             # Load model
 #             selected_model='app/log_elastic_reg.pkl'
