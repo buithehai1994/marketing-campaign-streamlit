@@ -275,11 +275,11 @@ elif selected_tab == "Machine Learning Model":
                                                  "KNN (n_neighbors=200 and metric: ‘Euclidean')"
                                                  ])
         if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
-            model=KNeighborsClassifier(n_neighbors=15, metric='euclidean')
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
+            ml_model='app/knn_15_euc.pkl'
+            # ml_model = train_model(X_train, y_train,model)
+            # y_train_pred=predict(ml_model,X_train)
+            # y_val_pred=predict(ml_model,X_val)
+            # y_test_pred=predict(ml_model,X_test)
             get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
 
             
