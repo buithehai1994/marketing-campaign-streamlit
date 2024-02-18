@@ -27,17 +27,17 @@ def display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, _model
     - average: Averaging strategy for precision, recall, and F1 score
     """
     # Compute metrics for training set
-    train_pred = model.predict(X_train)
+    train_pred = _model.predict(X_train)
     train_accuracy = accuracy_score(y_train, train_pred)
     train_precision, train_recall, train_f1, _ = precision_recall_fscore_support(y_train, train_pred, average=average)
 
     # Compute metrics for validation set
-    val_pred = model.predict(X_val)
+    val_pred = _model.predict(X_val)
     val_accuracy = accuracy_score(y_val, val_pred)
     val_precision, val_recall, val_f1, _ = precision_recall_fscore_support(y_val, val_pred, average=average)
 
     # Compute metrics for testing set
-    test_pred = model.predict(X_test)
+    test_pred = _model.predict(X_test)
     test_accuracy = accuracy_score(y_test, test_pred)
     test_precision, test_recall, test_f1, _ = precision_recall_fscore_support(y_test, test_pred, average=average)
 
