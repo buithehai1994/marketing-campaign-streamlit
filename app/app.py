@@ -108,13 +108,11 @@ def perform_encoding():
 
 data_for_ml = perform_encoding()
 
-@st.cache_data
 def independent_var():
     encoding = Encoding(data=data_for_ml)
     independent_var= encoding.splitting_x()
     return independent_var
     
-@st.cache_data
 def dependent_var():
     encoding = Encoding(data=data_for_ml)
     dependent_var= encoding.splitting_y()
