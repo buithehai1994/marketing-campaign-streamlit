@@ -245,7 +245,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
+            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, model=ml_model)
             
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
@@ -254,7 +254,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
+            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, model=ml_model)
             
     if selected_sub_tab==tab_titles[3]:
          # Create sub-tabs
@@ -271,7 +271,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
+            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, model=ml_model)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=55, metric='euclidean')
@@ -280,7 +280,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
+            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, model=ml_model)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=100, metric='euclidean')
@@ -289,7 +289,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
+            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, model=ml_model)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=200, metric='euclidean')
@@ -298,7 +298,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=ml.predict(X_train)
             y_val_pred=ml.predict(X_val)
             y_test_pred=ml.predict(X_test)
-            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
+            display_model_metrics(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, model=ml_model)
             
 #     if selected_sub_tab==tab_titles[4]:
 #          # Create sub-tabs
