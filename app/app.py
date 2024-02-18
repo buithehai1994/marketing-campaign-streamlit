@@ -94,7 +94,7 @@ data_from_tab_df = pd.DataFrame(dataset.data)
 
 eda = EDA(data_from_tab_df)
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def generate_download_link(df):
     csv_data = df.to_csv(index=False).encode()
     b64_csv = base64.b64encode(csv_data).decode()
