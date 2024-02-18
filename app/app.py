@@ -87,10 +87,12 @@ def fetch_data():
     dataset.set_data(dataset_path)
     return dataset
 
-@st.cache_data(suppress_st_warning=True)
+import warnings
+@st.cache_data
 def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
-    return display_model_metrics(model,X_train,X_test,X_val,y_train,y_test,y_val)
-        
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=st.StreamlitAPIWarning)
+        return display_model_metrics(model, X_train, X_test, X_val, y_train, y_test, y_val)  
 dataset = fetch_data()
 
 data_from_tab_df = pd.DataFrame(dataset.data)
