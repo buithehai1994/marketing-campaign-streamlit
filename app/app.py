@@ -120,6 +120,7 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
     
+@st.cache_resource
 def display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model):
     y_train_pred_prob = ml_model.predict_proba(X_train)[:, 1]
     y_test_pred_prob = ml_model.predict_proba(X_test)[:, 1]
