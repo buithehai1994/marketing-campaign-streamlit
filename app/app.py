@@ -247,19 +247,19 @@ elif selected_tab == "Machine Learning Model":
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
         if selected_sub_sub_tab=="Default params":
-            model='app/log_reg.pkl'
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
+            ml_model='app/log_reg.pkl'
+            # ml_model = train_model(X_train, y_train,model)
+            # y_train_pred=predict(ml_model,X_train)
+            # y_val_pred=predict(ml_model,X_val)
+            # y_test_pred=predict(ml_model,X_test)
             get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="Regularization":
-            model='app/log_elastic_reg.pkl'
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
+            ml_model='app/log_elastic_reg.pkl'
+            # ml_model = train_model(X_train, y_train,model)
+            # y_train_pred=predict(ml_model,X_train)
+            # y_val_pred=predict(ml_model,X_val)
+            # y_test_pred=predict(ml_model,X_test)
             get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
     if selected_sub_tab==tab_titles[3]:
