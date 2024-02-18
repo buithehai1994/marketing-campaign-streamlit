@@ -120,34 +120,6 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
     
-@st.cache_data()
-def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_val, y_val_pred, y_test, y_test_pred, _ml_model):
-    y_train_pred_prob = ml_model.predict_proba(X_train)[:, 1]
-    y_test_pred_prob = ml_model.predict_proba(X_test)[:, 1]
-    y_val_pred_prob = ml_model.predict_proba(X_val)[:, 1]
-    
-    # Collect all results into a single object
-    results = {
-        "training_metrics": display_model_metrics(X_train, y_train, ml_model, average='weighted'),
-        "training_confusion_matrix": display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6)),
-        "training_roc_curve": display_roc_curve(y_true=y_train, y_scores=y_train_pred_prob, ml_instance=ml_model, title="ROC of Training set"),
-        "validation_metrics": display_model_metrics(X_val, y_val, ml_model, average='weighted'),
-        "validation_confusion_matrix": display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6)),
-        "validation_roc_curve": display_roc_curve(y_true=y_val, y_scores=y_val_pred_prob, ml_instance=ml_model, title="ROC of Validation set"),
-        "testing_metrics": display_model_metrics(X_test, y_test, ml_model, average='weighted'),
-        "testing_confusion_matrix": display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6)),
-        "testing_roc_curve": display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=ml_model, title="ROC of Testing set")
-    }
-    
-    return results
-               
-# def eda_report(data_from_tab_df):
-#     st.title("Exploratory Data Analysis Report")
-    
-#     # Display EDA report using dataprep
-#     plot(data_from_tab_df)
-#     st.pyplot()  # Display the generated plots using Streamlit
-    
 # Instantiate the ML class
 ml_instance = ML()
 
