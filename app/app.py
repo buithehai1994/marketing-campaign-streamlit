@@ -26,7 +26,7 @@ from tab_df.display import display_tab_df_content
 from tab_eda.display import display_missing_values,display_plots,display_analysis,display_info,display_summary_statistics,display_stack_bar_chart, display_plot_distribution, display_generate_visual_eda_report
 from tab_encoding.display import display_tab_df_encoding_explain
 from tab_encoding.logics import Encoding
-from tab_ml.display import display_baseline_metrics,display_confusion_matrix,metric, display_roc_curve, display_model_performance_analysis,display_cross_validation_analysis, feature_importance_explanation, display_correlation_matrix, display_model_metrics
+from tab_ml.display import display_baseline_metrics,display_confusion_matrix,metric, display_roc_curve, display_model_performance_analysis,display_cross_validation_analysis, feature_importance_explanation, display_correlation_matrix
 from tab_ml.logics import ML
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
@@ -133,9 +133,6 @@ def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_va
     y_train_pred_prob = trained_model.predict_proba(X_train)[:, 1]
     y_test_pred_prob = trained_model.predict_proba(X_test)[:, 1]
     y_val_pred_prob = trained_model.predict_proba(X_val)[:, 1]
-    
-    # Display model metrics
-    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
     
     # Display confusion matrix and ROC curve for training set
     display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
