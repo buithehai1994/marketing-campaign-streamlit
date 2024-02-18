@@ -119,6 +119,7 @@ def dependent_var():
     return dependent_var
 
 def display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model):
+    
    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, ml_model, average='weighted')
    display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
    display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
