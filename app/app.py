@@ -120,7 +120,7 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test):
     """
     Train and evaluate a machine learning model.
