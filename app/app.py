@@ -119,6 +119,41 @@ def dependent_var():
     encoding = Encoding(data=data_for_ml)
     dependent_var= encoding.splitting_y()
     return dependent_var
+
+@st.cache
+def train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test):
+    """
+    Train and evaluate a machine learning model.
+
+    Parameters:
+    - model: Machine learning model object
+    - X_train, X_val, X_test: Input features for training, validation, and testing sets
+    - y_train, y_val, y_test: Target labels for training, validation, and testing sets
+    """
+    # Train the model
+    ml = ML()
+    trained_model = ml.train_model(model, X_train, y_train)
+    
+    # Display metrics and confusion matrices for training set
+    st.write("Training set")
+    train_metrics = display_model_metrics(X_train, y_train, model)
+    y_train_pred = trained_model.predict(X_train)
+    st.write(train_metrics)
+    display_confusion_matrix(y_train, y_train_pred)
+
+    # Display metrics and confusion matrices for validation set
+    st.write("Validation set")
+    val_metrics = display_model_metrics(X_val, y_val, model)
+    y_val_pred = trained_model.predict(X_val)
+    st.write(val_metrics)
+    display_confusion_matrix(y_val, y_val_pred)
+
+    # Display metrics and confusion matrices for testing set
+    st.write("Testing set")
+    test_metrics = display_model_metrics(X_test, y_test, model)
+    y_test_pred = trained_model.predict(X_test)
+    st.write(test_metrics)
+    display_confusion_matrix(y_test, y_test_pred)
     
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
@@ -221,34 +256,36 @@ elif selected_tab == "Machine Learning Model":
         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
         if selected_sub_sub_tab=="Default params":
-            # Train the logistic regression model
-            model=LogisticRegression()
-            # Train the logistic regression model
-            ml=ML()
-            trained_model = ml.train_model(model, X_train, y_train)
-            # metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
-            #                                    y_train=y_train, y_val=y_val, y_test=y_test)
-            train_metrics=display_model_metrics(x=X_train,y=y_train,model=model)
-            y_train_pred=trained_model.predict(X_train)
+            # # Train the logistic regression model
+            # model=LogisticRegression()
+            # # Train the logistic regression model
+            # ml=ML()
+            # trained_model = ml.train_model(model, X_train, y_train)
+            # # metrics =get_model_metrics(model=model, X_train=X_train, X_val=X_val, X_test=X_test, 
+            # #                                    y_train=y_train, y_val=y_val, y_test=y_test)
+            # train_metrics=display_model_metrics(x=X_train,y=y_train,model=model)
+            # y_train_pred=trained_model.predict(X_train)
             
-            val_metrics=display_model_metrics(x=X_val,y=y_val,model=model)
-            y_val_pred=trained_model.predict(X_val)
+            # val_metrics=display_model_metrics(x=X_val,y=y_val,model=model)
+            # y_val_pred=trained_model.predict(X_val)
             
-            test_metrics=display_model_metrics(x=X_test,y=y_test,model=model)
-            y_test_pred=trained_model.predict(X_test)
+            # test_metrics=display_model_metrics(x=X_test,y=y_test,model=model)
+            # y_test_pred=trained_model.predict(X_test)
             
-            st.write("Training set")
-            st.write(train_metrics)
-            display_confusion_matrix(y_train,y_train_pred)
+            # st.write("Training set")
+            # st.write(train_metrics)
+            # display_confusion_matrix(y_train,y_train_pred)
         
-            st.write("Validation set")
-            st.write(val_metrics)
-            display_confusion_matrix(y_val,y_val_pred)
+            # st.write("Validation set")
+            # st.write(val_metrics)
+            # display_confusion_matrix(y_val,y_val_pred)
 
-            st.write("Testing set")
-            st.write(test_metrics)
-            display_confusion_matrix(y_test,y_test_pred)
-            
+            # st.write("Testing set")
+            # st.write(test_metrics)
+            # display_confusion_matrix(y_test,y_test_pred)
+            model=LogisticRegression()
+            train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test)    
+                    
 #         if selected_sub_sub_tab=="Regularization":
 #             # Load model
 #             selected_model='app/log_elastic_reg.pkl'
