@@ -125,6 +125,10 @@ def train_model(X_train, y_train, ml_model):
     ml_model.fit(X_train, y_train)
     return ml_model
 
+@st.cache(allow_output_mutation=True)
+def predict(model, X):
+    return model.predict(X)
+
 def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_val, y_val_pred, y_test, y_test_pred, ml_model):
     # Train the model
     trained_model = train_model(X_train, y_train, ml_model)
@@ -241,19 +245,19 @@ elif selected_tab == "Machine Learning Model":
         if selected_sub_sub_tab=="Default params":
             model=LogisticRegression()
             ml = ML()
-            ml_model = ml.train_model(model, X_train, y_train)
-            y_train_pred=ml.predict(X_train)
-            y_val_pred=ml.predict(X_val)
-            y_test_pred=ml.predict(X_test)
+            ml_model = train_model(model, X_train, y_train)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
             ml = ML()
-            ml_model = train_model(X_train=X_train, y_train=y_train, ml_model=model)
-            y_train_pred=ml_model.predict(X_train)
-            y_val_pred=ml_model.predict(X_val)
-            y_test_pred=ml_model.predict(X_test)
+            ml_model = train_model(model, X_train, y_train)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
     if selected_sub_tab==tab_titles[3]:
@@ -267,37 +271,38 @@ elif selected_tab == "Machine Learning Model":
         if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=15, metric='euclidean')
             ml = ML()
-            ml_model = train_model(X_train=X_train, y_train=y_train, ml_model=model)
-            y_train_pred=ml_model.predict(X_train)
-            y_val_pred=ml_model.predict(X_val)
-            y_test_pred=ml_model.predict(X_test)
+            ml_model = train_model(model, X_train, y_train)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+
             
         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=55, metric='euclidean')
             ml = ML()
-            ml_model = train_model(X_train=X_train, y_train=y_train, ml_model=model)
-            y_train_pred=ml_model.predict(X_train)
-            y_val_pred=ml_model.predict(X_val)
-            y_test_pred=ml_model.predict(X_test)
+            ml_model = train_model(model, X_train, y_train)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=100, metric='euclidean')
             ml = ML()
-            ml_model = train_model(X_train=X_train, y_train=y_train, ml_model=model)
-            y_train_pred=ml_model.predict(X_train)
-            y_val_pred=ml_model.predict(X_val)
-            y_test_pred=ml_model.predict(X_test)
+            ml_model = train_model(model, X_train, y_train)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=200, metric='euclidean')
             ml = ML()
-            ml_model = train_model(X_train=X_train, y_train=y_train, ml_model=model)
-            y_train_pred=ml_model.predict(X_train)
-            y_val_pred=ml_model.predict(X_val)
-            y_test_pred=ml_model.predict(X_test)
+            ml_model = train_model(model, X_train, y_train)
+            y_train_pred=predict(ml_model,X_train)
+            y_val_pred=predict(ml_model,X_val)
+            y_test_pred=predict(ml_model,X_test)
             display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
 #     if selected_sub_tab==tab_titles[4]:
