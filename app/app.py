@@ -250,7 +250,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
@@ -258,7 +258,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
     if selected_sub_tab==tab_titles[3]:
          # Create sub-tabs
@@ -274,7 +274,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
 
             
         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
@@ -283,7 +283,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=100, metric='euclidean')
@@ -291,7 +291,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
             model=KNeighborsClassifier(n_neighbors=200, metric='euclidean')
@@ -299,7 +299,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
     if selected_sub_tab==tab_titles[4]:
          # Create sub-tabs
@@ -316,7 +316,7 @@ elif selected_tab == "Machine Learning Model":
             y_train_pred=predict(ml_model,X_train)
             y_val_pred=predict(ml_model,X_val)
             y_test_pred=predict(ml_model,X_test)
-            display_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
             
 #         if selected_sub_sub_tab=="rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)":
 #             selected_model='app/rf8.pkl'
