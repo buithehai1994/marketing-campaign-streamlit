@@ -134,18 +134,7 @@ def train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_te
     ml = ML()
     trained_model = ml.train_model(model, X_train, y_train)
     
-    # Return metrics and predictions
-    train_metrics = display_model_metrics(X_train, y_train, model)
-    y_train_pred = trained_model.predict(X_train)
-    
-    val_metrics = display_model_metrics(X_val, y_val, model)
-    y_val_pred = trained_model.predict(X_val)
-    
-    test_metrics = display_model_metrics(X_test, y_test, model)
-    y_test_pred = trained_model.predict(X_test)
-    
-    return train_metrics, y_train_pred, val_metrics, y_val_pred, test_metrics, y_test_pred
-    
+    display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted')
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
     
