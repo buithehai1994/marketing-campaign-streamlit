@@ -28,27 +28,32 @@ def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'sub
     plt.ylabel('Actual')
     st.pyplot(plt)
 
-def display_model_metrics(model,X_train,X_test,X_val,y_train,y_test,y_val):
+def display_model_metrics(model, X_train, X_test, X_val, y_train, y_test, y_val):
     # Load model
-    # ml=ML(trained_model=model)
     ml = ML()
     ml.load_model(model)
+    
+    # Calculate metrics for training data
     metrics_train = ml.calculate_model_metrics(X_train, y_train)
-    metrics_val = ml.calculate_model_metrics(X_val, y_val)
-    metrics_test = ml.calculate_model_metrics(X_test, y_test)
+    metrics_accuracy_training = ml.calculate_accuracy(X_train, y_train)
 
-    metrics_accuracy_training=ml.calculate_accuracy(X_train,y_train)
-    metrics_accuracy_testing=ml.calculate_accuracy(X_test,y_test)
-    metrics_accuracy_validation=ml.calculate_accuracy(X_val,y_val)
+    # Calculate metrics for validation data
+    metrics_val = ml.calculate_model_metrics(X_val, y_val)
+    metrics_accuracy_validation = ml.calculate_accuracy(X_val, y_val)
+
+    # Calculate metrics for testing data
+    metrics_test = ml.calculate_model_metrics(X_test, y_test)
+    metrics_accuracy_testing = ml.calculate_accuracy(X_test, y_test)
 
     # Create a DataFrame with all metrics
     metrics_data = {
         'Dataset': ['Training', 'Validation', 'Testing'],
         'Accuracy': [metrics_accuracy_training, metrics_accuracy_validation, metrics_accuracy_testing],
-        'Precision': [metrics_train[1][0], metrics_val[1][0], metrics_test[1][0]],
-        'Recall': [metrics_train[1][1], metrics_val[1][1], metrics_test[1][1]],
-        'F1 Score': [metrics_train[1][2], metrics_val[1][2], metrics_test[1][2]]
-        }
+        'Precision': [metrics_train[0], metrics_val[0], metrics_test[0]],
+        'Recall': [metrics_train[1], metrics_val[1], metrics_test[1]],
+        'F1 Score': [metrics_train[2], metrics_val[2], metrics_test[2]]
+    }
+
     # Display all metrics in one table
     st.write("Metrics for Training, Validation, and Testing")
     st.table(pd.DataFrame(metrics_data))
