@@ -125,9 +125,9 @@ def train_model(X_train, y_train, ml_model):
     ml_model.fit(X_train, y_train)
     return ml_model
 
-def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_val, y_val_pred, y_test, y_test_pred, ml_model_name):
+def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_val, y_val_pred, y_test, y_test_pred, ml_model):
     # Train the model
-    trained_model = train_model(X_train, y_train, ml_model_name)
+    trained_model = train_model(X_train, y_train, ml_model)
 
     # Use the trained model to make predictions
     y_train_pred_prob = trained_model.predict_proba(X_train)[:, 1]
@@ -148,6 +148,7 @@ def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_va
     # Display confusion matrix and ROC curve for testing set
     display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
     display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=trained_model, title="ROC of Testing set")    
+
 # Instantiate the ML class
 ml_instance = ML()
 
