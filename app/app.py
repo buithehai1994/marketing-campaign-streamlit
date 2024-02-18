@@ -118,7 +118,13 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
 
-
+@st.cache()
+def display_model_evaluation(ml_model,X_train, , X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model):
+   display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
+   display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+   display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+   display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+            
 # def eda_report(data_from_tab_df):
 #     st.title("Exploratory Data Analysis Report")
     
@@ -195,7 +201,6 @@ elif selected_tab == "Encoding":
     display_tab_df_encoding_explain(data_for_ml)
 
 elif selected_tab == "Machine Learning Model":
-    pass
     st.sidebar.header("Machine Learning Model")
     # Placeholder for ML content
     st.sidebar.write("This tab can contain content related to your machine learning model.")
@@ -223,23 +228,19 @@ elif selected_tab == "Machine Learning Model":
             model=LogisticRegression()
             ml = ML()
             trained_model = ml.train_model(model, X_train, y_train)
-            
-            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
             y_train_pred=ml.predict(X_train)
-            display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-
             y_val_pred=ml.predict(X_val)
-            display_confusion_matrix(y_val, y_val_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-            
             y_test_pred=ml.predict(X_test)
-            display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
+            display_model_evaluation(ml_model,X_train, , X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model)
             
         if selected_sub_sub_tab=="Regularization":
             model=LogisticRegression(penalty='elasticnet', l1_ratio=0.5, solver='saga')
             ml = ML()
             trained_model = ml.train_model(model, X_train, y_train)
-            
-            display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, trained_model, average='weighted')
+            y_train_pred=ml.predict(X_train)
+            y_val_pred=ml.predict(X_val)
+            y_test_pred=ml.predict(X_test)
+            display_model_evaluation(ml_model,X_train, , X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, trained_model)
             
 #     if selected_sub_tab==tab_titles[3]:
 #          # Create sub-tabs
