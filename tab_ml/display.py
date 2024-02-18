@@ -16,7 +16,7 @@ def display_baseline_metrics(y_train):
     st.write(f"Baseline Accuracy: {baseline_accuracy}")
 
 @st.cache_resource
-def display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted'):
+def display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, _model, average='weighted'):
     """
     Display the evaluation metrics for training, validation, and testing sets in a table format.
 
