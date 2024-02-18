@@ -14,44 +14,47 @@ def display_baseline_metrics(y_train):
     baseline_accuracy = ml.calculate_baseline_metrics(y_train)
     st.write(f"Baseline Accuracy: {baseline_accuracy}")
 
-def display_model_metrics(x, y, model, average='weighted'):
+def display_model_metrics(x_train, y_train, x_val, y_val, x_test, y_test, model, average='weighted'):
     """
-    Display the evaluation metrics.
+    Display the evaluation metrics for training, validation, and testing sets in a table format.
 
     Parameters:
-    - x: input variables
-    - y: target variable
-    - model: trained machine learning model
-    - average: averaging strategy for precision, recall, and F1 score
+    - x_train, x_val, x_test: Input features for training, validation, and testing sets
+    - y_train, y_val, y_test: Target labels for training, validation, and testing sets
+    - model: Trained machine learning model
+    - average: Averaging strategy for precision, recall, and F1 score
     """
-    y_pred = model.predict(x)
-    accuracy = accuracy_score(y, y_pred)
+    # Compute metrics for training set
+    train_pred = model.predict(x_train)
+    train_accuracy = accuracy_score(y_train, train_pred)
+    train_precision, train_recall, train_f1, _ = precision_recall_fscore_support(y_train, train_pred, average=average)
 
+    # Compute metrics for validation set
+    val_pred = model.predict(x_val)
+    val_accuracy = accuracy_score(y_val, val_pred)
+    val_precision, val_recall, val_f1, _ = precision_recall_fscore_support(y_val, val_pred, average=average)
+
+    # Compute metrics for testing set
+    test_pred = model.predict(x_test)
+    test_accuracy = accuracy_score(y_test, test_pred)
+    test_precision, test_recall, test_f1, _ = precision_recall_fscore_support(y_test, test_pred, average=average)
+
+    # Prepare data for the table
+    metrics_data = {
+        'Set': ['Training', 'Validation', 'Testing'],
+        'Accuracy': [train_accuracy, val_accuracy, test_accuracy],
+        f'Precision ({average})': [train_precision, val_precision, test_precision],
+        f'Recall ({average})': [train_recall, val_recall, test_recall],
+        f'F1 Score ({average})': [train_f1, val_f1, test_f1]
+    }
+
+    # Create a DataFrame from the metrics data
+    metrics_df = pd.DataFrame(metrics_data)
+
+    # Display the table
     st.write("Evaluation Metrics:")
-    st.write(f"Accuracy: {accuracy:.4f}")
-
-    # Check if the model supports the specified averaging strategy
-    supported_average = None
-    if hasattr(model, 'predict_proba') or hasattr(model, 'decision_function'):
-        supported_average = average
-
-    # Compute precision, recall, and F1 score
-    scores = precision_recall_fscore_support(y, y_pred, average=supported_average)
-
-    # Display precision, recall, and F1 score
-    if supported_average:
-        st.write(f"Precision ({average}): {scores[0]:.4f}")
-        st.write(f"Recall ({average}): {scores[1]:.4f}")
-        st.write(f"F1 Score ({average}): {scores[2]:.4f}")
-    else:
-        st.write("Precision, Recall, and F1 Score for each class:")
-        # Iterate over each class and display metrics separately
-        for idx, class_label in enumerate(model.classes_):
-            st.write(f"Class: {class_label}")
-            st.write(f"Precision: {scores[0][idx]:.4f}")
-            st.write(f"Recall: {scores[1][idx]:.4f}")
-            st.write(f"F1 Score: {scores[2][idx]:.4f}")
-
+    st.table(metrics_df)
+    
 def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6)):
     # Calculate confusion matrix
     cm = confusion_matrix(y_true, y_pred)
