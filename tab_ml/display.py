@@ -9,11 +9,13 @@ from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.metrics import auc
 import matplotlib.pyplot as plt
 
+@st.cache_resource
 def display_baseline_metrics(y_train):
     ml = ML()
     baseline_accuracy = ml.calculate_baseline_metrics(y_train)
     st.write(f"Baseline Accuracy: {baseline_accuracy}")
 
+@st.cache_resource
 def display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model, average='weighted'):
     """
     Display the evaluation metrics for training, validation, and testing sets in a table format.
@@ -55,6 +57,7 @@ def display_model_metrics(X_train, y_train, X_val, y_val, X_test, y_test, model,
     st.write("Evaluation Metrics:")
     st.table(metrics_df)
     
+@st.cache_resource
 def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6)):
     # Calculate confusion matrix
     cm = confusion_matrix(y_true, y_pred)
@@ -68,6 +71,7 @@ def display_confusion_matrix(y_true, y_pred, class_labels=['Not subscribe', 'sub
     plt.ylabel('Actual')
     st.pyplot(plt)
 
+@st.cache_resource
 def metric(model,X_train,X_test,X_val,y_train,y_test,y_val):
     # Load model
     # ml=ML(trained_model=model)
@@ -93,6 +97,7 @@ def metric(model,X_train,X_test,X_val,y_train,y_test,y_val):
     st.write("Metrics for Training, Validation, and Testing")
     st.table(pd.DataFrame(metrics_data))
 
+@st.cache_resource
 def display_roc_curve(y_true, y_scores, ml_instance, title):
     # Calculate ROC curve
     fpr, tpr, thresholds = roc_curve(y_true, y_scores)
@@ -111,6 +116,7 @@ def display_roc_curve(y_true, y_scores, ml_instance, title):
     plt.grid(True)
     st.pyplot(plt)
     
+@st.cache_resource
 def display_correlation_matrix(X):
     """
     Plot the correlation matrix heatmap for the input features.
@@ -166,7 +172,7 @@ def display_correlation_matrix(X):
 #     y_test_scores = model.predict_proba(X_test)[:, 1]
 #     display_roc_curve(y_test, y_test_scores, ml_instance=model, figsize=(6, 4))
 
-
+@st.cache_resource
 def display_model_performance_analysis():
     explanation_text = """
     **Model Performance Analysis**
@@ -194,6 +200,7 @@ def display_model_performance_analysis():
     
     st.markdown(explanation_text)
 
+@st.cache_resource
 def feature_importance_explanation():
     explanation_text="""
     Feature importance refers to the measure of the impact or relevance of input variables (features) in a predictive model regarding its ability to predict the target outcome. In the context of machine learning algorithms like Random Forest, feature importance helps identify which features have the most significant influence on the model's predictions.
@@ -203,6 +210,7 @@ def feature_importance_explanation():
     """
     st.markdown(explanation_text)
 
+@st.cache_resource
 def display_cross_validation_analysis():
     explanation_text="""
     These results indicate that, compared to the baseline accuracy of 0.5, all models perform significantly better. This is a positive outcome and suggests that these models have learned patterns within the data and perform better than a random guest. 
