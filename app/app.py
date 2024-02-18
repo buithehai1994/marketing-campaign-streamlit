@@ -245,33 +245,49 @@ elif selected_tab == "Machine Learning Model":
             y_test_pred=ml.predict(X_test)
             display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
             
-#     if selected_sub_tab==tab_titles[3]:
-#          # Create sub-tabs
-#         selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
-#                                                 ["KNN (n_neighbors=15 and metric: ‘Euclidean')", 
-#                                                  "KNN (n_neighbors=55 and metric: ‘Euclidean')",
-#                                                  "KNN (n_neighbors=100 and metric: ‘Euclidean')",
-#                                                  "KNN (n_neighbors=200 and metric: ‘Euclidean')"
-#                                                  ])
-#         if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
-#             selected_model='app/knn_15_euc.pkl'
-#             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
-#                                                y_train=y_train, y_val=y_val, y_test=y_test)
+    if selected_sub_tab==tab_titles[3]:
+         # Create sub-tabs
+        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+                                                ["KNN (n_neighbors=15 and metric: ‘Euclidean')", 
+                                                 "KNN (n_neighbors=55 and metric: ‘Euclidean')",
+                                                 "KNN (n_neighbors=100 and metric: ‘Euclidean')",
+                                                 "KNN (n_neighbors=200 and metric: ‘Euclidean')"
+                                                 ])
+        if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
+            model=KNeighborsClassifier(n_neighbors=15, metric='euclidean')
+            ml = ML()
+            ml_model = ml.train_model(model, X_train, y_train)
+            y_train_pred=ml.predict(X_train)
+            y_val_pred=ml.predict(X_val)
+            y_test_pred=ml.predict(X_test)
+            display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
             
-#         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
-#             selected_model='app/knn_55_euc.pkl'
-#             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
-#                                                y_train=y_train, y_val=y_val, y_test=y_test)
+        if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
+            model=KNeighborsClassifier(n_neighbors=55, metric='euclidean')
+            ml = ML()
+            ml_model = ml.train_model(model, X_train, y_train)
+            y_train_pred=ml.predict(X_train)
+            y_val_pred=ml.predict(X_val)
+            y_test_pred=ml.predict(X_test)
+            display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
             
-#         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
-#             selected_model='app/knn_100_euc.pkl'
-#             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
-#                                                y_train=y_train, y_val=y_val, y_test=y_test)
+        if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
+            model=KNeighborsClassifier(n_neighbors=100, metric='euclidean')
+            ml = ML()
+            ml_model = ml.train_model(model, X_train, y_train)
+            y_train_pred=ml.predict(X_train)
+            y_val_pred=ml.predict(X_val)
+            y_test_pred=ml.predict(X_test)
+            display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
             
-#         if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
-#             selected_model='app/knn_200_euc.pkl'
-#             get_model_metrics(model=selected_model, X_train=X_train, X_val=X_val, X_test=X_test, 
-#                                                y_train=y_train, y_val=y_val, y_test=y_test)
+        if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
+            model=KNeighborsClassifier(n_neighbors=200, metric='euclidean')
+            ml = ML()
+            ml_model = ml.train_model(model, X_train, y_train)
+            y_train_pred=ml.predict(X_train)
+            y_val_pred=ml.predict(X_val)
+            y_test_pred=ml.predict(X_test)
+            display_model_evaluation(X_train, X_val, X_test,y_train,y_train_pred, y_val,y_val_pred, y_test,y_test_pred, ml_model=ml_model)
             
 #     if selected_sub_tab==tab_titles[4]:
 #          # Create sub-tabs
