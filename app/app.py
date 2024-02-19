@@ -248,69 +248,69 @@ elif selected_tab == "Machine Learning Model":
     
     if selected_sub_tab==tab_titles[2]:
         # Create sub-tabs
-        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
+        ml_tab = st.sidebar.radio("Sub-navigation",["Default params", "Regularization"])
 
-        if selected_sub_sub_tab=="Default params":
+        if ml_tab=="Default params":
             ml_model='app/log_reg.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
-        if selected_sub_sub_tab=="Regularization":
+        if ml_tab=="Regularization":
             ml_model='app/log_elastic_reg.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
     if selected_sub_tab==tab_titles[3]:
          # Create sub-tabs
-        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+        ml_tab = st.sidebar.radio("Sub-navigation",
                                                 ["KNN (n_neighbors=15 and metric: ‘Euclidean')", 
                                                  "KNN (n_neighbors=55 and metric: ‘Euclidean')",
                                                  "KNN (n_neighbors=100 and metric: ‘Euclidean')",
                                                  "KNN (n_neighbors=200 and metric: ‘Euclidean')"
                                                  ])
-        if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
+        if ml_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
             ml_model='app/knn_15_euc.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
-        if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
+        if ml_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
             ml_model='app/knn_55_euc.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
-        if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
+        if ml_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
             ml_model='app/knn_100_euc.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
-        if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
+        if ml_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
             ml_model='app/knn_200_euc.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
     if selected_sub_tab==tab_titles[4]:
          # Create sub-tabs
-        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+        ml_tab = st.sidebar.radio("Sub-navigation",
                                                 [
                                                 "rf6 (random_state=8, n_estimators=50, max_depth=5)", 
                                                  "rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)",
                                                  "rf11 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=2, max_features=5)",
                                                  "Best Forest ('max_depth': 12.57, 'min_samples_leaf': 1.0, 'min_samples_split': 8.37, 'n_estimators': 144.93)"
                                                  ])
-        if selected_sub_sub_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
+        if ml_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
             selected_model='app/rf6.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)":
+        if ml_tab=="rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)":
             selected_model='app/rf8.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="rf11 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=2, max_features=5)":
+        if ml_tab=="rf11 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=2, max_features=5)":
             selected_model='app/rf11.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Best Forest ('max_depth': 12.57, 'min_samples_leaf': 1.0, 'min_samples_split': 8.37, 'n_estimators': 144.93)":
+        if ml_tab=="Best Forest ('max_depth': 12.57, 'min_samples_leaf': 1.0, 'min_samples_split': 8.37, 'n_estimators': 144.93)":
             selected_model='app/best_forest.pkl'
 
-            selected_sub_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+            ml_sub_tab = st.sidebar.radio("Sub-navigation",
                                                 ["Optimization Results",
                                                  "Model Performance"
                                                  ])
-            if selected_sub_sub_sub_tab=="Optimization Results":
+            if ml_sub_tab=="Optimization Results":
             
                 # Display the content of "best_forest_optimization_results.csv"
                 best_forest_results = pd.read_csv("csv/rf_optimization_results.csv")
@@ -326,12 +326,12 @@ elif selected_tab == "Machine Learning Model":
                 st.header("Random Forest Optimization Results")
                 st.table(highlighted_results.hide(axis="index"))
             
-            if selected_sub_sub_sub_tab=="Model Performance":
+            if ml_sub_tab=="Model Performance":
                 display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
                
     if selected_sub_tab==tab_titles[4]:
         # Create sub-tabs
-        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+        ml_tab = st.sidebar.radio("Sub-navigation",
                                                 [
                                                 "Tree 1(random_state=42)",
                                                 "Tree 2(random_state=42, min_samples_split=5)",
@@ -340,34 +340,34 @@ elif selected_tab == "Machine Learning Model":
                                                 "Tree 5(random_state=42, min_samples_split=5, max_depth=4)",
                                                 "Best Tree ('max_depth': 11.83, 'min_samples_leaf': 4.39, 'min_samples_split': 12.40)"                                    
                                                     ])
-        if selected_sub_sub_tab=="Tree 1(random_state=42)":
+        if ml_tab=="Tree 1(random_state=42)":
             selected_model='app/tree_1.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Tree 2(random_state=42, min_samples_split=5)":
+        if ml_tab=="Tree 2(random_state=42, min_samples_split=5)":
             selected_model='app/tree_2.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Tree 3(random_state=42, min_samples_split=20)":
+        if ml_tab=="Tree 3(random_state=42, min_samples_split=20)":
             selected_model='app/tree_3.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Tree 4(random_state=42, min_samples_split=5, max_depth=3)":
+        if ml_tab=="Tree 4(random_state=42, min_samples_split=5, max_depth=3)":
             selected_model='app/tree_4.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Tree 5(random_state=42, min_samples_split=5, max_depth=4)":
+        if ml_tab=="Tree 5(random_state=42, min_samples_split=5, max_depth=4)":
             selected_model='app/tree_5.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Best Tree ('max_depth': 11.83, 'min_samples_leaf': 4.39, 'min_samples_split': 12.40)":
+        if ml_tab=="Best Tree ('max_depth': 11.83, 'min_samples_leaf': 4.39, 'min_samples_split': 12.40)":
             selected_model='app/best_tree.pkl'
 
-            selected_sub_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+            ml_sub_tab = st.sidebar.radio("Sub-navigation",
                                                 ["Optimization Results",
                                                  "Model Performance"
                                                  ])
-            if selected_sub_sub_sub_tab=="Optimization Results":
+            if ml_sub_tab=="Optimization Results":
             
                 # Display the content of "decision_tree_optimization_results"
                 best_tree_results = pd.read_csv("csv/decision_tree_optimization_results.csv")
@@ -383,12 +383,12 @@ elif selected_tab == "Machine Learning Model":
                 st.header("Decision Tree Optimization Results")
                 st.table(highlighted_results.hide(axis="index"))
             
-            if selected_sub_sub_sub_tab=="Model Performance":
+            if ml_sub_tab=="Model Performance":
                 display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
                 
     if selected_sub_tab==tab_titles[5]:
         # Create sub-tabs
-        selected_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+        ml_tab = st.sidebar.radio("Sub-navigation",
                                                 [
                                                 "SVC_1 (default parameters)",
                                                 "SVC_2 (C=0.5)",
@@ -396,30 +396,30 @@ elif selected_tab == "Machine Learning Model":
                                                 "SVC_4 (C=1.5)",
                                                 "Best SVC ('C': 8.35, 'gamma': 0.35)"                                    
                                                     ])
-        if selected_sub_sub_tab=="SVC_1 (default parameters)":
+        if ml_tab=="SVC_1 (default parameters)":
             selected_model='app/svc_1.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="SVC_2 (C=0.5)":
+        if ml_tab=="SVC_2 (C=0.5)":
             selected_model='app/svc_2.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="SVC_3 (C=1)":
+        if ml_tab=="SVC_3 (C=1)":
             selected_model='app/svc_3.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="SVC_4 (C=1.5)":
+        if ml_tab=="SVC_4 (C=1.5)":
             selected_model='app/svc_4.pkl'
             display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-        if selected_sub_sub_tab=="Best SVC ('C': 8.35, 'gamma': 0.35)":
+        if ml_tab=="Best SVC ('C': 8.35, 'gamma': 0.35)":
             selected_model='app/best_svc.pkl'
 
-            selected_sub_sub_sub_tab = st.sidebar.radio("Sub-navigation",
+            ml_sub_tab = st.sidebar.radio("Sub-navigation",
                                                 ["Optimization Results",
                                                  "Model Performance"
                                                  ])
-            if selected_sub_sub_sub_tab=="Optimization Results":
+            if ml_sub_tab=="Optimization Results":
                 
                 def fetch_best_svc_results():
                     data=pd.read_csv("csv/svm_optimization_results.csv")
@@ -438,7 +438,7 @@ elif selected_tab == "Machine Learning Model":
                 st.header("SVM Optimization Results")
                 st.table(highlighted_results.hide(axis="index"))
             
-            if selected_sub_sub_sub_tab=="Model Performance":
+            if ml_sub_tab=="Model Performance":
                 display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
     if selected_sub_tab==tab_titles[6]:
