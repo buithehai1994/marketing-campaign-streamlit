@@ -560,7 +560,6 @@ elif selected_tab == "Deployment":
         X_input_scaled = ml.scaler.transform(encoded_input_data)
 
         # Use the 'ml' object to make predictions with the encoded input data
-        model=
         prediction = ml.predict(X_input_scaled)
 
         # Convert scaled data back to a DataFrame and assign column names
