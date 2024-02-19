@@ -448,7 +448,7 @@ elif selected_tab == "Feature Importance":
     st.header("Feature Importance")
     pickle_file="app/best_forest.pkl"
     with open(pickle_file, 'rb') as f:
-        rf_model = pickle.load(pickle_file)
+        rf_model = pickle.load(f)
     # Load the trained model
     ml = ML()
     model=ml.load_model(rf_model)
