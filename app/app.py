@@ -595,3 +595,7 @@ elif selected_tab == "Ethical Consideration":
 elif selected_tab == "References":
     citation = "Sexton, R. L. (2010). *Exploring Economics* (5th ed.). Mason, OH: South Western Educational Publishing."
     st.write(citation)
+
+elif selected_tab == "GitHub":
+    st.write("For more information, refer to the GitHub repository:")
+    st.markdown("[GitHub Repository](https://github.com/buithehai1994/marketing-campaign-streamlit)")
