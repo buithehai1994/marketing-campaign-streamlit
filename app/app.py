@@ -127,18 +127,18 @@ def dependent_var():
     encoding = Encoding(data=data_for_ml)
     dependent_var= encoding.splitting_y()
     return dependent_var
-    
-@st.cache(allow_output_mutation=True)
+   
+@st.cache(allow_output_mutation=True,suppress_st_warning=True)
 def train_model(X_train, y_train, model, **kwargs):
     model.set_params(**kwargs)
     model.fit(X_train, y_train)
     return model
 
-@st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True,suppress_st_warning=True)
 def predict(model, X):
     return model.predict(X)
 
-@st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True,suppress_st_warning=True)
 def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pickle_file):
     # Load the model from the pickle file
     with open(pickle_file, 'rb') as f:
