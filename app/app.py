@@ -138,6 +138,7 @@ def train_model(X_train, y_train, model, **kwargs):
 def predict(model, X):
     return model.predict(X)
 
+@st.cache(allow_output_mutation=True,suppress_st_warning=True)
 def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pickle_file):
     # Load the model from the pickle file
     with open(pickle_file, 'rb') as f:
