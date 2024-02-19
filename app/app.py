@@ -129,7 +129,8 @@ def dependent_var():
     return dependent_var
    
 from sklearn.base import clone
-@st.cache_resource(allow_output_mutation=True, suppress_st_warning=True)
+
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def train_model(X_train, y_train, model, **kwargs):
     """
     Train a machine learning model.
@@ -153,7 +154,7 @@ def train_model(X_train, y_train, model, **kwargs):
     cloned_model.fit(X_train, y_train)
     
     return cloned_model
-    
+
 @st.cache_data(allow_output_mutation=True, suppress_st_warning=True)
 def predict(model, X):
     return model.predict(X)
