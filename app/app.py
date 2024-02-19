@@ -14,6 +14,7 @@ from dataprep.eda import create_report
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
+import pickle
 
 # Set Python path
 current_dir = os.path.dirname(__file__)
@@ -138,8 +139,6 @@ def predict(model, X):
     return model.predict(X)
 
 @st.cache(allow_output_mutation=True)
-import pickle
-
 def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pickle_file):
     # Load the model from the pickle file
     with open(pickle_file, 'rb') as f:
