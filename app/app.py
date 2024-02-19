@@ -130,7 +130,6 @@ def dependent_var():
    
 from sklearn.base import clone
 
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def train_model(X_train, y_train, model, **kwargs):
     """
     Train a machine learning model.
