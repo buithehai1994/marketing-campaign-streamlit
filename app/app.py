@@ -158,6 +158,33 @@ def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pic
     display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
     display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=trained_model, title="ROC of Testing set")
 
+@st.cache_resource
+def display_feature_importance(X_train, y_train, pickle_file):
+    # Load the model from the pickle file
+    with open(pickle_file, 'rb') as f:
+        model = pickle.load(f)
+    # Get feature importances
+    feature_importances = model.feature_importances_
+
+    # Create a DataFrame with feature names and their corresponding importances
+    feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': feature_importances})
+
+    # Sort the features by importance in descending order
+    feature_importance_df = feature_importance_df.sort_values('Importance', ascending=False)
+
+    # Display the sorted feature importances as a table
+    st.write("Sorted Feature Importances:")
+    st.table(feature_importance_df)
+
+    # Create a bar plot to visualize feature importances
+    plt.figure(figsize=(10, 6))
+    plt.barh(feature_importance_df['Feature'], feature_importance_df['Importance'])
+    plt.xlabel('Importance')
+    plt.title('Feature Importances')
+    plt.gca().invert_yaxis()
+    st.pyplot(plt)
+    feature_importance_explanation()
+    
 # Instantiate the ML class
 ml_instance = ML()
 
@@ -460,28 +487,7 @@ elif selected_tab == "Feature Importance":
     if ml.trained_model and X_train is not None:
         # Get feature names
         feature_names = list(X_train.columns)
-
-        # Get feature importances
-        feature_importances = model.feature_importances_
-
-        # Create a DataFrame with feature names and their corresponding importances
-        feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': feature_importances})
-
-        # Sort the features by importance in descending order
-        feature_importance_df = feature_importance_df.sort_values('Importance', ascending=False)
-
-        # Display the sorted feature importances as a table
-        st.write("Sorted Feature Importances:")
-        st.table(feature_importance_df)
-
-        # Create a bar plot to visualize feature importances
-        plt.figure(figsize=(10, 6))
-        plt.barh(feature_importance_df['Feature'], feature_importance_df['Importance'])
-        plt.xlabel('Importance')
-        plt.title('Feature Importances')
-        plt.gca().invert_yaxis()
-        st.pyplot(plt)  # Show the Matplotlib plot in Streamlit
-        feature_importance_explanation()
+        display_feature_importance(X_train, y_train, pickle_file)
     else:
         st.write("Error: Model or data not found. Please check the paths and ensure they are correct.")
 
