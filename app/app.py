@@ -533,14 +533,15 @@ elif selected_tab == "Deployment":
 
     # Make prediction when the user clicks the "Predict" button
     if st.button("Predict"):
+        pickle_file="app/best_forest.pkl"
+        with open(pickle_file, 'rb') as f:
+            rf_model = pickle.load(f)
+        # Load the trained model
+        ml = ML()
+        model=ml.load_model(rf_model)
+
         # Create a DataFrame with the user-input data
         input_data = pd.DataFrame([new_data])
-
-        # Ensure the input DataFrame has the same columns as the training data
-        missing_cols = set(feature_columns) - set(input_data.columns)
-        for col in missing_cols:
-            input_data[col] = 0  # Add missing columns with default values
-
         # Use the 'make_prediction' method from the ML class to get the prediction
         encoded_input_data = pd.DataFrame()
         for col, values in categorical_features.items():
@@ -556,10 +557,11 @@ elif selected_tab == "Deployment":
         st.write(encoded_input_data)
 
         # Scale the input data using the same scaler used in the ML class
-        X_input_scaled = ml_instance.scaler.transform(encoded_input_data)
+        X_input_scaled = ml.scaler.transform(encoded_input_data)
 
         # Use the 'ml' object to make predictions with the encoded input data
-        prediction = ml.trained_model.predict(X_input_scaled)
+        model=
+        prediction = ml.predict(X_input_scaled)
 
         # Convert scaled data back to a DataFrame and assign column names
         X_input_scaled_df = pd.DataFrame(X_input_scaled, columns=encoded_input_data.columns)
