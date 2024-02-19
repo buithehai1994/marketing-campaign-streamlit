@@ -88,15 +88,15 @@ def fetch_data():
     dataset.set_data(dataset_path)
     return dataset
 
-import warnings
-@st.cache_resource
-def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
-    # Load the machine learning model from the specified file path
-    with open(ml_model, 'rb') as file:
-        model = pickle.load(file)
+# import warnings
+# @st.cache_resource
+# def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
+#     # Load the machine learning model from the specified file path
+#     with open(ml_model, 'rb') as file:
+#         model = pickle.load(file)
     
-    # Assuming display_model_metrics function takes the model as the first argument
-    return display_model_metrics(model, X_train, X_test, X_val, y_train, y_test, y_val)  
+#     # Assuming display_model_metrics function takes the model as the first argument
+#     return display_model_metrics(model, X_train, X_test, X_val, y_train, y_test, y_val)  
     
 dataset = fetch_data()
 
@@ -110,7 +110,6 @@ def generate_download_link(df):
     b64_csv = base64.b64encode(csv_data).decode()
     return f'<a href="data:text/csv;charset=utf-8;base64,{b64_csv}" download="TeleCom_Data.csv">Download CSV File</a>'
 
-@st.cache_data
 def perform_encoding():
     encoding = Encoding(data=data_from_tab_df)
     data_for_ml = encoding.label_encoding()
@@ -129,34 +128,6 @@ def dependent_var():
     return dependent_var
    
 from sklearn.base import clone
-
-def train_model(X_train, y_train, model, **kwargs):
-    """
-    Train a machine learning model.
-
-    Parameters:
-        X_train (array-like): The feature matrix for training.
-        y_train (array-like): The target vector for training.
-        model (estimator): The machine learning model to be trained.
-        **kwargs: Additional keyword arguments to be passed to the model.
-
-    Returns:
-        estimator: The trained machine learning model.
-    """
-    # Clone the model to avoid modifying the original model object
-    cloned_model = clone(model)
-    
-    # Set model parameters
-    cloned_model.set_params(**kwargs)
-    
-    # Train the model
-    cloned_model.fit(X_train, y_train)
-    
-    return cloned_model
-
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def predict(model, X):
-    return model.predict(X)
 
 @st.cache_resource
 def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pickle_file):
