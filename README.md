@@ -7,7 +7,7 @@ A telecommunication company recently launched a marketing campaign to promote th
 - `app/`: Contains the main streamlit app
 - `REPORT`: Contains the final report for the project in Word format and Jupyter notebooks compressed in RAR format 
 - `README.md`: Overview of the project (this file).
--  Remaining folders for supporting code in the main Streamlit app.
+-  Remaining folders for supporting function in the main Streamlit app.
 
 ## Instructions:
 1. Ensure you have Python and Jupyter Notebook installed on your system.
