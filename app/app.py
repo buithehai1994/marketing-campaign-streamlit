@@ -155,7 +155,7 @@ def train_model(X_train, y_train, model, **kwargs):
     
     return cloned_model
 
-@st.cache_data(allow_output_mutation=True, suppress_st_warning=True)
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def predict(model, X):
     return model.predict(X)
 
