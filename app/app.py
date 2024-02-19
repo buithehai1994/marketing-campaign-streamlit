@@ -143,6 +143,8 @@ def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pic
     y_train_pred_prob = trained_model.predict_proba(X_train)[:, 1]
     y_test_pred_prob = trained_model.predict_proba(X_test)[:, 1]
     y_val_pred_prob = trained_model.predict_proba(X_val)[:, 1]
+
+    display_model_metrics(trained_model, X_train, X_test, X_val, y_train, y_test, y_val)
     
     # Display confusion matrix and ROC curve for training set
     display_confusion_matrix(y_train, y_train_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
