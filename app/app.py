@@ -89,7 +89,7 @@ def fetch_data():
     return dataset
 
 import warnings
-@st.cache_data
+@st.cache_resource
 def get_model_metrics(model, X_train, X_val, X_test, y_train, y_val, y_test):
     # Load the machine learning model from the specified file path
     with open(ml_model, 'rb') as file:
