@@ -533,15 +533,17 @@ elif selected_tab == "Deployment":
 
     # Make prediction when the user clicks the "Predict" button
     if st.button("Predict"):
-        pickle_file="app/best_forest.pkl"
+        pickle_file = "app/best_forest.pkl"
         with open(pickle_file, 'rb') as f:
             rf_model = pickle.load(f)
+        
         # Load the trained model
         ml = ML()
-        model=ml.load_model(rf_model)
+        ml.load_model(rf_model)
 
         # Create a DataFrame with the user-input data
         input_data = pd.DataFrame([new_data])
+        
         # Use the 'make_prediction' method from the ML class to get the prediction
         encoded_input_data = pd.DataFrame()
         for col, values in categorical_features.items():
@@ -560,13 +562,18 @@ elif selected_tab == "Deployment":
         scaler = ml.scaler
         
         # Check if the scaler has been fitted
-        if scaler is not None and scaler.mean_ is not None:
-            # If the scaler has been fitted, transform the input data
+        try:
+            if scaler is not None and scaler.mean_ is not None:
+                # If the scaler has been fitted, transform the input data
+                X_input_scaled = scaler.transform(encoded_input_data)
+            else:
+                # If the scaler has not been fitted, raise an error or fit the scaler on the training data
+                raise ValueError("Scaler has not been fitted. Please fit the scaler on the training data before transforming.")
+        except AttributeError:
+            # Fit the scaler if it hasn't been fitted yet
+            scaler.fit(encoded_input_data)
             X_input_scaled = scaler.transform(encoded_input_data)
-        else:
-            # If the scaler has not been fitted, raise an error or fit the scaler on the training data
-            raise ValueError("Scaler has not been fitted. Please fit the scaler on the training data before transforming.")
-        
+
         # Use the 'ml' object to make predictions with the encoded input data
         prediction = ml.predict(X_input_scaled)
 
@@ -574,11 +581,11 @@ elif selected_tab == "Deployment":
         X_input_scaled_df = pd.DataFrame(X_input_scaled, columns=encoded_input_data.columns)
         st.write("Scaled input data")
         st.write(X_input_scaled_df)
-        
-        if int(prediction)==0:
+
+        if int(prediction) == 0:
             display_word_cloud("Not Subscribe")
-        elif int(prediction)==1:
-            display_word_cloud("Subsribe")
+        elif int(prediction) == 1:
+            display_word_cloud("Subscribe")
         else:
             print("Error")
 elif selected_tab == "Ethical Consideration":
