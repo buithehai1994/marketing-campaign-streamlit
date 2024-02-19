@@ -3,7 +3,8 @@
 ## Overview:
 A telecommunication company recently launched a marketing campaign to promote the adoption of their new subscription plan among customers. The company seeks assistance in gaining a comprehensive understanding of its customers and identifying the customer segments that display the highest responsiveness to marketing campaigns. The response variable, subscribed, indicates whether the client subscribed to a new plan, which was the objective of the campaign
 ## Repository Structure:
-- `csv/`: Contains the dataset files 
+- `csv/`: Contains the dataset files
+- `app/`: Contains the main streamlit app
 - `REPORT`: Contains the final report for the project in Word format and Jupyter notebooks compressed in RAR format 
 - `README.md`: Overview of the project (this file).
 
