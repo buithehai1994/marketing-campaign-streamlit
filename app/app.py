@@ -451,7 +451,7 @@ elif selected_tab == "Feature Importance":
         rf_model = pickle.load(pickle_file)
     # Load the trained model
     ml = ML()
-    ml.load_model(rf_model)
+    model=ml.load_model(rf_model)
 
     # Load the training data
     X_train_path = 'csv/X_train.csv'
@@ -462,7 +462,7 @@ elif selected_tab == "Feature Importance":
         feature_names = list(X_train.columns)
 
         # Get feature importances
-        feature_importances = ml.trained_model.feature_importances_
+        feature_importances = model.feature_importances_
 
         # Create a DataFrame with feature names and their corresponding importances
         feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': feature_importances})
