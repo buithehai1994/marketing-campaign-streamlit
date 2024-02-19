@@ -556,9 +556,17 @@ elif selected_tab == "Deployment":
         st.write("Encoded input data")
         st.write(encoded_input_data)
 
-        # Scale the input data using the same scaler used in the ML class
-        X_input_scaled = ml.scaler.transform(encoded_input_data)
-
+        # Load the scaler used in the ML class
+        scaler = ml.scaler
+        
+        # Check if the scaler has been fitted
+        if scaler is not None and scaler.mean_ is not None:
+            # If the scaler has been fitted, transform the input data
+            X_input_scaled = scaler.transform(encoded_input_data)
+        else:
+            # If the scaler has not been fitted, raise an error or fit the scaler on the training data
+            raise ValueError("Scaler has not been fitted. Please fit the scaler on the training data before transforming.")
+        
         # Use the 'ml' object to make predictions with the encoded input data
         prediction = ml.predict(X_input_scaled)
 
