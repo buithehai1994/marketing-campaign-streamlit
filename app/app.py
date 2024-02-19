@@ -137,10 +137,18 @@ def train_model(X_train, y_train, model, **kwargs):
 def predict(model, X):
     return model.predict(X)
 
-def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_val, y_val_pred, y_test, y_test_pred, ml_model):
-    # Train the model
-    trained_model = train_model(X_train, y_train, ml_model)
+@st.cache(allow_output_mutation=True)
+import pickle
 
+def display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, pickle_file):
+    # Load the model from the pickle file
+    with open(pickle_file, 'rb') as f:
+        trained_model = pickle.load(f)
+
+    y_train_pred = trained_model.predict(X_train)
+    y_val_pred = trained_model.predict(X_val)
+    y_test_pred = trained_model.predict(X_test)
+    
     # Use the trained model to make predictions
     y_train_pred_prob = trained_model.predict_proba(X_train)[:, 1]
     y_test_pred_prob = trained_model.predict_proba(X_test)[:, 1]
@@ -156,7 +164,7 @@ def display_model_evaluation(X_train, X_val, X_test, y_train, y_train_pred, y_va
     
     # Display confusion matrix and ROC curve for testing set
     display_confusion_matrix(y_test, y_test_pred, class_labels=['Not subscribe', 'subscribe'], figsize=(8, 6))
-    display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=trained_model, title="ROC of Testing set")    
+    display_roc_curve(y_true=y_test, y_scores=y_test_pred_prob, ml_instance=trained_model, title="ROC of Testing set")
 
 # Instantiate the ML class
 ml_instance = ML()
@@ -256,7 +264,7 @@ elif selected_tab == "Machine Learning Model":
             # y_train_pred=predict(ml_model,X_train)
             # y_val_pred=predict(ml_model,X_val)
             # y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
         if selected_sub_sub_tab=="Regularization":
             ml_model='app/log_elastic_reg.pkl'
@@ -264,7 +272,7 @@ elif selected_tab == "Machine Learning Model":
             # y_train_pred=predict(ml_model,X_train)
             # y_val_pred=predict(ml_model,X_val)
             # y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
     if selected_sub_tab==tab_titles[3]:
          # Create sub-tabs
@@ -276,36 +284,19 @@ elif selected_tab == "Machine Learning Model":
                                                  ])
         if selected_sub_sub_tab=="KNN (n_neighbors=15 and metric: ‘Euclidean')":
             ml_model='app/knn_15_euc.pkl'
-            # ml_model = train_model(X_train, y_train,model)
-            # y_train_pred=predict(ml_model,X_train)
-            # y_val_pred=predict(ml_model,X_val)
-            # y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
-
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=55 and metric: ‘Euclidean')":
-            model=KNeighborsClassifier(n_neighbors=55, metric='euclidean')
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            ml_model='app/knn_55_euc.pkl'
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=100 and metric: ‘Euclidean')":
-            model=KNeighborsClassifier(n_neighbors=100, metric='euclidean')
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            ml_model='app/knn_100_euc.pkl'
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
         if selected_sub_sub_tab=="KNN (n_neighbors=200 and metric: ‘Euclidean')":
-            model=KNeighborsClassifier(n_neighbors=200, metric='euclidean')
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            ml_model='app/knn_200_euc.pkl'
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
     if selected_sub_tab==tab_titles[4]:
          # Create sub-tabs
@@ -317,12 +308,8 @@ elif selected_tab == "Machine Learning Model":
                                                  "Best Forest ('max_depth': 12.57, 'min_samples_leaf': 1.0, 'min_samples_split': 8.37, 'n_estimators': 144.93)"
                                                  ])
         if selected_sub_sub_tab=="rf6 (random_state=8, n_estimators=50, max_depth=5)":
-            model=RandomForestClassifier(random_state=8, n_estimators=50, max_depth=5)
-            ml_model = train_model(X_train, y_train,model)
-            y_train_pred=predict(ml_model,X_train)
-            y_val_pred=predict(ml_model,X_val)
-            y_test_pred=predict(ml_model,X_test)
-            get_model_metrics(ml_model,X_train,X_test,X_val,y_train,y_test,y_val)
+            ml_model='app/rf6.pkl'
+            display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, ml_model)
             
 #         if selected_sub_sub_tab=="rf8 (random_state=8, n_estimators=50, max_depth=15, min_samples_leaf=10)":
 #             selected_model='app/rf8.pkl'
