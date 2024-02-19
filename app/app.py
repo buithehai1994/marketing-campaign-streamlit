@@ -329,7 +329,7 @@ elif selected_tab == "Machine Learning Model":
             if ml_sub_tab=="Model Performance":
                 display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
                
-    if selected_sub_tab==tab_titles[4]:
+    if selected_sub_tab==tab_titles[5]:
         # Create sub-tabs
         ml_tab = st.sidebar.radio("Sub-navigation",
                                                 [
@@ -386,7 +386,7 @@ elif selected_tab == "Machine Learning Model":
             if ml_sub_tab=="Model Performance":
                 display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
                 
-    if selected_sub_tab==tab_titles[5]:
+    if selected_sub_tab==tab_titles[6]:
         # Create sub-tabs
         ml_tab = st.sidebar.radio("Sub-navigation",
                                                 [
@@ -441,7 +441,7 @@ elif selected_tab == "Machine Learning Model":
             if ml_sub_tab=="Model Performance":
                 display_model_evaluation(X_train, X_val, X_test, y_train, y_val, y_test, selected_model)
             
-    if selected_sub_tab==tab_titles[6]:
+    if selected_sub_tab==tab_titles[7]:
          display_model_performance_analysis()
          
 elif selected_tab == "Feature Importance":
@@ -571,4 +571,3 @@ elif selected_tab == "Ethical Consideration":
 elif selected_tab == "References":
     citation = "Sexton, R. L. (2010). *Exploring Economics* (5th ed.). Mason, OH: South Western Educational Publishing."
     st.write(citation)
-    
