@@ -427,7 +427,6 @@ elif selected_tab == "Machine Learning Model":
                                                  ])
             if selected_sub_sub_sub_tab=="Optimization Results":
                 
-                @st.cache_data
                 def fetch_best_svc_results():
                     data=pd.read_csv("csv/svm_optimization_results.csv")
                     return data
