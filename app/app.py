@@ -128,13 +128,33 @@ def dependent_var():
     dependent_var= encoding.splitting_y()
     return dependent_var
    
-@st.cache(allow_output_mutation=True,suppress_st_warning=True)
+from sklearn.base import clone
+@st.cache_resource(allow_output_mutation=True, suppress_st_warning=True)
 def train_model(X_train, y_train, model, **kwargs):
-    model.set_params(**kwargs)
-    model.fit(X_train, y_train)
-    return model
+    """
+    Train a machine learning model.
 
-@st.cache(allow_output_mutation=True,suppress_st_warning=True)
+    Parameters:
+        X_train (array-like): The feature matrix for training.
+        y_train (array-like): The target vector for training.
+        model (estimator): The machine learning model to be trained.
+        **kwargs: Additional keyword arguments to be passed to the model.
+
+    Returns:
+        estimator: The trained machine learning model.
+    """
+    # Clone the model to avoid modifying the original model object
+    cloned_model = clone(model)
+    
+    # Set model parameters
+    cloned_model.set_params(**kwargs)
+    
+    # Train the model
+    cloned_model.fit(X_train, y_train)
+    
+    return cloned_model
+    
+@st.cache_data(allow_output_mutation=True, suppress_st_warning=True)
 def predict(model, X):
     return model.predict(X)
 
