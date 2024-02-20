@@ -134,6 +134,8 @@ def display_correlation_matrix(X):
 def display_model_performance_analysis():
     explanation_text = """
     **Model Performance Analysis**
+
+    Bayesian optimization was used to optimize the SVM, Decision Tree, and Random Forest models. The final models are named best_svc, best_tree, and best_forest.
     
     **Logistic Regression:**
     The Logistic Regression model shows consistent performance across datasets, but its scores are relatively lower compared to other models. While it does not exhibit signs of overfitting, its performance might not be as competitive as other models.
