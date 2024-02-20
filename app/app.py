@@ -53,7 +53,7 @@ st.set_page_config(
 )
 
 # Display Title
-st.title("Bank Data")
+st.title("Marketing Campaign")
 
 # Sidebar navigation for different sections
 
