@@ -5,7 +5,7 @@ A telecommunication company recently launched a marketing campaign to promote th
 ## Repository Structure:
 - `csv/`: Contains the dataset files.
 - `app/`: Contains the main Streamlit app.
-- `REPORT`: Contains the final report for the project in Word format and Jupyter notebooks compressed in RAR format.
+- `REPORT`: Contains the Exploratory Data Analysis (EDA) report, the final report for the project in Word format and Jupyter notebooks compressed in RAR format.
 - `README.md`: Overview of the project (this file).
 -  Remaining folders for supporting functions in the main Streamlit app.
 
