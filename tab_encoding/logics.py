@@ -85,7 +85,7 @@ class Encoding:
         return df
         
     @st.cache_data
-    def splitting_x(self):
+    def splitting_x(_self):
         # Split features
         return self.data.drop(['y','poutcome','contact','default','previous','emp.var.rate','month',
                                'cons.price.idx','job','age','cons.conf.idx','campaign','duration','marital'], axis=1)
