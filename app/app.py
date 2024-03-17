@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import sys
 import os
+import imblearn
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
 import numpy as np
