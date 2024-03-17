@@ -84,18 +84,15 @@ class Encoding:
         df=df.drop(['pdays','nr.employed'],axis=1)
         return df
         
-    @st.cache_data
     def splitting_x(_self):
         # Split features
         return self.data.drop(['y','poutcome','contact','default','previous','emp.var.rate','month',
                                'cons.price.idx','job','age','cons.conf.idx','campaign','duration','marital'], axis=1)
 
-    @st.cache
     def splitting_y(self):
         # Split target
         return self.data['y']
 
-    @st.cache
     def head_df(self):
         if self.data is not None:
             return self.data.head()
