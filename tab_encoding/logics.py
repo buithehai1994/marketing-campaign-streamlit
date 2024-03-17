@@ -84,7 +84,7 @@ class Encoding:
         df=df.drop(['pdays','nr.employed'],axis=1)
         return df
         
-    def splitting_x(_self):
+    def splitting_x(self):
         # Split features
         return self.data.drop(['y','poutcome','contact','default','previous','emp.var.rate','month',
                                'cons.price.idx','job','age','cons.conf.idx','campaign','duration','marital'], axis=1)
