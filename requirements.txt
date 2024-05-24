@@ -1,0 +1,17 @@
+dataprep
+matplotlib
+ipywidgets
+jinja2
+jsonpath-ng
+tqdm
+ipython_genutils
+tabulate
+imblearn
+seaborn
+openpyxl
+numpy
+streamlit
+IPython
+streamlit-elements
+scikit-learn==1.3.2
+altair
