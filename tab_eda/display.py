@@ -195,7 +195,9 @@ def display_stack_bar_chart(df):
     total_grouped = credit_default_df.groupby('month').size()
     obj_percentage = (obj_grouped / total_grouped).unstack(fill_value=0)[ordered_obj].reindex(index=ordered_months)
     
-    custom_colors = plt.cm.get_cmap('Set3', len(ordered_obj))(range(len(ordered_obj)))
+    # Generate custom colors
+    colormap = plt.cm.Set3
+    custom_colors = [colormap(i) for i in range(len(ordered_obj))]
     
     plt.figure(figsize=(15, 4))
     ax1 = obj_percentage.plot(kind='bar', stacked=True, color=custom_colors)
