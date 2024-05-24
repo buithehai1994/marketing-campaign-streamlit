@@ -10,7 +10,6 @@ import streamlit as st
 from tab_eda.logics import EDA
 import pandas as pd
 from dataprep.eda import create_report
-from matplotlib.cm import get_cmap
 # import streamlit_pandas_profiling 
 # from streamlit_pandas_profiling import st_profile_report
 
@@ -92,7 +91,7 @@ def display_plot_distribution(df, obj, ordered_obj,title):
 
     obj_percentage = (df.groupby(['month', obj]).size() / df.groupby('month').size()).unstack(fill_value=0)[ordered_obj].reindex(index=ordered_months)
     
-    custom_colors = plt.cm.get_cmap('Set3', len(ordered_obj))(range(len(ordered_obj)))
+    custom_colors = plt.cm.Set3(range(len(ordered_obj)))
 
     plt.figure(figsize=(8, 6))
     ax1 = obj_percentage.plot(kind='bar', stacked=True, color=custom_colors)
