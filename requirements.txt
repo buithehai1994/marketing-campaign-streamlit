@@ -1,5 +1,5 @@
 dataprep
-matplotlib==3.9.0
+matplotlib
 ipywidgets
 jinja2
 jsonpath-ng
