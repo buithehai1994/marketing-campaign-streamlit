@@ -10,6 +10,7 @@ import streamlit as st
 from tab_eda.logics import EDA
 import pandas as pd
 from dataprep.eda import create_report
+from matplotlib.cm import get_cmap
 # import streamlit_pandas_profiling 
 # from streamlit_pandas_profiling import st_profile_report
 
