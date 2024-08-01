@@ -9,7 +9,7 @@ import matplotlib
 import seaborn as sns
 from dataprep.eda import create_report
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 
 class EDA:
     def __init__(self,data):
